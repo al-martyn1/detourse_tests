@@ -7,7 +7,7 @@
   <Import Project=".\props\umba_project_configurations.props" />
   <Import Project=".\props\umba_msvcver.props" />
   <Import Project=".\props\umba_target_dll.props" />
-  <Import Project=".\props\umba_runtime_static.props" />
+  
   <Import Project=".\props\umba_config_matrix_common.props" />
   <!--Import Project=".\umba_config_matrix_qt.props" /-->
   <Import Project=".\umba_prjdirs.props" />
@@ -22,6 +22,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <Import Project=".\props\umba_runtime_static.props" />
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
