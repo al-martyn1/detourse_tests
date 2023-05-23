@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test01", "_prj_msvc\test01.vcxproj", "{3D6DF49F-B8E5-4149-BD3B-66D02D68C200}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A6A86DAD-D927-42FC-8FD8-725C43FFF8F4} = {A6A86DAD-D927-42FC-8FD8-725C43FFF8F4}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test01_dll", "_prj_msvc\test01_dll.vcxproj", "{A6A86DAD-D927-42FC-8FD8-725C43FFF8F4}"
 EndProject
