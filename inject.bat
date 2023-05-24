@@ -1,0 +1,1 @@
+runas /user:sc_manager inject_impl.bat

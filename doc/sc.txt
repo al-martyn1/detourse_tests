@@ -1,0 +1,2 @@
+Srvice control SC
+Управление системными службами через командную строку - https://cmd4win.ru/stati-i-materialy/92-upravlenie-sluzhbami-cherez-cmd

@@ -2,6 +2,42 @@
 
 #include <string>
 
+
+#if defined(_WIN64) || defined(WIN64)
+
+    #define WIN_X64
+
+#elif defined(_M_ARM) || defined(_M_ARM64)
+
+    #define WIN_ARM
+
+#else 
+
+    #define WIN_X86
+
+#endif
+
+
+//----------------------------------------------------------------------------
+inline
+std::wstring getPath(const std::wstring &s)
+{
+    std::wstring::size_type slashPos = s.find_last_of( L"\\/" );
+    return std::wstring(s, 0, slashPos);
+}
+
+//----------------------------------------------------------------------------
+inline
+std::wstring getPath(std::wstring s, std::size_t upCount)
+{
+    for(auto i=0u; i!=upCount; ++i)
+    {
+        s = getPath(s);
+    }
+
+    return s;
+}
+
 //----------------------------------------------------------------------------
 template<typename StringType>
 inline

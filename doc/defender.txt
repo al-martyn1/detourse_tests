@@ -1,0 +1,10 @@
+Антивирусная программа Защитник Windows (Endpoint Protection)
+
+Отключить через ком строку
+https://10winda.ru/sistema/kak-otklyuchit-zashhitnik-windows-10-cherez-komandnuyu-stroku
+  as admin
+    >powershell Set-MpPreference -DisableRealtimeMonitoring $true
+
+Как включить Защитник Windows 10
+  https://remontka.pro/defender-windows-10-enable/
+

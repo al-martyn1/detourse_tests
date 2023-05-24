@@ -1,9 +1,11 @@
 /*! \file
-    \brief Подключение к запущеному WhatsApp (toolhelp API). SE_DEBUG_PROVELEDGE требует адмиских прав, и инжект всё равно не срабатывает - Access denied (5)
+    \brief Используем ReflectiveDLLInjection/inject.x64.exe для инжекта нашей DLL. Перетаскивать код оттуда лень, делаем тут просто лаунчер для нашей DLL с поиском нужного PID.
  */
 
 #include <winsock2.h>
 #include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <iostream>
 #include <cctype>
@@ -31,6 +33,7 @@ static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files
 // https://stackoverflow.com/questions/26395243/getmodulehandle-for-a-dll-in-another-process
 // Ссылка на инжект - https://github.com/stephenfewer/ReflectiveDLLInjection
 
+
 int main(int argc, char* argv[])
 {
     
@@ -46,9 +49,28 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    std::wstring exeName = std::wstring(miscBuf, len);
+    std::wstring exeName  = std::wstring(miscBuf, len);
+    std::wstring exePath  = getPath(exeName);
+    std::wstring prjRoot  = getPath(exeName,5);
+    std::wstring inject   = prjRoot + L"\\_3dp\\ReflectiveDLLInjection\\bin\\" 
+#ifdef WIN_X64
+	L"inject.x64.exe"
+#else
+#ifdef WIN_X86
+	"inject.exe"
+#else WIN_ARM
+	L"inject.arm.exe";
+#endif
+    L"unknown"
+#endif
+    ;
 
-    //std::cout << "Exe name: " << to_ascii(exeName) << "\n";
+
+    std::cout << "Exe name: " << to_ascii(exeName) << "\n";
+    std::cout << "Exe path: " << to_ascii(exePath) << "\n";
+    std::cout << "Prj root: " << to_ascii(prjRoot) << "\n";
+    std::cout << "Inject  : " << to_ascii(inject) << "\n";
+
 
     std::wstring dllName = exeName;
     std::wstring::size_type slashPos = dllName.rfind(L'\\');
@@ -60,31 +82,6 @@ int main(int argc, char* argv[])
     //std::cout << "Dll name (1): " << to_ascii(dllName) << "\n";
     dllName.append(L"_dll.dll");
     //std::cout << "Dll name (2): " << to_ascii(dllName) << "\n";
-
-
-    len = GetEnvironmentVariableW( L"PATH", miscBuf, miscBufSizeWchars);
-    if (!len)
-    {
-        std::cout << "Failed to get PATH env var\n";
-        return 1;
-    }
-
-    std::wstring pathEnvVar = std::wstring(miscBuf, len);
-    // std::cout << "PATH: " << to_ascii(pathEnvVar) << "\n";
-
-    // check 32,767 limit
-    // std::wstring newPathEnvVar = path_ucrtbased_dll + L";"
-    //                            + path_api_ms_win_crt_runtime_l1_1_0_dll + L";"
-    //                            + path_mrt100_app_dll + L";"
-    //                            + path_vcruntime140_app_dll + L";"
-    //                            + pathEnvVar;
-    //  
-    //  
-    // if (!SetEnvironmentVariable(L"PATH", newPathEnvVar.c_str()))
-    // {
-    //     std::cout << "Failed to set PATH env var\n";
-    //     return 1;
-    // }
 
 
     DWORD pidWhatsapp = 0; //    th32ProcessID;
@@ -133,48 +130,20 @@ int main(int argc, char* argv[])
     }
 
 
-    // https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocessid
-    // DWORD GetProcessId( [in] HANDLE Process );
+    char pidBuf[256];
+    // https://learn.microsoft.com/en-us/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions?view=msvc-170
+    sprintf(pidBuf, "%u", pidWhatsapp);
+    std::string pidStr = pidBuf;
 
-    // https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess
-    // HANDLE OpenProcess(
-    //   [in] DWORD dwDesiredAccess,
-    //   [in] BOOL  bInheritHandle,
-    //   [in] DWORD dwProcessId
-    // );
+    std::cout << "Inject: " << to_ascii(inject) << "\n";
+    std::cout << "PID   : " << pidStr << "\n";
+    std::cout << "Inject: " << to_ascii(dllName) << "\n";
 
-    // https://learn.microsoft.com/en-us/windows/win32/procthread/process-security-and-access-rights
-    HANDLE hWhatsApp = OpenProcess( PROCESS_CREATE_THREAD | PROCESS_VM_READ | PROCESS_VM_WRITE // DWORD dwDesiredAccess,
-                                  , FALSE // bInheritHandle
-                                  , pidWhatsapp
-                                  );
-    if (hWhatsApp==0)
-    {
-        std::cout << "WhatsApp process open failed, error: " << GetLastError() << "\n";
-        return 1;
-    }
-    else
-    {
-        std::cout << "Got an WhatsApp handle\n";
-    }
+    std::string cmdLine = to_ascii(inject) + " " + pidStr + " " + to_ascii(dllName);
 
-    if (!CToolhelp::EnableDebugPrivilege(TRUE))
-    {
-        std::cout<<"Failed to get DebugPrivilege, error: " << GetLastError() << "\n";
-        // 1300 - ERROR_NOT_ALL_ASSIGNED - Not all privileges or groups referenced are assigned to the caller.
-        // 5    - ERROR_ACCESS_DENIED    - Access is denied.
-        // 6    - ERROR_INVALID_HANDLE   - The handle is invalid.
-    }
+    std::cout << "Cmd   : " << cmdLine << "\n";
 
-
-    if (!injectDll(dllName.c_str(), hWhatsApp))
-//    if (0)
-    {
-        std::cout<<"Failed to inject hook dll, error: " << GetLastError() << "\n";
-        return 1;
-    }
-
-    std::cout<<"Hook Dll injected Ok\n";
+    system(cmdLine.c_str());
 
 
     return 0;

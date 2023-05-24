@@ -1,0 +1,8 @@
+// https://github.com/forderud/RunInSandbox
+// Require .NET 4.8, build tools 143
+
+https://stackoverflow.com/questions/26395243/getmodulehandle-for-a-dll-in-another-process
+
+https://github.com/stephenfewer/ReflectiveDLLInjection
+
+WIN32_LEAN_AND_MEAN, VC_EXTRALEAN - https://stackoverflow.com/questions/11040133/what-does-defining-win32-lean-and-mean-exclude-exactly

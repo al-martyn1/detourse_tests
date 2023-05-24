@@ -1,5 +1,9 @@
 /*! \file
-    \brief 
+    \brief DLL для инжекта
+
+    Опция /ZW (для WinRT) находится на вкладке C/C++ - General - Consume Windows Runtime Extention
+    Требует /EHsc (C/C++ - Code Generation - Enable C++ Exceptions)
+
  */
 
 #include <winsock2.h>

@@ -1,3 +1,6 @@
+/*! \file
+    \brief Запуск WhatsApp через CreateProcess и инжект DLLs - не работает, WhatsApp - это UWP, просто так не запустить
+ */
 
 #include <winsock2.h>
 #include <windows.h>
