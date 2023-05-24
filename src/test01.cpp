@@ -242,6 +242,9 @@ static std::wstring path_ucrtbased_dll        = L"C:\\Program Files (x86)\\Windo
 static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\10.0.19041.0\\ucrt\\DLLs\\x64";
 
 
+// Пока не работает - инжект фейлиться
+// Как инжектировать dll в UWP процесс
+
 
 
 int main(int argc, char* argv[])
@@ -352,7 +355,8 @@ int main(int argc, char* argv[])
     }
 
 
-    if (!injectDll( dllName.c_str(), pi.hProcess /* , pi.dwProcessId */ ))
+    //if (!injectDll( dllName.c_str(), pi.hProcess /* , pi.dwProcessId */ ))
+    if (0)
     {
         // ---------------------------
         // WhatsApp.exe - Ошибка приложения

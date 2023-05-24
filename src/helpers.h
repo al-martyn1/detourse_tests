@@ -1,5 +1,43 @@
 #pragma once
 
+#include <string>
+
+//----------------------------------------------------------------------------
+template<typename StringType>
+inline
+StringType to_lower(StringType s)
+{
+    using CharType = typename StringType::value_type;
+    //typedef typename StringType::value_type
+    //StringType res; res.reserve(s.size())
+    //return str ? to_ascii(std::wstring(str)) : std::string();
+
+    for(auto &ch: s)
+    {
+        if (ch>=(CharType)'A' && ch<=(CharType)'Z')
+            ch = ch - (CharType)'A' + (CharType)'a';
+    }
+
+    return s;
+}
+
+template<typename StringType>
+inline
+StringType to_upper(StringType s)
+{
+    using CharType = typename StringType::value_type;
+    //StringType res; res.reserve(s.size())
+    //return str ? to_ascii(std::wstring(str)) : std::string();
+
+    for(auto &ch: s)
+    {
+        if (ch>=(CharType)'a' && ch<=(CharType)'z')
+            ch = ch - (CharType)'a' + (CharType)'A';
+    }
+
+    return s;
+}
+
 //----------------------------------------------------------------------------
 inline
 std::string to_ascii(const char* str)
