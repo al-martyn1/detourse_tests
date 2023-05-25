@@ -33,6 +33,24 @@ static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files
 // https://stackoverflow.com/questions/26395243/getmodulehandle-for-a-dll-in-another-process
 // Ссылка на инжект - https://github.com/stephenfewer/ReflectiveDLLInjection
 
+// Рантаймы (или аналогичная шляпа для сборки в UWP)
+// C:\Documents and Settings\martinov\AppData\Local\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+// C:\Documents and Settings\martinov\Local Settings\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+// C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\vcpackages\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\VC\vcpackages\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.16.27023\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.20.27508\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\lib\x86\store\references\platform.winmd
+// C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\store\references\platform.winmd
+// C:\Users\martinov\AppData\Local\Application Data\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+// C:\Users\martinov\AppData\Local\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+// C:\Users\martinov\Local Settings\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
+
 
 int main(int argc, char* argv[])
 {
