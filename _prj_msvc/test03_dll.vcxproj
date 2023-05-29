@@ -22,7 +22,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <Import Project=".\props\umba_runtime_dll.props" />
-  <Import Project=".\props\umba_runtime_for_uwp.props" />
+  <!--Import Project=".\props\umba_runtime_for_uwp.props" /-->
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>

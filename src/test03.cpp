@@ -14,9 +14,9 @@
 
 #include "toolhelp.h"
 
+#define USE_UWP_INJECT  1
 
 static const wchar_t *pStrWhatsAppExe = L"C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2318.2.0_x64__cv1g1gvanyjgm\\WhatsApp.exe";
-
 
 
 //NOTE: !!! x64
@@ -33,7 +33,13 @@ static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files
 // https://stackoverflow.com/questions/26395243/getmodulehandle-for-a-dll-in-another-process
 // Ссылка на инжект - https://github.com/stephenfewer/ReflectiveDLLInjection
 
+// UWP inject - https://github.com/StackOverflowExcept1on/uwp-injector
+
+// https://learn.microsoft.com/en-us/cpp/porting/how-to-use-existing-cpp-code-in-a-universal-windows-platform-app?view=msvc-170
+
 // Рантаймы (или аналогичная шляпа для сборки в UWP)
+// Линкер их не находит
+// Но для инжекта в UWP процесс не обязательно делать UWP DLL
 // C:\Documents and Settings\martinov\AppData\Local\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
 // C:\Documents and Settings\martinov\Local Settings\VirtualStore\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
 // C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd
@@ -70,6 +76,8 @@ int main(int argc, char* argv[])
     std::wstring exeName  = std::wstring(miscBuf, len);
     std::wstring exePath  = getPath(exeName);
     std::wstring prjRoot  = getPath(exeName,5);
+
+    #if !defined(USE_UWP_INJECT)
     std::wstring inject   = prjRoot + L"\\_3dp\\ReflectiveDLLInjection\\bin\\" 
 #ifdef WIN_X64
 	L"inject.x64.exe"
@@ -82,6 +90,11 @@ int main(int argc, char* argv[])
     L"unknown"
 #endif
     ;
+    #else
+
+    std::wstring inject   = prjRoot + L"\\_3dp\\uwp-injector\\build\\injector.exe";
+
+    #endif
 
 
     std::cout << "Exe name: " << to_ascii(exeName) << "\n";
@@ -153,11 +166,23 @@ int main(int argc, char* argv[])
     sprintf(pidBuf, "%u", pidWhatsapp);
     std::string pidStr = pidBuf;
 
-    std::cout << "Inject: " << to_ascii(inject) << "\n";
-    std::cout << "PID   : " << pidStr << "\n";
-    std::cout << "Inject: " << to_ascii(dllName) << "\n";
+    std::string whatsAppExeName = "WhatsApp.exe";
+    //injector.exe WhatsApp.exe library.dll 
 
+    std::cout << "Inject  : " << to_ascii(inject) << "\n";
+    #if !defined(USE_UWP_INJECT)
+    std::cout << "PID     : " << pidStr << "\n";
+    #else
+    std::cout << "WhatsApp: " << whatsAppExeName << "\n";
+    #endif
+    std::cout << "Inject  : " << to_ascii(dllName) << "\n";
+
+
+    #if !defined(USE_UWP_INJECT)
     std::string cmdLine = to_ascii(inject) + " " + pidStr + " " + to_ascii(dllName);
+    #else
+    std::string cmdLine = to_ascii(inject) + " " + whatsAppExeName + " " + to_ascii(dllName);
+    #endif
 
     std::cout << "Cmd   : " << cmdLine << "\n";
 
