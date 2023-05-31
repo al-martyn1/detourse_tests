@@ -8,3 +8,10 @@ https://github.com/stephenfewer/ReflectiveDLLInjection
 https://github.com/StackOverflowExcept1on/uwp-injector
 
 WIN32_LEAN_AND_MEAN, VC_EXTRALEAN - https://stackoverflow.com/questions/11040133/what-does-defining-win32-lean-and-mean-exclude-exactly
+
+https://www.sqlite.org/download.html
+
+https://github.com/microsoft/Windows-universal-samples.git
+https://github.com/microsoft/Windows-universal-samples/tree/main/Samples/FileAccess
+
+https://github.com/microsoft/STL/issues/1210

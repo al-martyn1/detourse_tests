@@ -20,6 +20,22 @@
 
 //----------------------------------------------------------------------------
 inline
+std::wstring getModuleFileName(HMODULE hModule = 0)
+{
+    wchar_t buf[4096]; // GetEnvironmentVariable limit
+    std::size_t bufSizeBytes  = sizeof(buf);
+    std::size_t bufSizeWchars = sizeof(buf)/sizeof(buf[0]);
+    DWORD len = GetModuleFileNameW(0, buf, bufSizeWchars);
+    if (!len || len>=bufSizeWchars)
+    {
+        return std::wstring();
+    }
+
+    return std::wstring(buf, len);
+}
+
+//----------------------------------------------------------------------------
+inline
 std::wstring getPath(const std::wstring &s)
 {
     std::wstring::size_type slashPos = s.find_last_of( L"\\/" );
