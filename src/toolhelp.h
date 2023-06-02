@@ -22,6 +22,24 @@ Notices: Copyright (c) 2000 Jeffrey Richter
 
 ///////////////////////////////////////////////////////////////////////////
 
+class LastErrorSaver
+{
+    DWORD errCode;
+
+public:
+
+    LastErrorSaver()
+    : errCode(GetLastError())
+    {}
+
+    ~LastErrorSaver()
+    {
+        SetLastError(errCode);
+    }
+};
+
+
+
 class CToolhelp {
 private:
    HANDLE m_hSnapshot;
@@ -64,6 +82,82 @@ public:
    BOOL HeapNext(PHEAPENTRY32 phe) const;
    int  HowManyBlocksInHeap(DWORD dwProcessID, DWORD dwHeapId) const;
    BOOL IsAHeap(HANDLE hProcess, PVOID pvBlock, PDWORD pdwFlags) const;
+
+
+   // New
+
+   template<typename THandler>
+   bool enumerateProcess(THandler handler)
+   {
+        PROCESSENTRY32 pe;
+        pe.dwSize = sizeof(pe);
+        auto processEnumRes = ProcessFirst(&pe);
+        if (!processEnumRes)
+        {
+            return false;
+        }
+        while(processEnumRes)
+        {
+            pe.szExeFile[MAX_PATH-1] = 0;
+            //std::wstring exeName = &pe.szExeFile[0];
+
+            if (!handler(pe))
+            {
+                break;
+            }
+    
+            pe.dwSize = sizeof(pe);
+            processEnumRes = ProcessNext(&pe);
+        }
+
+        return true;
+   }
+
+   template<typename THandler>
+   bool enumerateThread(THandler handler)
+   {
+        THREADENTRY32 the;
+        the.dwSize = sizeof(the);
+
+        auto enumRes = ThreadFirst(&the);
+        if (!enumRes)
+        {
+            return false;
+        }
+
+        while(enumRes)
+        {
+            if (!handler(the))
+            {
+                break;
+            }
+
+            the.dwSize = sizeof(the);
+            enumRes = ThreadNext(&the);
+        }
+
+        return true;
+   }
+
+   static
+   DWORD threadSuspendResume(DWORD thId, bool resume=true)
+   {
+       HANDLE hThread = OpenThread( THREAD_SUSPEND_RESUME /* THREAD_ALL_ACCESS */ , FALSE /* no inherit */ , thId);
+       if (hThread==0)
+       {
+           return (DWORD)-1;
+       }
+
+       DWORD res = resume ? ResumeThread(hThread) : SuspendThread(hThread);
+
+       LastErrorSaver errSaver;
+       CloseHandle(hThread);
+
+       return res;
+   }
+
+
+
 
 public:
    static BOOL EnableDebugPrivilege(HANDLE hToken, BOOL fEnable = TRUE);

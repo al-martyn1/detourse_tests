@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Monitor", "Monitor\Monitor.vcxproj", "{FE7888C1-8673-4A4E-97B9-4084C97DC605}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "output", "output\output.vcxproj", "{D8005819-F5AC-4E35-8941-2F1F3FDA42F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE7888C1-8673-4A4E-97B9-4084C97DC605}.Debug|x86.ActiveCfg = Debug|Win32
+		{FE7888C1-8673-4A4E-97B9-4084C97DC605}.Debug|x86.Build.0 = Debug|Win32
+		{FE7888C1-8673-4A4E-97B9-4084C97DC605}.Release|x86.ActiveCfg = Release|Win32
+		{FE7888C1-8673-4A4E-97B9-4084C97DC605}.Release|x86.Build.0 = Release|Win32
+		{D8005819-F5AC-4E35-8941-2F1F3FDA42F1}.Debug|x86.ActiveCfg = Debug|Win32
+		{D8005819-F5AC-4E35-8941-2F1F3FDA42F1}.Debug|x86.Build.0 = Debug|Win32
+		{D8005819-F5AC-4E35-8941-2F1F3FDA42F1}.Release|x86.ActiveCfg = Release|Win32
+		{D8005819-F5AC-4E35-8941-2F1F3FDA42F1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C769D6D0-A919-40EB-B3AB-194C9EBD8960}
+	EndGlobalSection
+EndGlobal

@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test03_dll", "_prj_msvc\tes
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "detours", "_prj_msvc\detours.vcxproj", "{6DE78A45-B642-42FA-A469-EA8474162724}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test04", "_prj_msvc\test04.vcxproj", "{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -139,6 +141,20 @@ Global
 		{6DE78A45-B642-42FA-A469-EA8474162724}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|Win32
 		{6DE78A45-B642-42FA-A469-EA8474162724}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
 		{6DE78A45-B642-42FA-A469-EA8474162724}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Debug|x64.ActiveCfg = Debug|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Debug|x64.Build.0 = Debug|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Debug|x86.ActiveCfg = Debug|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Debug|x86.Build.0 = Debug|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.MinSizeRel|x64.ActiveCfg = MinSizeRel|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.MinSizeRel|x64.Build.0 = MinSizeRel|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.MinSizeRel|x86.ActiveCfg = MinSizeRel|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Release|x64.ActiveCfg = Release|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Release|x64.Build.0 = Release|x64
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Release|x86.ActiveCfg = Release|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.Release|x86.Build.0 = Release|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.RelWithDebInfo|x64.ActiveCfg = RelWithDebInfo|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.RelWithDebInfo|x86.ActiveCfg = RelWithDebInfo|Win32
+		{8A89C7CD-D6E2-407F-88BF-DDEED8DB9AAB}.RelWithDebInfo|x86.Build.0 = RelWithDebInfo|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
