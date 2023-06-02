@@ -6,6 +6,10 @@
 
  */
 
+#define DETOUR_DEBUG
+
+#include "trace.h"
+
 #include <winsock2.h>
 #include <windows.h>
 
@@ -21,11 +25,16 @@
 
 #include "helpers.h"
 
+#include <../_3dp/Detours/src/detours.h>
+
+
 // // https://github.com/microsoft/Windows-universal-samples/blob/main/Samples/MessageDialog/cpp/pch.h
 // #include <collection.h>
 // #include <ppltasks.h>
 
 // https://www.c-sharpcorner.com/article/hello-world-with-universal-windows-platform-in-cpp/
+
+#define SQLITE_OMIT_LOAD_EXTENSION
 
 #include "../_3dp/sqlite/sqlite3.h"
 #include "../_3dp/sqlite/sqlite3ext.h"
@@ -38,12 +47,110 @@
 //  Kernel32.lib
 
 
+// WhatsApp.dll
+// sqlite3_aggregate_context
+// sqlite3_bind_int
+// sqlite3_bind_int64
+// sqlite3_bind_text
+// sqlite3_close_v2
+// sqlite3_column_bytes
+// sqlite3_column_count
+// sqlite3_column_int64
+// sqlite3_column_text
+// sqlite3_column_type
+// sqlite3_errmsg
+// sqlite3_exec
+// sqlite3_finalize
+// sqlite3_free
+// sqlite3_libversion_number
+// sqlite3_open
+// sqlite3_prepare_v2
+// sqlite3_step
+// sqlite3_user_data
+
+// WhatsAppNative.dll
+
+
+
 // using namespace SDKTemplate;
 //  
 // using namespace Windows::UI::Popups;
 // using namespace Windows::UI::Xaml;
 // using namespace Windows::UI::Xaml::Controls;
 // using namespace Windows::UI::Xaml::Navigation;
+
+// SQLITE_API 
+// int sqlite3_close(sqlite3*);
+// SQLITE_API 
+// int sqlite3_close_v2(sqlite3*);
+
+static int (*true_sqlite3_close)(sqlite3*)   = sqlite3_close;
+static int (*true_sqlite3_close_v2)(sqlite3*) = sqlite3_close_v2;
+static int (*true_sqlite3_exec)(
+  sqlite3*,                                  /* An open database */
+  const char *sql,                           /* SQL to be evaluated */
+  int (*callback)(void*,int,char**,char**),  /* Callback function */
+  void *,                                    /* 1st argument to callback */
+  char **errmsg                              /* Error msg written here */
+) = sqlite3_exec;
+
+static int (*true_sqlite3_prepare_v2)(
+  sqlite3 *db,            /* Database handle */
+  const char *zSql,       /* SQL statement, UTF-8 encoded */
+  int nByte,              /* Maximum length of zSql in bytes. */
+  sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+  const char **pzTail     /* OUT: Pointer to unused portion of zSql */
+) = sqlite3_prepare_v2;
+
+
+// sqlite3_exec
+// sqlite3_prepare
+// sqlite3_prepare16
+// sqlite3_prepare16_v2
+// sqlite3_prepare16_v3
+// sqlite3_prepare_v2
+// sqlite3_prepare_v3
+
+
+int hacked_sqlite3_close(sqlite3* psq3)
+{
+    DETOUR_TRACE(("!!! hacked_sqlite3_close\n"));
+    // DebugBreak();
+    return true_sqlite3_close(psq3);
+}
+
+int hacked_sqlite3_close_v2(sqlite3* psq3)
+{
+    DETOUR_TRACE(("!!! hacked_sqlite3_close_v2\n"));
+    // DebugBreak();
+    return true_sqlite3_close_v2(psq3);
+}
+
+int hacked_sqlite3_exec(
+  sqlite3* psq3,                                  /* An open database */
+  const char *sql,                           /* SQL to be evaluated */
+  int (*callback)(void*,int,char**,char**),  /* Callback function */
+  void * pv,                                    /* 1st argument to callback */
+  char **errmsg                              /* Error msg written here */
+)
+{
+    DETOUR_TRACE(("!!! hacked_sqlite3_exec\n"));
+    // DebugBreak();
+    return true_sqlite3_exec(psq3, sql, callback, pv, errmsg);
+}
+
+int hacked_sqlite3_prepare_v2(
+  sqlite3 *db,            /* Database handle */
+  const char *zSql,       /* SQL statement, UTF-8 encoded */
+  int nByte,              /* Maximum length of zSql in bytes. */
+  sqlite3_stmt **ppStmt,  /* OUT: Statement handle */
+  const char **pzTail     /* OUT: Pointer to unused portion of zSql */
+)
+{
+    DETOUR_TRACE(("!!! hacked_sqlite3_prepare_v2\n"));
+    // DebugBreak();
+    return true_sqlite3_prepare_v2(db, zSql, nByte, ppStmt, pzTail);
+}
 
 
 HANDLE hLog = INVALID_HANDLE_VALUE;
@@ -57,7 +164,7 @@ void createLogFile(const std::wstring &name)
     if (hLog==INVALID_HANDLE_VALUE)
     {
         //char *ptr = 
-        DebugBreak();
+        //DebugBreak();
      
         // MessageDialog^ msg = ref new MessageDialog("No internet connection has been found.");
      
@@ -76,11 +183,25 @@ void createLogFile(const std::wstring &name)
     // IID_IStorageItemHandleAccess;
     // MIDL_INTERFACE("5CA296B2-2C25-4D22-B785-B885C8201E6A")
 
-
 };
 
 void init_hook(HINSTANCE hinstDLL)
 {
+
+    DETOUR_TRACE(("Hello debugger!\n"));
+    DetourRestoreAfterWith();
+
+    DetourTransactionBegin();
+    DetourUpdateThread(GetCurrentThread());
+
+    DetourAttach(&(PVOID&)true_sqlite3_close       , hacked_sqlite3_close);
+    DetourAttach(&(PVOID&)true_sqlite3_close_v2    , hacked_sqlite3_close_v2);
+    DetourAttach(&(PVOID&)true_sqlite3_exec        , hacked_sqlite3_exec);
+    DetourAttach(&(PVOID&)true_sqlite3_prepare_v2  , hacked_sqlite3_prepare_v2);
+
+    DetourTransactionCommit();
+
+
     HMODULE hDll = (HMODULE)hinstDLL;
     std::wstring dllName = getModuleFileName(hDll);
     // std::wstring dllPath = getPath(dllName);
@@ -101,6 +222,18 @@ void init_hook(HINSTANCE hinstDLL)
 
 void deinit_hook(HINSTANCE hinstDLL)
 {
+    DetourTransactionBegin();
+    DetourUpdateThread(GetCurrentThread());
+
+    DetourDetach(&(PVOID&)true_sqlite3_close      , hacked_sqlite3_close);
+    DetourDetach(&(PVOID&)true_sqlite3_close_v2   , hacked_sqlite3_close_v2);
+    DetourDetach(&(PVOID&)true_sqlite3_exec       , hacked_sqlite3_exec);
+    DetourDetach(&(PVOID&)true_sqlite3_prepare_v2 , hacked_sqlite3_prepare_v2);
+    //DetourDetach(&(PVOID&)TrueSleep, TimedSleep);
+
+    DetourTransactionCommit();
+    
+
     HMODULE hDll = (HMODULE)hinstDLL;
 }
 
@@ -110,6 +243,12 @@ BOOL WINAPI DllMain(
     DWORD fdwReason,     // reason for calling function
     LPVOID lpvReserved )  // reserved
 {
+    if (DetourIsHelperProcess())
+    {
+        return TRUE;
+    }
+
+
     switch( fdwReason ) 
     { 
         case DLL_PROCESS_ATTACH:

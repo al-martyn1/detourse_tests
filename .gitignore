@@ -1,3 +1,7 @@
 .out
 .vs
 /_prj_msvc/*.user
+/_3dp/ReflectiveDLLInjection
+/_3dp/RunInSandbox
+/_3dp/Windows-universal-samples
+/_3dp/uwp-injector

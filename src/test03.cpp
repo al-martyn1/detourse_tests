@@ -7,10 +7,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <Shobjidl.h>
+#include <shobjidl_core.h>
+
 #include <iostream>
 #include <cctype>
+#include <vector>
 
 #include "helpers.h"
+
+#include "coinit.h"
 
 #include "toolhelp.h"
 
@@ -60,7 +66,8 @@ static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files
 
 int main(int argc, char* argv[])
 {
-    
+    CoInit coInit;
+
     wchar_t miscBuf[32767]; // GetEnvironmentVariable limit
     std::size_t miscBufSizeBytes  = sizeof(miscBuf);
     std::size_t miscBufSizeWchars = sizeof(miscBuf)/sizeof(miscBuf[0]);
@@ -114,6 +121,44 @@ int main(int argc, char* argv[])
     dllName.append(L"_dll.dll");
     //std::cout << "Dll name (2): " << to_ascii(dllName) << "\n";
 
+    // https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-iapplicationactivationmanager
+    IApplicationActivationManager *pIApplicationActivationManager = 0;
+
+    // https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+    HRESULT hr = CoCreateInstance(
+        CLSID_ApplicationActivationManager,
+        NULL,
+        CLSCTX_INPROC_SERVER, // CLSCTX_LOCAL_SERVER
+        IID_PPV_ARGS(&pIApplicationActivationManager)
+        );
+
+    if (!SUCCEEDED(hr))
+    {
+        //return false;
+        std::cout << "Failed to run WhatsApp\n";
+        pIApplicationActivationManager = 0;
+    }
+
+    DWORD startedWhatsAppPid = 0;
+    if (pIApplicationActivationManager)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-iapplicationactivationmanager-activateapplication
+        // https://cpp.hotexamples.com/examples/-/IApplicationActivationManager/ActivateApplication/cpp-iapplicationactivationmanager-activateapplication-method-examples.html
+        hr = pIApplicationActivationManager->ActivateApplication( L"5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+                                                                , 0, AO_PRELAUNCH
+                                                                , &startedWhatsAppPid
+                                                                );
+        if (!SUCCEEDED(hr))
+        {
+            //return false;
+            std::cout << "Failed to run WhatsApp\n";
+        }
+
+        pIApplicationActivationManager->Release();
+    }
+
+
+    std::vector<THREADENTRY32> whatsAppThreads;
 
     DWORD pidWhatsapp = 0; //    th32ProcessID;
     
@@ -129,6 +174,7 @@ int main(int argc, char* argv[])
             return 1;
         }
     
+        #if 0
         PROCESSENTRY32 pe;
         pe.dwSize = sizeof(pe);
         auto processEnumRes = toolhelp.ProcessFirst(&pe);
@@ -152,13 +198,35 @@ int main(int argc, char* argv[])
             pe.dwSize = sizeof(pe);
             processEnumRes = processEnumRes = toolhelp.ProcessNext(&pe);
         }
+        #endif
 
+        // https://stackoverflow.com/questions/11010165/how-to-suspend-resume-a-process-in-windows
+        THREADENTRY32 the;
+        the.dwSize = sizeof(the);
+
+        auto enumRes = toolhelp.ThreadFirst(&the);
+        if (!enumRes)
+        {
+           std::cout << "ThreadFirst failed, error: " << GetLastError() << "\n";
+           // 24 - ERROR_BAD_LENGTH - The program issued a command but the command length is incorrect.
+        }
+
+        while(enumRes)
+        {
+            if (the.th32OwnerProcessID==startedWhatsAppPid)
+            {
+                whatsAppThreads.emplace_back(the);
+            }
+
+            the.dwSize = sizeof(the);
+            enumRes = toolhelp.ThreadNext(&the);
+        }
     }
 
-    if (pidWhatsapp!=0)
-    {
-        std::cout << "WhatsApp found, PID: " << pidWhatsapp << "\n";
-    }
+    // if (pidWhatsapp!=0)
+    // {
+    //     std::cout << "WhatsApp found, PID: " << pidWhatsapp << "\n";
+    // }
 
 
     char pidBuf[256];
@@ -186,8 +254,35 @@ int main(int argc, char* argv[])
 
     std::cout << "Cmd   : " << cmdLine << "\n";
 
+
+
+
     system(cmdLine.c_str());
 
+    // ResumeThread( pi.hThread );
+
+    std::cout << "Paused\n";
+
+    Sleep(3000);
+
+    std::cout << "Resuming WhatsApp threads\n";
+
+    // https://stackoverflow.com/questions/11010165/how-to-suspend-resume-a-process-in-windows
+
+    for(const auto &the : whatsAppThreads)
+    {
+        HANDLE hThread = OpenThread( THREAD_SUSPEND_RESUME /* THREAD_ALL_ACCESS */ , FALSE, the.th32ThreadID);
+        if (hThread==0)
+        {
+            std::cout << "Failed to open thread, ID: " <<  /* (unsigned) */ the.th32ThreadID << "\n";
+        }
+        else
+        {
+            SuspendThread(hThread);
+            CloseHandle(hThread);
+        }
+    }
+   
 
     return 0;
 }
