@@ -87,7 +87,7 @@ public:
    // New
 
    template<typename THandler>
-   bool enumerateProcess(THandler handler)
+   bool enumerateProcesses(THandler handler)
    {
         PROCESSENTRY32 pe;
         pe.dwSize = sizeof(pe);
@@ -114,7 +114,7 @@ public:
    }
 
    template<typename THandler>
-   bool enumerateThread(THandler handler)
+   bool enumerateThreads(THandler handler)
    {
         THREADENTRY32 the;
         the.dwSize = sizeof(the);
@@ -138,6 +138,34 @@ public:
 
         return true;
    }
+
+   template<typename THandler>
+   bool enumerateModules(THandler handler)
+   {
+        MODULEENTRY32 me;
+        me.dwSize = sizeof(me);
+
+        auto enumRes = ModuleFirst(&me);
+        if (!enumRes)
+        {
+            return false;
+        }
+
+        while(enumRes)
+        {
+            if (!handler(me))
+            {
+                break;
+            }
+
+            me.dwSize = sizeof(me);
+            enumRes = ModuleNext(&me);
+        }
+
+        return true;
+   }
+
+
 
    static
    DWORD threadSuspendResume(DWORD thId, bool resume=true)

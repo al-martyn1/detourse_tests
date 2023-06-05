@@ -15,3 +15,14 @@ https://github.com/microsoft/Windows-universal-samples.git
 https://github.com/microsoft/Windows-universal-samples/tree/main/Samples/FileAccess
 
 https://github.com/microsoft/STL/issues/1210
+
+Implementing Global Injection and Hooking in Windows - https://m417z.com/Implementing-Global-Injection-and-Hooking-in-Windows/
+Microsoft Research Detours Package Overview - https://github.com/microsoft/detours/wiki
+Detours API Reference - https://github.com/microsoft/Detours/wiki/Reference
+Using Detours - https://github.com/microsoft/detours/wiki/Using-Detours
+Payloads and DLL Import Editing - https://github.com/microsoft/detours/wiki/OverviewPayloads
+
+Detour a UWP app - https://github.com/microsoft/Detours/discussions/279
+
+
+

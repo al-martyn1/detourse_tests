@@ -1,7 +1,13 @@
 #pragma once
 
-#include <string>
+#include <winsock2.h>
+#include <windows.h>
+#include <tlhelp32.h>
 
+#include <string>
+#include <utility>
+#include <algorithm>
+#include <cstdint>
 
 #if defined(_WIN64) || defined(WIN64)
 
@@ -20,9 +26,40 @@
 
 //----------------------------------------------------------------------------
 inline
+BYTE* getModuleNextFreeAddr(const MODULEENTRY32 &me)
+{
+    return (BYTE*)me.modBaseAddr+me.modBaseSize;
+}
+
+//----------------------------------------------------------------------------
+inline
+std::string formatPtr(const void* ptr)
+{
+    static const char digits[17] = "0123456789ABCDEF";
+    const std::size_t ptrSize   = sizeof(ptr);
+    const std::size_t ptrDigits = 2*ptrSize;
+
+    std::string strRes; strRes.reserve(ptrDigits);
+
+    std::uintptr_t uintPtr = reinterpret_cast<std::uintptr_t>(ptr);
+
+    for(std::size_t i=0; i!=ptrDigits; ++i)
+    {
+        auto d = uintPtr&0xF;
+        uintPtr >>= 4;
+        strRes.append(1, digits[d]);
+    }
+
+    std::reverse(strRes.begin(), strRes.end());
+
+    return strRes;
+}
+//----------------------------------------------------------------------------
+
+inline
 std::wstring getModuleFileName(HMODULE hModule = 0)
 {
-    wchar_t buf[4096]; // GetEnvironmentVariable limit
+    wchar_t buf[4096];
     std::size_t bufSizeBytes  = sizeof(buf);
     std::size_t bufSizeWchars = sizeof(buf)/sizeof(buf[0]);
     DWORD len = GetModuleFileNameW(0, buf, bufSizeWchars);
@@ -32,6 +69,22 @@ std::wstring getModuleFileName(HMODULE hModule = 0)
     }
 
     return std::wstring(buf, len);
+}
+
+//----------------------------------------------------------------------------
+inline
+std::wstring getInjectDllName()
+{
+    std::wstring exeName  = getModuleFileName();
+    std::wstring dllName = exeName;
+    std::wstring::size_type slashPos = dllName.rfind(L'\\');
+    std::wstring::size_type dotPos   = dllName.rfind(L'.');
+    if (dotPos>slashPos)
+    {
+        dllName.erase(dotPos,std::wstring::npos);
+    }
+    dllName.append(L"_dll.dll");
+    return dllName;
 }
 
 //----------------------------------------------------------------------------

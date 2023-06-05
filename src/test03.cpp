@@ -69,10 +69,23 @@ static std::wstring path_api_ms_win_crt_runtime_l1_1_0_dll = L"C:\\Program Files
 
 int main(int argc, char* argv[])
 {
+    OutputDebugStringA( "Hello through OutputDebugStringA 1\n");
+    OutputDebugStringW(L"Hello through OutputDebugStringW 1\n");
+    OutputDebugStringA( "Hello through OutputDebugStringA 1\n");
+    OutputDebugStringW(L"Hello through OutputDebugStringW 1\n");
+
+    CoInit coInit;
+
     // ods_capture();
     CWinDebugMonitorImpl logMonitor;
 
-    CoInit coInit;
+    Sleep(500);
+
+    OutputDebugStringA( "Hello through OutputDebugStringA 2\n");
+    OutputDebugStringW(L"Hello through OutputDebugStringW 2\n");
+    OutputDebugStringA( "Hello through OutputDebugStringA 2\n");
+    OutputDebugStringW(L"Hello through OutputDebugStringW 2\n");
+
 
     wchar_t miscBuf[32767]; // GetEnvironmentVariable limit
     std::size_t miscBufSizeBytes  = sizeof(miscBuf);
@@ -145,7 +158,6 @@ int main(int argc, char* argv[])
         pIApplicationActivationManager = 0;
     }
 
-    OutputDebugStringA("Hello through OutputDebugStringA\n");
 
     DWORD startedWhatsAppPid = 0;
     if (pIApplicationActivationManager)
@@ -183,7 +195,7 @@ int main(int argc, char* argv[])
             //                         }
             //                         );
             
-            toolhelp.enumerateThread([&](const THREADENTRY32 &the)
+            toolhelp.enumerateThreads([&](const THREADENTRY32 &the)
                                     {
                                         if (the.th32OwnerProcessID==startedWhatsAppPid)
                                         {
@@ -267,7 +279,7 @@ int main(int argc, char* argv[])
         //     enumRes = toolhelp.ThreadNext(&the);
         // }
 
-        toolhelp.enumerateThread([&](const THREADENTRY32 &the)
+        toolhelp.enumerateThreads([&](const THREADENTRY32 &the)
                                 {
                                     if (the.th32OwnerProcessID==startedWhatsAppPid)
                                     {
@@ -358,6 +370,10 @@ int main(int argc, char* argv[])
             //return false;
             std::cout << "Failed to run WhatsApp\n";
         }
+
+        pIApplicationActivationManager->Release();
+        pIApplicationActivationManager = 0;
+
     }
 
 
