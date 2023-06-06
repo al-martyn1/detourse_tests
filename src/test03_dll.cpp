@@ -84,7 +84,7 @@
 // SQLITE_API 
 // int sqlite3_close_v2(sqlite3*);
 
-static int (*true_sqlite3_close)(sqlite3*)   = sqlite3_close;
+static int (*true_sqlite3_close)(sqlite3*)    = sqlite3_close;
 static int (*true_sqlite3_close_v2)(sqlite3*) = sqlite3_close_v2;
 static int (*true_sqlite3_exec)(
   sqlite3*,                                  /* An open database */

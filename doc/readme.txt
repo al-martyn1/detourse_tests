@@ -1,5 +1,6 @@
-WhatsApp Path   - C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2320.2.0_x64__cv1g1gvanyjgm
-WhatsApp AppId  - 5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+WhatsApp Path    - C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2320.2.0_x64__cv1g1gvanyjgm
+WhatsApp AppId   - 5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
+WhatsApp DB Path - "C:\Users\[User]\AppData\Local\Application Data\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\" 
 
 Способы инжекта - https://resources.infosecinstitute.com/topic/api-hooking-and-dll-injection-on-windows/
 AppInit_DLLs - реестр HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows

@@ -40,6 +40,91 @@ public:
 
 
 
+struct MemoryBlockInfo
+{
+    BYTE          *pbAddress;
+    SIZE_T         blockSize;
+
+    BYTE* getNextFreeAddress() const
+    {
+        return pbAddress+blockSize;
+    }
+
+    bool isAddressInBlock(BYTE* ptr) const
+    {
+        return ptr>=pbAddress && ptr<getNextFreeAddress();
+    }
+};
+
+
+struct ModuleInfo
+{
+    BYTE          *pbAddress;
+    SIZE_T         blockSize;
+    std::wstring   moduleName;
+    std::wstring   moduleExeName;
+
+    BYTE* getNextFreeAddress() const
+    {
+        return pbAddress+blockSize;
+    }
+
+    bool isAddressInBlock(BYTE* ptr) const
+    {
+        return ptr>=pbAddress && ptr<getNextFreeAddress();
+    }
+
+    static
+    std::wstring to_lower(std::wstring s)
+    {
+        for(auto &ch: s)
+        {
+            if (ch>='A' && ch<='Z')
+                ch = ch - 'A' + 'a';
+        }
+    
+        return s;
+    }
+
+    static
+    std::wstring to_wide(const std::string &str)
+    {
+        std::wstring strRes; strRes.reserve(str.size());
+        for(auto ch : str)
+            strRes.append(1, (wchar_t)(unsigned char)ch);
+        return strRes;
+    }
+
+    static
+    std::wstring normalizeModuleName(const std::wstring &n)
+    {
+        return to_lower(n);
+    }
+
+    static
+    std::wstring normalizeModuleName(const std::string &n)
+    {
+        return to_lower(to_wide(n));
+    }
+
+};
+
+
+template<typename BlockInfo> inline
+std::size_t findBlockByAddress(const std::vector<BlockInfo> &blocks, BYTE* ptr)
+{
+    for(std::size_t i=0u; i!=blocks.size(); ++i)
+    {
+        if (blocks[i].isAddressInBlock(ptr))
+            return i;
+    }
+
+    return (std::size_t)-1;
+}
+
+
+
+
 class CToolhelp {
 private:
    HANDLE m_hSnapshot;
@@ -77,15 +162,22 @@ public:
    // just walk the process's heap from the beginning each time. Infinite 
    // loops can occur if the target process changes its heap while the
    // functions below are enumerating the blocks in the heap.
-   BOOL HeapFirst(PHEAPENTRY32 phe, DWORD dwProcessID, 
-      UINT_PTR dwHeapID) const;
-   BOOL HeapNext(PHEAPENTRY32 phe) const;
-   int  HowManyBlocksInHeap(DWORD dwProcessID, DWORD dwHeapId) const;
-   BOOL IsAHeap(HANDLE hProcess, PVOID pvBlock, PDWORD pdwFlags) const;
+   static
+   BOOL HeapFirst(PHEAPENTRY32 phe, DWORD dwProcessID, UINT_PTR dwHeapID);
+
+   static
+   BOOL HeapNext(PHEAPENTRY32 phe);
+
+   static
+   int  HowManyBlocksInHeap(DWORD dwProcessID, DWORD dwHeapId);
+
+   //static
+   BOOL IsAHeap(HANDLE hProcess, PVOID pvBlock, PDWORD pdwFlags);
 
 
    // New
 
+   // Required valid snapshot
    template<typename THandler>
    bool enumerateProcesses(THandler handler)
    {
@@ -113,6 +205,7 @@ public:
         return true;
    }
 
+   // Required valid snapshot
    template<typename THandler>
    bool enumerateThreads(THandler handler)
    {
@@ -139,6 +232,20 @@ public:
         return true;
    }
 
+   // Required valid snapshot
+   std::vector<DWORD> getThreadList()
+   {
+       std::vector<DWORD> tids;
+       enumerateThreads( [&](const THREADENTRY32 &the)
+                         {
+                             tids.emplace_back(the.th32ThreadID);
+                             return true;
+                         }
+                       );
+       return tids;
+   }
+
+   // Required valid snapshot
    template<typename THandler>
    bool enumerateModules(THandler handler)
    {
@@ -165,7 +272,80 @@ public:
         return true;
    }
 
+   std::vector<ModuleInfo> getModulesInfo()
+   {
+       std::vector<ModuleInfo> miVec;
+       enumerateModules( [&](const MODULEENTRY32 &me)
+                         {
+                             miVec.emplace_back( ModuleInfo{me.modBaseAddr, me.modBaseSize
+                                               , ModuleInfo::normalizeModuleName(&me.szModule[0])
+                                               , ModuleInfo::normalizeModuleName(&me.szExePath[0]) }
+                                               );
+                             return true;
+                         }
+                       );
+       return miVec;
+   }
 
+
+   // Required valid snapshot
+   template<typename THandler>
+   bool enumerateHeaps(THandler handler)
+   {
+       HEAPLIST32 hl;
+       hl.dwSize = sizeof(hl);
+       BOOL fOk = HeapListFirst(&hl);
+       for( ; fOk; fOk = HeapListNext(&hl))
+       {
+           if (!handler(hl))
+               break;
+           hl.dwSize = sizeof(hl);
+       }
+   
+       return true;
+   }
+
+   std::vector<ULONG_PTR> getHeapList()
+   {
+       std::vector<ULONG_PTR> hids;
+       enumerateHeaps( [&](const HEAPLIST32 &hl)
+                       {
+                           hids.emplace_back(hl.th32HeapID);
+                           return true;
+                       }
+                     );
+       return hids;
+   }
+
+   template<typename THandler>
+   bool enumerateHeapBlocks(THandler handler, DWORD processId, ULONG_PTR hid)
+   {
+       HEAPENTRY32 he;
+       he.dwSize = sizeof(he);
+       BOOL fOk = HeapFirst(&he, processId, hid);
+       for( ; fOk; fOk = HeapNext(&he))
+       {
+           if (!handler(he))
+               break;
+           he.dwSize = sizeof(he);
+       }
+   
+       return true;
+   }
+
+   std::vector<MemoryBlockInfo> getHeapBlocks(DWORD processId, ULONG_PTR hid)
+   {
+       std::vector<MemoryBlockInfo> mbiVec;
+       enumerateHeapBlocks( [&](const HEAPENTRY32 &he)
+                            {
+                                mbiVec.emplace_back(MemoryBlockInfo{ (BYTE*)he.dwAddress, he.dwBlockSize });
+                                return true;
+                            }
+                          , processId, hid
+                          );
+       return mbiVec;
+   }
+   
 
    static
    DWORD threadSuspendResume(DWORD thId, bool resume=true)
@@ -182,6 +362,19 @@ public:
        CloseHandle(hThread);
 
        return res;
+   }
+
+   static
+   bool threadsSuspendResume(const std::vector<DWORD> &tids, bool resume=true)
+   {
+       DWORD cutTid = GetCurrentThreadId();
+       for(auto tid : tids)
+       {
+           if (cutTid!=tid) // prevent to suspend self
+           {
+               threadSuspendResume(tid, resume);
+           }
+       }
    }
 
 
@@ -419,9 +612,8 @@ inline int CToolhelp::HowManyHeaps() const {
 
 ///////////////////////////////////////////////////////////////////////////
 
-inline int CToolhelp::HowManyBlocksInHeap(DWORD dwProcessID, 
-   DWORD dwHeapID) const {
-
+inline int CToolhelp::HowManyBlocksInHeap(DWORD dwProcessID, DWORD dwHeapID)
+{
    int nHowManyBlocksInHeap = 0;
    HEAPENTRY32 he = { sizeof(he) };
    BOOL fOk = HeapFirst(&he, dwProcessID, dwHeapID);
@@ -446,24 +638,22 @@ inline BOOL CToolhelp::HeapListNext(PHEAPLIST32 phl) const {
 
 ///////////////////////////////////////////////////////////////////////////
 
-inline BOOL CToolhelp::HeapFirst(PHEAPENTRY32 phe, DWORD dwProcessID, 
-   UINT_PTR dwHeapID) const {
-
+inline BOOL CToolhelp::HeapFirst(PHEAPENTRY32 phe, DWORD dwProcessID, UINT_PTR dwHeapID)
+{
    return(Heap32First(phe, dwProcessID, dwHeapID));
 }
 
 ///////////////////////////////////////////////////////////////////////////
 
-inline BOOL CToolhelp::HeapNext(PHEAPENTRY32 phe) const {
-
+inline BOOL CToolhelp::HeapNext(PHEAPENTRY32 phe)
+{
    return(Heap32Next(phe));
 }
 
 ///////////////////////////////////////////////////////////////////////////
 
-inline BOOL CToolhelp::IsAHeap(HANDLE hProcess, PVOID pvBlock, 
-   PDWORD pdwFlags) const {
-
+inline BOOL CToolhelp::IsAHeap(HANDLE hProcess, PVOID pvBlock, PDWORD pdwFlags)
+{
    HEAPLIST32 hl = { sizeof(hl) };
    for (BOOL fOkHL = HeapListFirst(&hl); fOkHL; fOkHL = HeapListNext(&hl)) {
       HEAPENTRY32 he = { sizeof(he) };

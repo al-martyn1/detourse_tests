@@ -161,7 +161,7 @@ std::string to_ascii(const std::wstring &str)
 {
     std::string strRes; strRes.reserve(str.size());
     for(auto ch : str)
-        strRes.append(1, (wchar_t)ch);
+        strRes.append(1, (char)(unsigned char)ch);
     return strRes;
 }
 
