@@ -72,10 +72,71 @@ void printMemoryBlockInfo(const MemoryBlockInfo &mi)
 
 int main(int argc, char* argv[])
 {
+    std::size_t blockIdx = (std::size_t)-1;
+
+    std::vector<ModuleInfo>       modulesInfo;
+    std::vector<ULONG_PTR>        heapList;
+    std::vector<MemoryBlockInfo>  heapBlockList;
+    {
+        CToolhelp toolhelp;
+        if (toolhelp.CreateSnapshot(TH32CS_SNAPALL, 0) || !toolhelp.snapshotValid())
+        {
+            modulesInfo = toolhelp.getModulesInfo();
+        }
+
+        // DWORD curPid = GetCurrentProcessId();
+        // std::cout << "Cur PID: " << curPid << "\n\n";
+
+        // toolhelp.enumerateHeaps( [&](const HEAPLIST32 &hl)
+        //                          {
+        //                              //hids.emplace_back(hl.th32HeapID);
+        //                              // std::cout << "-------\n";
+        //                              // std::cout << "Head ID : " << formatPtr((void*)hl.th32HeapID) << "\n";
+        //                              // std::cout << "Head PID: " << hl.th32ProcessID << "\n";
+        //                              return true;
+        //                          }
+        //                        );
+
+        heapList = toolhelp.getHeapList(GetCurrentProcessId());
+
+        // std::cout << "\n";
+        // for(auto hid : heapList)
+        // {
+        //     std::cout << "Head ID : " << formatPtr((void*)hid) << "\n";
+        // }
+
+        std::vector<DWORD> tids = toolhelp.getThreadList();
+        toolhelp.threadsSuspendResume(tids, false);
+        for(auto hid : heapList)
+        {
+            //auto hbl = toolhelp.getHeapBlocks(GetCurrentProcessId(), hid, 1);
+            auto hbl = toolhelp.getHeapBlocks(GetCurrentProcessId(), hid, 1);
+            heapBlockList.insert(heapBlockList.end(), hbl.begin(), hbl.end());
+        }
+        toolhelp.threadsSuspendResume(tids, true);
+
+        //std::cout << "\nTotal blocks: "<< heapBlockList.size() << "\n\n";
+
+        // std::size_t totalSize = 0;
+        // for(const auto &mbi: heapBlockList)
+        // {
+        //     printMemoryBlockInfo(mbi);
+        //     totalSize += mbi.blockSize;
+        //     std::cout << "\n";
+        // }
+        // std::cout << "\nTotal blocks size: "<< totalSize << "\n";
+    }
+
+
+
+    // return 0;
+
 
     // Requires
     // @set PATH=C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2320.2.0_x64__cv1g1gvanyjgm;%PATH%
     // @set PATH=C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.30704.0_x64__8wekyb3d8bbwe;%PATH%
+
+    #if 0
     int sqlRes = sqlite3_close(0); // force link & e_sqlite3.dll load DLL
 
     BYTE* sqlite3_close_pbfnptr0 = (BYTE*)&sqlite3_close;
@@ -94,16 +155,7 @@ int main(int argc, char* argv[])
     std::cout << "sqlite3_close(1) : " << formatPtr(sqlite3_close_pbfnptr1) << "\n";
     std::cout << "sqlite3_close(2) : " << formatPtr(sqlite3_close_pbfnptr2) << "\n";
 
-    std::vector<ModuleInfo> modulesInfo;
-    {
-        CToolhelp toolhelp;
-        if (toolhelp.CreateSnapshot(TH32CS_SNAPALL, 0) || !toolhelp.snapshotValid())
-        {
-            modulesInfo = toolhelp.getModulesInfo();
-        }
-    }
 
-    std::size_t 
     blockIdx = findBlockByAddress(modulesInfo, sqlite3_close_pbfnptr0);
     if (blockIdx!=(std::size_t)-1)
     {
@@ -124,7 +176,9 @@ int main(int argc, char* argv[])
         std::cout << "\nsqlite3_close(2) found in:\n";
         printMemoryBlockInfo(modulesInfo[blockIdx]);
     }
+    #endif
 
+    
     BYTE* GetCurrentProcessId_pbfnptr0 = (BYTE*)&GetCurrentProcessId;
     BYTE* GetCurrentProcessId_pbfnptr1 = (BYTE*)GetCurrentProcessId;
     BYTE* GetCurrentProcessId_pbfnptr2 = 0;
@@ -163,7 +217,7 @@ int main(int argc, char* argv[])
 
     std::cout << "\n";
 
-
+    #if 0
     DetourRestoreAfterWith();
 
     DetourTransactionBegin();
@@ -176,6 +230,7 @@ int main(int argc, char* argv[])
 
     DWORD curPid = GetCurrentProcessId();
     std::cout << "Cur PID: " << curPid << "\n";
+    #endif
 
 
 // GetCurrentProcess
@@ -266,6 +321,76 @@ TODO: !!!
      https://stackoverflow.com/questions/18394647/can-i-check-if-memory-block-is-readable-without-raising-exception-with-c
 
 #endif
+
+
+    CoInit coInit;
+
+
+    // https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-iapplicationactivationmanager
+    IApplicationActivationManager *pIApplicationActivationManager = 0;
+
+    // https://learn.microsoft.com/en-us/windows/win32/api/combaseapi/nf-combaseapi-cocreateinstance
+    HRESULT hr = CoCreateInstance(
+        CLSID_ApplicationActivationManager,
+        NULL,
+        CLSCTX_INPROC_SERVER, // CLSCTX_LOCAL_SERVER
+        IID_PPV_ARGS(&pIApplicationActivationManager)
+        );
+
+    if (!SUCCEEDED(hr))
+    {
+        //return false;
+        std::cout << "Failed to run WhatsApp\n";
+        pIApplicationActivationManager = 0;
+    }
+
+
+    DWORD startedWhatsAppPid = 0;
+    if (pIApplicationActivationManager)
+    {
+        // https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nf-shobjidl_core-iapplicationactivationmanager-activateapplication
+        // https://cpp.hotexamples.com/examples/-/IApplicationActivationManager/ActivateApplication/cpp-iapplicationactivationmanager-activateapplication-method-examples.html
+        hr = pIApplicationActivationManager->ActivateApplication( L"5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+                                                                , 0, AO_PRELAUNCH // AO_NONE // AO_PRELAUNCH
+                                                                , &startedWhatsAppPid
+                                                                );
+        if (!SUCCEEDED(hr))
+        {
+            //return false;
+            std::cout << "Failed to run WhatsApp\n";
+        }
+        else
+        {
+        }
+    }
+
+    std::wstring exeName  = getModuleFileName();
+    std::wstring prjRoot  = getPath(exeName,5);
+    std::wstring inject   = prjRoot + L"\\_3dp\\uwp-injector\\build\\injector.exe";
+    std::wstring dllName  = getInjectDllName();
+
+
+    std::string cmdLine = to_ascii(inject) + " " + whatsAppExeName + " " + to_ascii(dllName);
+    std::cout << "Cmd   : " << cmdLine << "\n";
+
+    system(cmdLine.c_str());
+
+
+    if (pIApplicationActivationManager)
+    {
+        hr = pIApplicationActivationManager->ActivateApplication( L"5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App"
+                                                                , 0, AO_NONE // AO_NONE // AO_PRELAUNCH
+                                                                , &startedWhatsAppPid
+                                                                );
+        if (!SUCCEEDED(hr))
+        {
+            //return false;
+            std::cout << "Failed to run WhatsApp\n";
+        }
+
+        pIApplicationActivationManager->Release();
+        pIApplicationActivationManager = 0;
+    }
 
 
     return 0;

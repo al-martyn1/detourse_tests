@@ -5,6 +5,7 @@ WhatsApp DB Path - "C:\Users\[User]\AppData\Local\Application Data\Packages\5319
 Способы инжекта - https://resources.infosecinstitute.com/topic/api-hooking-and-dll-injection-on-windows/
 AppInit_DLLs - реестр HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows
     This is done by using the LoadLibrary() function call during the DLL_PROCESS_ATTACH process of user32.dll
+    F:\_github\detourse_tests\.out\msvc2019\x64\Debug\test06_dll.dll
 SetWindowsHookEx
 CreateRemoteThread
 

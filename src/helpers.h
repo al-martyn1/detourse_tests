@@ -54,6 +54,14 @@ std::string formatPtr(const void* ptr)
 
     return strRes;
 }
+
+//----------------------------------------------------------------------------
+inline
+std::string formatPtr(const unsigned char* ptr)
+{
+    return formatPtr(static_cast<const void*>(ptr));
+}
+
 //----------------------------------------------------------------------------
 
 inline

@@ -17,6 +17,12 @@ Notices: Copyright (c) 2000 Jeffrey Richter
 
 #include <tlhelp32.h>
 #include <tchar.h>
+#include <string>
+#include <vector>
+#include <cstdint>
+
+#include "trace.h"
+#include "helpers.h"
 
 #pragma comment( lib, "advapi32" )
 
@@ -39,21 +45,54 @@ public:
 };
 
 
+inline
+std::uintptr_t ptrAlignDown(std::uintptr_t ptr)
+{
+    #if defined(WIN64) || defined(_WIN64)
+        return ptr & 3;
+    #else
+        return ptr & 7;
+    #endif
+}
+
+inline
+BYTE* ptrAlignDown(BYTE* ptr)
+{
+    return reinterpret_cast<BYTE*>(ptrAlignDown(reinterpret_cast<std::uintptr_t>(ptr)));
+}
+
+inline
+const BYTE* ptrAlignDown(const BYTE* ptr)
+{
+    return reinterpret_cast<BYTE*>(ptrAlignDown(reinterpret_cast<std::uintptr_t>(ptr)));
+}
 
 struct MemoryBlockInfo
 {
     BYTE          *pbAddress;
     SIZE_T         blockSize;
+    ULONG_PTR      hid; // heap id
 
     BYTE* getNextFreeAddress() const
     {
         return pbAddress+blockSize;
     }
 
-    bool isAddressInBlock(BYTE* ptr) const
+    bool isAddressInBlock(const BYTE* ptr) const
     {
         return ptr>=pbAddress && ptr<getNextFreeAddress();
     }
+
+    const BYTE* begin() const
+    {
+        return pbAddress;
+    }
+
+    const BYTE* end() const
+    {
+        return ptrAlignDown(getNextFreeAddress());
+    }
+
 };
 
 
@@ -69,10 +108,21 @@ struct ModuleInfo
         return pbAddress+blockSize;
     }
 
-    bool isAddressInBlock(BYTE* ptr) const
+    bool isAddressInBlock(const BYTE* ptr) const
     {
         return ptr>=pbAddress && ptr<getNextFreeAddress();
     }
+
+    const BYTE* begin() const
+    {
+        return pbAddress;
+    }
+
+    const BYTE* end() const
+    {
+        return ptrAlignDown(getNextFreeAddress());
+    }
+
 
     static
     std::wstring to_lower(std::wstring s)
@@ -121,6 +171,63 @@ std::size_t findBlockByAddress(const std::vector<BlockInfo> &blocks, BYTE* ptr)
 
     return (std::size_t)-1;
 }
+
+inline
+std::size_t findBlockByName(const std::vector<ModuleInfo> &blocks, std::wstring modName)
+{
+    modName = ModuleInfo::normalizeModuleName(modName);
+    for(std::size_t i=0u; i!=blocks.size(); ++i)
+    {
+        if (blocks[i].moduleName==modName)
+            return i;
+    }
+    return (std::size_t)-1;
+}
+
+inline
+bool findModuleByAddress(const std::vector<ModuleInfo> &moduleInfoVec, BYTE* ptr, ModuleInfo &moduleInfo)
+{
+    std::size_t idx = findBlockByAddress(moduleInfoVec, ptr);
+    if (idx==(std::size_t)-1)
+    {
+        return false;
+    }
+
+    moduleInfo = moduleInfoVec[idx];
+    return true;
+}
+
+inline
+bool findModuleByName(const std::vector<ModuleInfo> &moduleInfoVec, const std::wstring &modName, ModuleInfo &moduleInfo)
+{
+    std::size_t idx = findBlockByName(moduleInfoVec, modName);
+    if (idx==(std::size_t)-1)
+    {
+        return false;
+    }
+
+    moduleInfo = moduleInfoVec[idx];
+    return true;
+}
+
+
+
+void traceMemoryBlockInfo(const ModuleInfo &mi)
+{
+    WHATSAPP_TRACE(("Module: %s\n", to_ascii(mi.moduleName).c_str()));
+    WHATSAPP_TRACE(("Path  : %s\n", to_ascii(mi.moduleExeName).c_str()));
+    WHATSAPP_TRACE(("Base  : %s\n", formatPtr(mi.pbAddress).c_str()));
+    WHATSAPP_TRACE(("Size  : %s (%zd)\n", formatPtr((void*)mi.blockSize).c_str(), mi.blockSize));
+    WHATSAPP_TRACE(("Next  : %s\n", formatPtr(mi.getNextFreeAddress()).c_str()));
+}
+
+void traceMemoryBlockInfo(const MemoryBlockInfo &mi)
+{
+    WHATSAPP_TRACE(("Base  : %s\n", formatPtr(mi.pbAddress).c_str()));
+    WHATSAPP_TRACE(("Size  : %s (%zd)\n", formatPtr((void*)mi.blockSize).c_str(), mi.blockSize));
+    WHATSAPP_TRACE(("Next  : %s\n", formatPtr(mi.getNextFreeAddress()).c_str()));
+}
+
 
 
 
@@ -305,12 +412,15 @@ public:
        return true;
    }
 
-   std::vector<ULONG_PTR> getHeapList()
+   std::vector<ULONG_PTR> getHeapList(DWORD processId=0)
    {
        std::vector<ULONG_PTR> hids;
        enumerateHeaps( [&](const HEAPLIST32 &hl)
                        {
-                           hids.emplace_back(hl.th32HeapID);
+                           if (!processId || processId==hl.th32ProcessID)
+                           {
+                               hids.emplace_back(hl.th32HeapID);
+                           }
                            return true;
                        }
                      );
@@ -318,30 +428,36 @@ public:
    }
 
    template<typename THandler>
-   bool enumerateHeapBlocks(THandler handler, DWORD processId, ULONG_PTR hid)
+   static
+   bool enumerateHeapBlocks(THandler handler, DWORD processId, ULONG_PTR hid, std::size_t spinLimit=(std::size_t)-1)
    {
        HEAPENTRY32 he;
        he.dwSize = sizeof(he);
        BOOL fOk = HeapFirst(&he, processId, hid);
-       for( ; fOk; fOk = HeapNext(&he))
+       for(std::size_t i=0u ; fOk; ++i, fOk = HeapNext(&he) )
        {
+           if (spinLimit!=(std::size_t)-1 && i==spinLimit)
+           {
+               return false;
+           }
            if (!handler(he))
                break;
            he.dwSize = sizeof(he);
        }
-   
+
        return true;
    }
 
-   std::vector<MemoryBlockInfo> getHeapBlocks(DWORD processId, ULONG_PTR hid)
+   static
+   std::vector<MemoryBlockInfo> getHeapBlocks(DWORD processId, ULONG_PTR hid, std::size_t spinLimit=(std::size_t)-1)
    {
        std::vector<MemoryBlockInfo> mbiVec;
        enumerateHeapBlocks( [&](const HEAPENTRY32 &he)
                             {
-                                mbiVec.emplace_back(MemoryBlockInfo{ (BYTE*)he.dwAddress, he.dwBlockSize });
+                                mbiVec.emplace_back(MemoryBlockInfo{ (BYTE*)he.dwAddress, he.dwBlockSize, hid });
                                 return true;
                             }
-                          , processId, hid
+                          , processId, hid, spinLimit
                           );
        return mbiVec;
    }
@@ -375,6 +491,8 @@ public:
                threadSuspendResume(tid, resume);
            }
        }
+
+       return true;
    }
 
 
