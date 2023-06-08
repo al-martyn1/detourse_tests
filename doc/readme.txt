@@ -1,4 +1,5 @@
 WhatsApp Path    - C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2320.2.0_x64__cv1g1gvanyjgm
+                   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2321.4.0_x64__cv1g1gvanyjgm
 WhatsApp AppId   - 5319275A.WhatsAppDesktop_cv1g1gvanyjgm!App
 WhatsApp DB Path - "C:\Users\[User]\AppData\Local\Application Data\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\" 
 

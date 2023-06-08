@@ -311,6 +311,7 @@ void init_hook(HINSTANCE hinstDLL)
     if (findModuleByName(modulesInfo, L"e_sqlite3.dll", sqliteModuleInfo))
     {
         WHATSAPP_TRACE(("Found sqlite DLL\n\n"));
+        traceMemoryBlockInfo(sqliteModuleInfo);
     }
 
 
@@ -373,21 +374,21 @@ void init_hook(HINSTANCE hinstDLL)
     //WHATSAPP_TRACE(("DetourAttachHookToDllProcHelper lResult:  %ld\n", lRes));
 
 
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open", &(PVOID&)(org_sqlite3_open), static_cast<PVOID>(hooked_sqlite3_open));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open16", &(PVOID&)(org_sqlite3_open16), static_cast<PVOID>(hooked_sqlite3_open16));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open_v2", &(PVOID&)(org_sqlite3_open_v2), static_cast<PVOID>(hooked_sqlite3_open_v2));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare", &(PVOID&)(org_sqlite3_prepare), static_cast<PVOID>(hooked_sqlite3_prepare));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare16", &(PVOID&)(org_sqlite3_prepare16), static_cast<PVOID>(hooked_sqlite3_prepare16));
-    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare_v2", &(PVOID&)(org_sqlite3_prepare_v2), static_cast<PVOID>(hooked_sqlite3_prepare_v2));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare16_v2", &(PVOID&)(org_sqlite3_prepare16_v2), static_cast<PVOID>(hooked_sqlite3_prepare16_v2));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_exec", &(PVOID&)(org_sqlite3_exec), static_cast<PVOID>(hooked_sqlite3_exec));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_uri_key", &(PVOID&)(org_sqlite3_uri_key), static_cast<PVOID>(hooked_sqlite3_uri_key));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_database", &(PVOID&)(org_sqlite3_filename_database), static_cast<PVOID>(hooked_sqlite3_filename_database));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_journal", &(PVOID&)(org_sqlite3_filename_journal), static_cast<PVOID>(hooked_sqlite3_filename_journal));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_wal", &(PVOID&)(org_sqlite3_filename_wal), static_cast<PVOID>(hooked_sqlite3_filename_wal));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_user_data", &(PVOID&)(org_sqlite3_user_data), static_cast<PVOID>(hooked_sqlite3_user_data));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_key", &(PVOID&)(org_sqlite3_key), static_cast<PVOID>(hooked_sqlite3_key));
-    lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_key_v2", &(PVOID&)(org_sqlite3_key_v2), static_cast<PVOID>(hooked_sqlite3_key_v2));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open", &(PVOID&)(org_sqlite3_open), static_cast<PVOID>(hooked_sqlite3_open));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open16", &(PVOID&)(org_sqlite3_open16), static_cast<PVOID>(hooked_sqlite3_open16));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_open_v2", &(PVOID&)(org_sqlite3_open_v2), static_cast<PVOID>(hooked_sqlite3_open_v2));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare", &(PVOID&)(org_sqlite3_prepare), static_cast<PVOID>(hooked_sqlite3_prepare));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare16", &(PVOID&)(org_sqlite3_prepare16), static_cast<PVOID>(hooked_sqlite3_prepare16));
+    // // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare_v2", &(PVOID&)(org_sqlite3_prepare_v2), static_cast<PVOID>(hooked_sqlite3_prepare_v2));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_prepare16_v2", &(PVOID&)(org_sqlite3_prepare16_v2), static_cast<PVOID>(hooked_sqlite3_prepare16_v2));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_exec", &(PVOID&)(org_sqlite3_exec), static_cast<PVOID>(hooked_sqlite3_exec));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_uri_key", &(PVOID&)(org_sqlite3_uri_key), static_cast<PVOID>(hooked_sqlite3_uri_key));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_database", &(PVOID&)(org_sqlite3_filename_database), static_cast<PVOID>(hooked_sqlite3_filename_database));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_journal", &(PVOID&)(org_sqlite3_filename_journal), static_cast<PVOID>(hooked_sqlite3_filename_journal));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_filename_wal", &(PVOID&)(org_sqlite3_filename_wal), static_cast<PVOID>(hooked_sqlite3_filename_wal));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_user_data", &(PVOID&)(org_sqlite3_user_data), static_cast<PVOID>(hooked_sqlite3_user_data));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_key", &(PVOID&)(org_sqlite3_key), static_cast<PVOID>(hooked_sqlite3_key));
+    // lRes = DetourAttachHookToDllProcHelper("e_sqlite3.dll", "sqlite3_key_v2", &(PVOID&)(org_sqlite3_key_v2), static_cast<PVOID>(hooked_sqlite3_key_v2));
 
 
 
@@ -403,6 +404,14 @@ void init_hook(HINSTANCE hinstDLL)
     // }
     // WHATSAPP_TRACE(("\n"));
 
+
+    // https://learn.microsoft.com/en-us/windows/win32/memory/memory-management-functions#virtual-memory-functions
+    // https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualprotect
+    // https://learn.microsoft.com/en-us/windows/win32/Memory/memory-protection-constants
+    // https://learn.microsoft.com/en-us/windows/win32/Memory/creating-guard-pages
+    DWORD oldProtect = 0;
+    BOOL vpRes = VirtualProtect( (LPVOID)sqliteModuleInfo.pbAddress, (SIZE_T)sqliteModuleInfo.blockSize, PAGE_NOACCESS, &oldProtect);
+
 }
 
 void deinit_hook(HINSTANCE hinstDLL)
@@ -415,21 +424,21 @@ void deinit_hook(HINSTANCE hinstDLL)
 
     LONG lRes;
 
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_open), static_cast<PVOID>(hooked_sqlite3_open));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_open16), static_cast<PVOID>(hooked_sqlite3_open16));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_open_v2), static_cast<PVOID>(hooked_sqlite3_open_v2));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare), static_cast<PVOID>(hooked_sqlite3_prepare));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare16), static_cast<PVOID>(hooked_sqlite3_prepare16));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare_v2), static_cast<PVOID>(hooked_sqlite3_prepare_v2));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare16_v2), static_cast<PVOID>(hooked_sqlite3_prepare16_v2));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_exec), static_cast<PVOID>(hooked_sqlite3_exec));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_uri_key), static_cast<PVOID>(hooked_sqlite3_uri_key));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_database), static_cast<PVOID>(hooked_sqlite3_filename_database));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_journal), static_cast<PVOID>(hooked_sqlite3_filename_journal));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_wal), static_cast<PVOID>(hooked_sqlite3_filename_wal));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_user_data), static_cast<PVOID>(hooked_sqlite3_user_data));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_key), static_cast<PVOID>(hooked_sqlite3_key));
-    lRes = DetourDetach(&(PVOID&)(org_sqlite3_key_v2), static_cast<PVOID>(hooked_sqlite3_key_v2));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_open), static_cast<PVOID>(hooked_sqlite3_open));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_open16), static_cast<PVOID>(hooked_sqlite3_open16));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_open_v2), static_cast<PVOID>(hooked_sqlite3_open_v2));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare), static_cast<PVOID>(hooked_sqlite3_prepare));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare16), static_cast<PVOID>(hooked_sqlite3_prepare16));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare_v2), static_cast<PVOID>(hooked_sqlite3_prepare_v2));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_prepare16_v2), static_cast<PVOID>(hooked_sqlite3_prepare16_v2));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_exec), static_cast<PVOID>(hooked_sqlite3_exec));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_uri_key), static_cast<PVOID>(hooked_sqlite3_uri_key));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_database), static_cast<PVOID>(hooked_sqlite3_filename_database));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_journal), static_cast<PVOID>(hooked_sqlite3_filename_journal));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_filename_wal), static_cast<PVOID>(hooked_sqlite3_filename_wal));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_user_data), static_cast<PVOID>(hooked_sqlite3_user_data));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_key), static_cast<PVOID>(hooked_sqlite3_key));
+    // lRes = DetourDetach(&(PVOID&)(org_sqlite3_key_v2), static_cast<PVOID>(hooked_sqlite3_key_v2));
 
 }
 

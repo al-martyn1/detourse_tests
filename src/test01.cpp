@@ -11,7 +11,8 @@
 #include "helpers.h"
 
 
-static const wchar_t *pStrWhatsAppExe = L"C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2318.2.0_x64__cv1g1gvanyjgm\\WhatsApp.exe";
+// static const wchar_t *pStrWhatsAppExe = L"C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2318.2.0_x64__cv1g1gvanyjgm\\WhatsApp.exe";
+static const wchar_t *pStrWhatsAppExe = L"C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2321.4.0_x64__cv1g1gvanyjgm";
 
 // C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2318.2.0_x64__cv1g1gvanyjgm\WhatsApp.exe
 // C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2318.2.0_x64__cv1g1gvanyjgm
