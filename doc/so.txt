@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/76453543/windowsapps-folder-how-to-get-full-access-to-paste-and-rename-files
+
+WindowsApps folder full access
+
+I want to rename a file in UWP application filder under %PF%\WindowsApps.
+
+I made the current user the owner of the WindowsApps directory. I removed attribute inheritance for this directory. I gave full access to the directory and its subdirectories to both the current user and for everyone. I checked effective access rights - everything is allowed for the file that I want to rename. But when I try to rename it, the system first asks for an access rights elevation, after that it says that there are not enough rights to rename file
+
+I can't understand what else is needed to rename file.
