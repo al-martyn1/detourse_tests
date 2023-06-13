@@ -38,11 +38,11 @@ void debug_print( char const * const format, ... )
 }
 
 
-// #define DETOUR_TRACE(x) debug_print x
-// #define DETOUR_BREAK()  __debugbreak()
+#define DETOUR_TRACE(x) debug_print x
+#define DETOUR_BREAK()  __debugbreak()
 
-#define DETOUR_TRACE(x) 
-#define DETOUR_BREAK()  
+// #define DETOUR_TRACE(x) 
+// #define DETOUR_BREAK()  
 
 
 
