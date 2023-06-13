@@ -1,0 +1,10 @@
+--verbose=detailed
+#--verbose=normal
+#--verbose=config
+--main
+--remove-path
+--filename-width=24
+--text-width=128
+--update
+--split-group
+# doc/_sources_brief.txt

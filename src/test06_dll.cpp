@@ -1,5 +1,5 @@
 /*! \file
-    \brief DLL для инжекта
+    \brief DLL для инжекта, делаем перехват всех возможных функций sqlite
 
     Опция /ZW (для WinRT) находится на вкладке C/C++ - General - Consume Windows Runtime Extention
     Требует /EHsc (C/C++ - Code Generation - Enable C++ Exceptions)
