@@ -688,16 +688,6 @@ SQLITE3_PROXY_EXPORT int sqlite3_create_collation(sqlite3* pDb, const char* pcSt
     return orgFnPtr(pDb, pcStr, i, pv, pfn);
 }
 
-SQLITE3_PROXY_EXPORT int sqlite3_create_collation_v2(sqlite3* pDb, const char* pcStr, int i, void* pv, int (*pfn)(void*, int, const void*, int, const void*), void (*pfn2)(void*))
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_collation_v2"));
-    sqlite3_create_collation_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_create_collation_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION_V2);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_COLLATION_V2)
-        SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_COLLATION_V2();
-    #endif
-    return orgFnPtr(pDb, pcStr, i, pv, pfn, pfn2);
-}
-
 SQLITE3_PROXY_EXPORT int sqlite3_create_collation16(sqlite3* pDb, const void* pcv, int i, void* pv, int (*pfn)(void*, int, const void*, int, const void*))
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_collation16"));
@@ -706,6 +696,16 @@ SQLITE3_PROXY_EXPORT int sqlite3_create_collation16(sqlite3* pDb, const void* pc
         SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_COLLATION16();
     #endif
     return orgFnPtr(pDb, pcv, i, pv, pfn);
+}
+
+SQLITE3_PROXY_EXPORT int sqlite3_create_collation_v2(sqlite3* pDb, const char* pcStr, int i, void* pv, int (*pfn)(void*, int, const void*, int, const void*), void (*pfn2)(void*))
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_collation_v2"));
+    sqlite3_create_collation_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_create_collation_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION_V2);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_COLLATION_V2)
+        SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_COLLATION_V2();
+    #endif
+    return orgFnPtr(pDb, pcStr, i, pv, pfn, pfn2);
 }
 
 SQLITE3_PROXY_EXPORT const char* sqlite3_create_filename(const char* pcStr, const char* pcStr2, const char* pcStr3, int i, const char** ppcStr)
@@ -728,16 +728,6 @@ SQLITE3_PROXY_EXPORT int sqlite3_create_function(sqlite3* pDb, const char* pcStr
     return orgFnPtr(pDb, pcStr, i, i2, pv, sqlite3_xFunc, sqlite3_xStep, sqlite3_xFinal);
 }
 
-SQLITE3_PROXY_EXPORT int sqlite3_create_function_v2(sqlite3* pDb, const char* pcStr, int i, int i2, void* pv, void (*sqlite3_xFunc)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xStep)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xFinal)(sqlite3_context*), void (*sqlite3_xDestroy)(void*))
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_function_v2"));
-    sqlite3_create_function_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_create_function_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION_V2);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_FUNCTION_V2)
-        SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_FUNCTION_V2();
-    #endif
-    return orgFnPtr(pDb, pcStr, i, i2, pv, sqlite3_xFunc, sqlite3_xStep, sqlite3_xFinal, sqlite3_xDestroy);
-}
-
 SQLITE3_PROXY_EXPORT int sqlite3_create_function16(sqlite3* pDb, const void* pcv, int i, int i2, void* pv, void (*sqlite3_xFunc)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xStep)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xFinal)(sqlite3_context*))
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_function16"));
@@ -746,6 +736,16 @@ SQLITE3_PROXY_EXPORT int sqlite3_create_function16(sqlite3* pDb, const void* pcv
         SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_FUNCTION16();
     #endif
     return orgFnPtr(pDb, pcv, i, i2, pv, sqlite3_xFunc, sqlite3_xStep, sqlite3_xFinal);
+}
+
+SQLITE3_PROXY_EXPORT int sqlite3_create_function_v2(sqlite3* pDb, const char* pcStr, int i, int i2, void* pv, void (*sqlite3_xFunc)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xStep)(sqlite3_context*, int, sqlite3_value**), void (*sqlite3_xFinal)(sqlite3_context*), void (*sqlite3_xDestroy)(void*))
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_create_function_v2"));
+    sqlite3_create_function_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_create_function_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION_V2);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_FUNCTION_V2)
+        SQLITE3_PROXY_HANDLE_SQLITE3_CREATE_FUNCTION_V2();
+    #endif
+    return orgFnPtr(pDb, pcStr, i, i2, pv, sqlite3_xFunc, sqlite3_xStep, sqlite3_xFinal, sqlite3_xDestroy);
 }
 
 SQLITE3_PROXY_EXPORT int sqlite3_create_module(sqlite3* pDb, const char* pcStr, const sqlite3_module* pcMod, void* pv)
@@ -1398,16 +1398,6 @@ SQLITE3_PROXY_EXPORT int sqlite3_open(const char* pcStr, sqlite3** ppDb)
     return orgFnPtr(pcStr, ppDb);
 }
 
-SQLITE3_PROXY_EXPORT int sqlite3_open_v2(const char* pcStr, sqlite3** ppDb, int i, const char* pcStr2)
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_open_v2"));
-    sqlite3_open_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_open_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_OPEN_V2);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_OPEN_V2)
-        SQLITE3_PROXY_HANDLE_SQLITE3_OPEN_V2();
-    #endif
-    return orgFnPtr(pcStr, ppDb, i, pcStr2);
-}
-
 SQLITE3_PROXY_EXPORT int sqlite3_open16(const void* pcv, sqlite3** ppDb)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_open16"));
@@ -1416,6 +1406,16 @@ SQLITE3_PROXY_EXPORT int sqlite3_open16(const void* pcv, sqlite3** ppDb)
         SQLITE3_PROXY_HANDLE_SQLITE3_OPEN16();
     #endif
     return orgFnPtr(pcv, ppDb);
+}
+
+SQLITE3_PROXY_EXPORT int sqlite3_open_v2(const char* pcStr, sqlite3** ppDb, int i, const char* pcStr2)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_open_v2"));
+    sqlite3_open_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_open_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_OPEN_V2);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_OPEN_V2)
+        SQLITE3_PROXY_HANDLE_SQLITE3_OPEN_V2();
+    #endif
+    return orgFnPtr(pcStr, ppDb, i, pcStr2);
 }
 
 SQLITE3_PROXY_EXPORT int sqlite3_os_end(void)
@@ -1458,26 +1458,6 @@ SQLITE3_PROXY_EXPORT int sqlite3_prepare(sqlite3* pDb, const char* pcStr, int i,
     return orgFnPtr(pDb, pcStr, i, ppStmt, ppcStr);
 }
 
-SQLITE3_PROXY_EXPORT int sqlite3_prepare_v2(sqlite3* pDb, const char* pcStr, int i, sqlite3_stmt** ppStmt, const char** ppcStr)
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_prepare_v2"));
-    sqlite3_prepare_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_prepare_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V2);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V2)
-        SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V2();
-    #endif
-    return orgFnPtr(pDb, pcStr, i, ppStmt, ppcStr);
-}
-
-SQLITE3_PROXY_EXPORT int sqlite3_prepare_v3(sqlite3* pDb, const char* pcStr, int i, unsigned int u, sqlite3_stmt** ppStmt, const char** ppcStr)
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_prepare_v3"));
-    sqlite3_prepare_v3_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_prepare_v3_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V3);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V3)
-        SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V3();
-    #endif
-    return orgFnPtr(pDb, pcStr, i, u, ppStmt, ppcStr);
-}
-
 SQLITE3_PROXY_EXPORT int sqlite3_prepare16(sqlite3* pDb, const void* pcv, int i, sqlite3_stmt** ppStmt, const void** ppcv)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_prepare16"));
@@ -1506,6 +1486,26 @@ SQLITE3_PROXY_EXPORT int sqlite3_prepare16_v3(sqlite3* pDb, const void* pcv, int
         SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE16_V3();
     #endif
     return orgFnPtr(pDb, pcv, i, u, ppStmt, ppcv);
+}
+
+SQLITE3_PROXY_EXPORT int sqlite3_prepare_v2(sqlite3* pDb, const char* pcStr, int i, sqlite3_stmt** ppStmt, const char** ppcStr)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_prepare_v2"));
+    sqlite3_prepare_v2_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_prepare_v2_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V2);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V2)
+        SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V2();
+    #endif
+    return orgFnPtr(pDb, pcStr, i, ppStmt, ppcStr);
+}
+
+SQLITE3_PROXY_EXPORT int sqlite3_prepare_v3(sqlite3* pDb, const char* pcStr, int i, unsigned int u, sqlite3_stmt** ppStmt, const char** ppcStr)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_prepare_v3"));
+    sqlite3_prepare_v3_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_prepare_v3_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V3);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V3)
+        SQLITE3_PROXY_HANDLE_SQLITE3_PREPARE_V3();
+    #endif
+    return orgFnPtr(pDb, pcStr, i, u, ppStmt, ppcStr);
 }
 
 SQLITE3_PROXY_EXPORT void* sqlite3_profile(sqlite3* pDb, void (*pfn)(void*, const char*, sqlite_uint64), void* pv)
@@ -1648,6 +1648,16 @@ SQLITE3_PROXY_EXPORT void sqlite3_result_error(sqlite3_context* pCtx, const char
     orgFnPtr(pCtx, pcStr, i);
 }
 
+SQLITE3_PROXY_EXPORT void sqlite3_result_error16(sqlite3_context* pCtx, const void* pcv, int i)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_result_error16"));
+    sqlite3_result_error16_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_result_error16_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR16);
+    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_RESULT_ERROR16)
+        SQLITE3_PROXY_HANDLE_SQLITE3_RESULT_ERROR16();
+    #endif
+    orgFnPtr(pCtx, pcv, i);
+}
+
 SQLITE3_PROXY_EXPORT void sqlite3_result_error_code(sqlite3_context* pCtx, int i)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_result_error_code"));
@@ -1676,16 +1686,6 @@ SQLITE3_PROXY_EXPORT void sqlite3_result_error_toobig(sqlite3_context* pCtx)
         SQLITE3_PROXY_HANDLE_SQLITE3_RESULT_ERROR_TOOBIG();
     #endif
     orgFnPtr(pCtx);
-}
-
-SQLITE3_PROXY_EXPORT void sqlite3_result_error16(sqlite3_context* pCtx, const void* pcv, int i)
-{
-    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_result_error16"));
-    sqlite3_result_error16_fn_ptr_t orgFnPtr = getOriginalFunctionPtr<sqlite3_result_error16_fn_ptr_t>(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR16);
-    #if defined(SQLITE3_PROXY_HANDLE_SQLITE3_RESULT_ERROR16)
-        SQLITE3_PROXY_HANDLE_SQLITE3_RESULT_ERROR16();
-    #endif
-    orgFnPtr(pCtx, pcv, i);
 }
 
 SQLITE3_PROXY_EXPORT void sqlite3_result_int(sqlite3_context* pCtx, int i)

@@ -1,858 +1,573 @@
-DetourTransactionBegin();
-DetourUpdateThread(GetCurrentThread());
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_CONTEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_CONTEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_CONTEXT], (PVOID)hook_sqlite3_aggregate_context);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_COUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_COUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AGGREGATE_COUNT], (PVOID)hook_sqlite3_aggregate_count);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AUTO_EXTENSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_AUTO_EXTENSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AUTO_EXTENSION], (PVOID)hook_sqlite3_auto_extension);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AUTOVACUUM_PAGES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_AUTOVACUUM_PAGES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_AUTOVACUUM_PAGES], (PVOID)hook_sqlite3_autovacuum_pages);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_FINISH] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_FINISH);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_FINISH], (PVOID)hook_sqlite3_backup_finish);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_INIT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_INIT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_INIT], (PVOID)hook_sqlite3_backup_init);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_PAGECOUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_PAGECOUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_PAGECOUNT], (PVOID)hook_sqlite3_backup_pagecount);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_REMAINING] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_REMAINING);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_REMAINING], (PVOID)hook_sqlite3_backup_remaining);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_STEP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_STEP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BACKUP_STEP], (PVOID)hook_sqlite3_backup_step);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB], (PVOID)hook_sqlite3_bind_blob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_BLOB64], (PVOID)hook_sqlite3_bind_blob64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_DOUBLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_DOUBLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_DOUBLE], (PVOID)hook_sqlite3_bind_double);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT], (PVOID)hook_sqlite3_bind_int);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_INT64], (PVOID)hook_sqlite3_bind_int64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_NULL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_NULL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_NULL], (PVOID)hook_sqlite3_bind_null);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_COUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_COUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_COUNT], (PVOID)hook_sqlite3_bind_parameter_count);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_INDEX] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_INDEX);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_INDEX], (PVOID)hook_sqlite3_bind_parameter_index);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_PARAMETER_NAME], (PVOID)hook_sqlite3_bind_parameter_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_POINTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_POINTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_POINTER], (PVOID)hook_sqlite3_bind_pointer);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT], (PVOID)hook_sqlite3_bind_text);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT16], (PVOID)hook_sqlite3_bind_text16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_TEXT64], (PVOID)hook_sqlite3_bind_text64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_VALUE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_VALUE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_VALUE], (PVOID)hook_sqlite3_bind_value);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB], (PVOID)hook_sqlite3_bind_zeroblob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BIND_ZEROBLOB64], (PVOID)hook_sqlite3_bind_zeroblob64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_BYTES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_BYTES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_BYTES], (PVOID)hook_sqlite3_blob_bytes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_CLOSE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_CLOSE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_CLOSE], (PVOID)hook_sqlite3_blob_close);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_OPEN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_OPEN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_OPEN], (PVOID)hook_sqlite3_blob_open);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_READ] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_READ);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_READ], (PVOID)hook_sqlite3_blob_read);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_REOPEN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_REOPEN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_REOPEN], (PVOID)hook_sqlite3_blob_reopen);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_WRITE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_WRITE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BLOB_WRITE], (PVOID)hook_sqlite3_blob_write);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_HANDLER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_HANDLER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_HANDLER], (PVOID)hook_sqlite3_busy_handler);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_TIMEOUT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_TIMEOUT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_BUSY_TIMEOUT], (PVOID)hook_sqlite3_busy_timeout);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CANCEL_AUTO_EXTENSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CANCEL_AUTO_EXTENSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CANCEL_AUTO_EXTENSION], (PVOID)hook_sqlite3_cancel_auto_extension);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES], (PVOID)hook_sqlite3_changes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CHANGES64], (PVOID)hook_sqlite3_changes64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLEAR_BINDINGS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CLEAR_BINDINGS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLEAR_BINDINGS], (PVOID)hook_sqlite3_clear_bindings);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE], (PVOID)hook_sqlite3_close);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CLOSE_V2], (PVOID)hook_sqlite3_close_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED], (PVOID)hook_sqlite3_collation_needed);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLLATION_NEEDED16], (PVOID)hook_sqlite3_collation_needed16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BLOB], (PVOID)hook_sqlite3_column_blob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES], (PVOID)hook_sqlite3_column_bytes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_BYTES16], (PVOID)hook_sqlite3_column_bytes16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_COUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_COUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_COUNT], (PVOID)hook_sqlite3_column_count);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME], (PVOID)hook_sqlite3_column_database_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DATABASE_NAME16], (PVOID)hook_sqlite3_column_database_name16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE], (PVOID)hook_sqlite3_column_decltype);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DECLTYPE16], (PVOID)hook_sqlite3_column_decltype16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DOUBLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DOUBLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_DOUBLE], (PVOID)hook_sqlite3_column_double);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT], (PVOID)hook_sqlite3_column_int);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_INT64], (PVOID)hook_sqlite3_column_int64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME], (PVOID)hook_sqlite3_column_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_NAME16], (PVOID)hook_sqlite3_column_name16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME], (PVOID)hook_sqlite3_column_origin_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_ORIGIN_NAME16], (PVOID)hook_sqlite3_column_origin_name16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME], (PVOID)hook_sqlite3_column_table_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TABLE_NAME16], (PVOID)hook_sqlite3_column_table_name16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT], (PVOID)hook_sqlite3_column_text);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TEXT16], (PVOID)hook_sqlite3_column_text16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_TYPE], (PVOID)hook_sqlite3_column_type);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_VALUE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_VALUE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COLUMN_VALUE], (PVOID)hook_sqlite3_column_value);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMMIT_HOOK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COMMIT_HOOK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMMIT_HOOK], (PVOID)hook_sqlite3_commit_hook);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_GET] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_GET);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_GET], (PVOID)hook_sqlite3_compileoption_get);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_USED] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_USED);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPILEOPTION_USED], (PVOID)hook_sqlite3_compileoption_used);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE], (PVOID)hook_sqlite3_complete);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_COMPLETE16], (PVOID)hook_sqlite3_complete16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CONTEXT_DB_HANDLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CONTEXT_DB_HANDLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CONTEXT_DB_HANDLE], (PVOID)hook_sqlite3_context_db_handle);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION], (PVOID)hook_sqlite3_create_collation);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION_V2], (PVOID)hook_sqlite3_create_collation_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_COLLATION16], (PVOID)hook_sqlite3_create_collation16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FILENAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FILENAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FILENAME], (PVOID)hook_sqlite3_create_filename);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION], (PVOID)hook_sqlite3_create_function);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION_V2], (PVOID)hook_sqlite3_create_function_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_FUNCTION16], (PVOID)hook_sqlite3_create_function16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE], (PVOID)hook_sqlite3_create_module);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_MODULE_V2], (PVOID)hook_sqlite3_create_module_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_WINDOW_FUNCTION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_WINDOW_FUNCTION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_CREATE_WINDOW_FUNCTION], (PVOID)hook_sqlite3_create_window_function);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DATA_COUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DATA_COUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DATA_COUNT], (PVOID)hook_sqlite3_data_count);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DATABASE_FILE_OBJECT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DATABASE_FILE_OBJECT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DATABASE_FILE_OBJECT], (PVOID)hook_sqlite3_database_file_object);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_CACHEFLUSH] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_CACHEFLUSH);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_CACHEFLUSH], (PVOID)hook_sqlite3_db_cacheflush);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_FILENAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_FILENAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_FILENAME], (PVOID)hook_sqlite3_db_filename);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_HANDLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_HANDLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_HANDLE], (PVOID)hook_sqlite3_db_handle);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_MUTEX] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_MUTEX);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_MUTEX], (PVOID)hook_sqlite3_db_mutex);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_READONLY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_READONLY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_READONLY], (PVOID)hook_sqlite3_db_readonly);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_RELEASE_MEMORY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_RELEASE_MEMORY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_RELEASE_MEMORY], (PVOID)hook_sqlite3_db_release_memory);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_STATUS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DB_STATUS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DB_STATUS], (PVOID)hook_sqlite3_db_status);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DECLARE_VTAB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DECLARE_VTAB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DECLARE_VTAB], (PVOID)hook_sqlite3_declare_vtab);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DESERIALIZE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DESERIALIZE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DESERIALIZE], (PVOID)hook_sqlite3_deserialize);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DROP_MODULES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_DROP_MODULES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_DROP_MODULES], (PVOID)hook_sqlite3_drop_modules);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_LOAD_EXTENSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_LOAD_EXTENSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_LOAD_EXTENSION], (PVOID)hook_sqlite3_enable_load_extension);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_SHARED_CACHE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_SHARED_CACHE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ENABLE_SHARED_CACHE], (PVOID)hook_sqlite3_enable_shared_cache);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRCODE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ERRCODE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRCODE], (PVOID)hook_sqlite3_errcode);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG], (PVOID)hook_sqlite3_errmsg);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRMSG16], (PVOID)hook_sqlite3_errmsg16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERROR_OFFSET] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ERROR_OFFSET);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERROR_OFFSET], (PVOID)hook_sqlite3_error_offset);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRSTR] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ERRSTR);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ERRSTR], (PVOID)hook_sqlite3_errstr);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXEC] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_EXEC);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXEC], (PVOID)hook_sqlite3_exec);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXPANDED_SQL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_EXPANDED_SQL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXPANDED_SQL], (PVOID)hook_sqlite3_expanded_sql);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXPIRED] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_EXPIRED);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXPIRED], (PVOID)hook_sqlite3_expired);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_ERRCODE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_ERRCODE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_ERRCODE], (PVOID)hook_sqlite3_extended_errcode);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_RESULT_CODES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_RESULT_CODES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_EXTENDED_RESULT_CODES], (PVOID)hook_sqlite3_extended_result_codes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILE_CONTROL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FILE_CONTROL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILE_CONTROL], (PVOID)hook_sqlite3_file_control);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_DATABASE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_DATABASE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_DATABASE], (PVOID)hook_sqlite3_filename_database);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_JOURNAL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_JOURNAL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_JOURNAL], (PVOID)hook_sqlite3_filename_journal);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_WAL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_WAL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FILENAME_WAL], (PVOID)hook_sqlite3_filename_wal);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FINALIZE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FINALIZE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FINALIZE], (PVOID)hook_sqlite3_finalize);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FREE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE], (PVOID)hook_sqlite3_free);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE_FILENAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FREE_FILENAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE_FILENAME], (PVOID)hook_sqlite3_free_filename);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE_TABLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_FREE_TABLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_FREE_TABLE], (PVOID)hook_sqlite3_free_table);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUTOCOMMIT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUTOCOMMIT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUTOCOMMIT], (PVOID)hook_sqlite3_get_autocommit);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUXDATA] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUXDATA);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_AUXDATA], (PVOID)hook_sqlite3_get_auxdata);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_TABLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_GET_TABLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GET_TABLE], (PVOID)hook_sqlite3_get_table);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GLOBAL_RECOVER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_GLOBAL_RECOVER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_GLOBAL_RECOVER], (PVOID)hook_sqlite3_global_recover);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_HARD_HEAP_LIMIT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_HARD_HEAP_LIMIT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_HARD_HEAP_LIMIT64], (PVOID)hook_sqlite3_hard_heap_limit64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_INITIALIZE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_INITIALIZE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_INITIALIZE], (PVOID)hook_sqlite3_initialize);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_INTERRUPT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_INTERRUPT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_INTERRUPT], (PVOID)hook_sqlite3_interrupt);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_KEY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEY], (PVOID)hook_sqlite3_key);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEY_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_KEY_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEY_V2], (PVOID)hook_sqlite3_key_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_CHECK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_CHECK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_CHECK], (PVOID)hook_sqlite3_keyword_check);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_COUNT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_COUNT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_COUNT], (PVOID)hook_sqlite3_keyword_count);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_NAME] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_NAME);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_KEYWORD_NAME], (PVOID)hook_sqlite3_keyword_name);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LAST_INSERT_ROWID] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_LAST_INSERT_ROWID);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LAST_INSERT_ROWID], (PVOID)hook_sqlite3_last_insert_rowid);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION], (PVOID)hook_sqlite3_libversion);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION_NUMBER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION_NUMBER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIBVERSION_NUMBER], (PVOID)hook_sqlite3_libversion_number);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIMIT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_LIMIT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LIMIT], (PVOID)hook_sqlite3_limit);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LOAD_EXTENSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_LOAD_EXTENSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_LOAD_EXTENSION], (PVOID)hook_sqlite3_load_extension);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC], (PVOID)hook_sqlite3_malloc);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MALLOC64], (PVOID)hook_sqlite3_malloc64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_ALARM] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_ALARM);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_ALARM], (PVOID)hook_sqlite3_memory_alarm);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_HIGHWATER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_HIGHWATER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_HIGHWATER], (PVOID)hook_sqlite3_memory_highwater);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_USED] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_USED);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MEMORY_USED], (PVOID)hook_sqlite3_memory_used);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MSIZE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MSIZE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MSIZE], (PVOID)hook_sqlite3_msize);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ALLOC] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ALLOC);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ALLOC], (PVOID)hook_sqlite3_mutex_alloc);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ENTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ENTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_ENTER], (PVOID)hook_sqlite3_mutex_enter);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_FREE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_FREE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_FREE], (PVOID)hook_sqlite3_mutex_free);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_LEAVE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_LEAVE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_LEAVE], (PVOID)hook_sqlite3_mutex_leave);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_TRY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_TRY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_MUTEX_TRY], (PVOID)hook_sqlite3_mutex_try);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_NEXT_STMT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_NEXT_STMT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_NEXT_STMT], (PVOID)hook_sqlite3_next_stmt);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OPEN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN], (PVOID)hook_sqlite3_open);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OPEN_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN_V2], (PVOID)hook_sqlite3_open_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OPEN16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OPEN16], (PVOID)hook_sqlite3_open16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OS_END] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OS_END);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OS_END], (PVOID)hook_sqlite3_os_end);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OS_INIT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OS_INIT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OS_INIT], (PVOID)hook_sqlite3_os_init);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OVERLOAD_FUNCTION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_OVERLOAD_FUNCTION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_OVERLOAD_FUNCTION], (PVOID)hook_sqlite3_overload_function);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE], (PVOID)hook_sqlite3_prepare);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V2], (PVOID)hook_sqlite3_prepare_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V3] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V3);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE_V3], (PVOID)hook_sqlite3_prepare_v3);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16], (PVOID)hook_sqlite3_prepare16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V2], (PVOID)hook_sqlite3_prepare16_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V3] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V3);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PREPARE16_V3], (PVOID)hook_sqlite3_prepare16_v3);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PROFILE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PROFILE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PROFILE], (PVOID)hook_sqlite3_profile);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PROGRESS_HANDLER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_PROGRESS_HANDLER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_PROGRESS_HANDLER], (PVOID)hook_sqlite3_progress_handler);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RANDOMNESS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RANDOMNESS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RANDOMNESS], (PVOID)hook_sqlite3_randomness);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC], (PVOID)hook_sqlite3_realloc);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REALLOC64], (PVOID)hook_sqlite3_realloc64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REKEY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_REKEY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REKEY], (PVOID)hook_sqlite3_rekey);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REKEY_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_REKEY_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_REKEY_V2], (PVOID)hook_sqlite3_rekey_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RELEASE_MEMORY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RELEASE_MEMORY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RELEASE_MEMORY], (PVOID)hook_sqlite3_release_memory);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESET] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESET);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESET], (PVOID)hook_sqlite3_reset);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESET_AUTO_EXTENSION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESET_AUTO_EXTENSION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESET_AUTO_EXTENSION], (PVOID)hook_sqlite3_reset_auto_extension);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB], (PVOID)hook_sqlite3_result_blob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_BLOB64], (PVOID)hook_sqlite3_result_blob64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_DOUBLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_DOUBLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_DOUBLE], (PVOID)hook_sqlite3_result_double);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR], (PVOID)hook_sqlite3_result_error);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_CODE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_CODE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_CODE], (PVOID)hook_sqlite3_result_error_code);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_NOMEM] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_NOMEM);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_NOMEM], (PVOID)hook_sqlite3_result_error_nomem);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_TOOBIG] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_TOOBIG);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR_TOOBIG], (PVOID)hook_sqlite3_result_error_toobig);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ERROR16], (PVOID)hook_sqlite3_result_error16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT], (PVOID)hook_sqlite3_result_int);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_INT64], (PVOID)hook_sqlite3_result_int64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_NULL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_NULL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_NULL], (PVOID)hook_sqlite3_result_null);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_POINTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_POINTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_POINTER], (PVOID)hook_sqlite3_result_pointer);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_SUBTYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_SUBTYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_SUBTYPE], (PVOID)hook_sqlite3_result_subtype);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT], (PVOID)hook_sqlite3_result_text);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16], (PVOID)hook_sqlite3_result_text16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16BE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16BE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16BE], (PVOID)hook_sqlite3_result_text16be);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16LE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16LE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT16LE], (PVOID)hook_sqlite3_result_text16le);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_TEXT64], (PVOID)hook_sqlite3_result_text64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_VALUE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_VALUE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_VALUE], (PVOID)hook_sqlite3_result_value);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB], (PVOID)hook_sqlite3_result_zeroblob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RESULT_ZEROBLOB64], (PVOID)hook_sqlite3_result_zeroblob64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ROLLBACK_HOOK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_ROLLBACK_HOOK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_ROLLBACK_HOOK], (PVOID)hook_sqlite3_rollback_hook);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_GEOMETRY_CALLBACK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_GEOMETRY_CALLBACK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_GEOMETRY_CALLBACK], (PVOID)hook_sqlite3_rtree_geometry_callback);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_QUERY_CALLBACK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_QUERY_CALLBACK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_RTREE_QUERY_CALLBACK], (PVOID)hook_sqlite3_rtree_query_callback);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SERIALIZE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SERIALIZE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SERIALIZE], (PVOID)hook_sqlite3_serialize);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUTHORIZER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUTHORIZER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUTHORIZER], (PVOID)hook_sqlite3_set_authorizer);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUXDATA] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUXDATA);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_AUXDATA], (PVOID)hook_sqlite3_set_auxdata);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_LAST_INSERT_ROWID] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SET_LAST_INSERT_ROWID);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SET_LAST_INSERT_ROWID], (PVOID)hook_sqlite3_set_last_insert_rowid);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SHUTDOWN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SHUTDOWN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SHUTDOWN], (PVOID)hook_sqlite3_shutdown);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SLEEP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SLEEP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SLEEP], (PVOID)hook_sqlite3_sleep);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_CMP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_CMP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_CMP], (PVOID)hook_sqlite3_snapshot_cmp);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_FREE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_FREE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_FREE], (PVOID)hook_sqlite3_snapshot_free);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_GET] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_GET);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_GET], (PVOID)hook_sqlite3_snapshot_get);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_OPEN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_OPEN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_OPEN], (PVOID)hook_sqlite3_snapshot_open);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_RECOVER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_RECOVER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SNAPSHOT_RECOVER], (PVOID)hook_sqlite3_snapshot_recover);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT], (PVOID)hook_sqlite3_soft_heap_limit);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOFT_HEAP_LIMIT64], (PVOID)hook_sqlite3_soft_heap_limit64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOURCEID] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SOURCEID);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SOURCEID], (PVOID)hook_sqlite3_sourceid);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SQL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SQL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SQL], (PVOID)hook_sqlite3_sql);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STATUS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STATUS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STATUS], (PVOID)hook_sqlite3_status);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STATUS64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STATUS64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STATUS64], (PVOID)hook_sqlite3_status64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STEP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STEP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STEP], (PVOID)hook_sqlite3_step);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_BUSY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STMT_BUSY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_BUSY], (PVOID)hook_sqlite3_stmt_busy);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_ISEXPLAIN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STMT_ISEXPLAIN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_ISEXPLAIN], (PVOID)hook_sqlite3_stmt_isexplain);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_READONLY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STMT_READONLY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_READONLY], (PVOID)hook_sqlite3_stmt_readonly);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_STATUS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STMT_STATUS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STMT_STATUS], (PVOID)hook_sqlite3_stmt_status);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPEND] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPEND);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPEND], (PVOID)hook_sqlite3_str_append);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDALL] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDALL);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDALL], (PVOID)hook_sqlite3_str_appendall);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDCHAR] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDCHAR);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_APPENDCHAR], (PVOID)hook_sqlite3_str_appendchar);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_ERRCODE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_ERRCODE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_ERRCODE], (PVOID)hook_sqlite3_str_errcode);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_FINISH] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_FINISH);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_FINISH], (PVOID)hook_sqlite3_str_finish);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_LENGTH] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_LENGTH);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_LENGTH], (PVOID)hook_sqlite3_str_length);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_NEW] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_NEW);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_NEW], (PVOID)hook_sqlite3_str_new);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_RESET] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_RESET);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_RESET], (PVOID)hook_sqlite3_str_reset);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_VALUE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_VALUE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_VALUE], (PVOID)hook_sqlite3_str_value);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_VAPPENDF] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STR_VAPPENDF);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STR_VAPPENDF], (PVOID)hook_sqlite3_str_vappendf);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRGLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STRGLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRGLOB], (PVOID)hook_sqlite3_strglob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRICMP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STRICMP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRICMP], (PVOID)hook_sqlite3_stricmp);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRLIKE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STRLIKE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRLIKE], (PVOID)hook_sqlite3_strlike);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRNICMP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_STRNICMP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_STRNICMP], (PVOID)hook_sqlite3_strnicmp);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SYSTEM_ERRNO] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_SYSTEM_ERRNO);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_SYSTEM_ERRNO], (PVOID)hook_sqlite3_system_errno);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TABLE_COLUMN_METADATA] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TABLE_COLUMN_METADATA);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TABLE_COLUMN_METADATA], (PVOID)hook_sqlite3_table_column_metadata);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_THREAD_CLEANUP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_THREAD_CLEANUP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_THREAD_CLEANUP], (PVOID)hook_sqlite3_thread_cleanup);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_THREADSAFE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_THREADSAFE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_THREADSAFE], (PVOID)hook_sqlite3_threadsafe);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES], (PVOID)hook_sqlite3_total_changes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TOTAL_CHANGES64], (PVOID)hook_sqlite3_total_changes64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRACE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TRACE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRACE], (PVOID)hook_sqlite3_trace);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRACE_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TRACE_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRACE_V2], (PVOID)hook_sqlite3_trace_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRANSFER_BINDINGS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TRANSFER_BINDINGS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TRANSFER_BINDINGS], (PVOID)hook_sqlite3_transfer_bindings);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TXN_STATE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_TXN_STATE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_TXN_STATE], (PVOID)hook_sqlite3_txn_state);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_UPDATE_HOOK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_UPDATE_HOOK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_UPDATE_HOOK], (PVOID)hook_sqlite3_update_hook);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_BOOLEAN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_URI_BOOLEAN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_BOOLEAN], (PVOID)hook_sqlite3_uri_boolean);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_INT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_URI_INT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_INT64], (PVOID)hook_sqlite3_uri_int64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_KEY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_URI_KEY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_KEY], (PVOID)hook_sqlite3_uri_key);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_PARAMETER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_URI_PARAMETER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_URI_PARAMETER], (PVOID)hook_sqlite3_uri_parameter);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_USER_DATA] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_USER_DATA);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_USER_DATA], (PVOID)hook_sqlite3_user_data);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BLOB] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BLOB);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BLOB], (PVOID)hook_sqlite3_value_blob);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES], (PVOID)hook_sqlite3_value_bytes);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_BYTES16], (PVOID)hook_sqlite3_value_bytes16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DOUBLE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DOUBLE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DOUBLE], (PVOID)hook_sqlite3_value_double);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DUP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DUP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_DUP], (PVOID)hook_sqlite3_value_dup);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FREE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FREE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FREE], (PVOID)hook_sqlite3_value_free);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FROMBIND] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FROMBIND);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_FROMBIND], (PVOID)hook_sqlite3_value_frombind);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT], (PVOID)hook_sqlite3_value_int);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT64] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT64);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_INT64], (PVOID)hook_sqlite3_value_int64);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NOCHANGE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NOCHANGE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NOCHANGE], (PVOID)hook_sqlite3_value_nochange);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NUMERIC_TYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NUMERIC_TYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_NUMERIC_TYPE], (PVOID)hook_sqlite3_value_numeric_type);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_POINTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_POINTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_POINTER], (PVOID)hook_sqlite3_value_pointer);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_SUBTYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_SUBTYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_SUBTYPE], (PVOID)hook_sqlite3_value_subtype);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT], (PVOID)hook_sqlite3_value_text);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16], (PVOID)hook_sqlite3_value_text16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16BE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16BE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16BE], (PVOID)hook_sqlite3_value_text16be);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16LE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16LE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TEXT16LE], (PVOID)hook_sqlite3_value_text16le);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TYPE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TYPE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VALUE_TYPE], (PVOID)hook_sqlite3_value_type);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_FIND] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VFS_FIND);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_FIND], (PVOID)hook_sqlite3_vfs_find);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_REGISTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VFS_REGISTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_REGISTER], (PVOID)hook_sqlite3_vfs_register);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_UNREGISTER] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VFS_UNREGISTER);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VFS_UNREGISTER], (PVOID)hook_sqlite3_vfs_unregister);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VMPRINTF] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VMPRINTF);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VMPRINTF], (PVOID)hook_sqlite3_vmprintf);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VSNPRINTF] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VSNPRINTF);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VSNPRINTF], (PVOID)hook_sqlite3_vsnprintf);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_COLLATION] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_COLLATION);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_COLLATION], (PVOID)hook_sqlite3_vtab_collation);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_DISTINCT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_DISTINCT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_DISTINCT], (PVOID)hook_sqlite3_vtab_distinct);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN], (PVOID)hook_sqlite3_vtab_in);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_FIRST] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_FIRST);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_FIRST], (PVOID)hook_sqlite3_vtab_in_first);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_NEXT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_NEXT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_IN_NEXT], (PVOID)hook_sqlite3_vtab_in_next);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_NOCHANGE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_NOCHANGE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_NOCHANGE], (PVOID)hook_sqlite3_vtab_nochange);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_ON_CONFLICT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_ON_CONFLICT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_ON_CONFLICT], (PVOID)hook_sqlite3_vtab_on_conflict);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_RHS_VALUE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_RHS_VALUE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_VTAB_RHS_VALUE], (PVOID)hook_sqlite3_vtab_rhs_value);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_AUTOCHECKPOINT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WAL_AUTOCHECKPOINT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_AUTOCHECKPOINT], (PVOID)hook_sqlite3_wal_autocheckpoint);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT], (PVOID)hook_sqlite3_wal_checkpoint);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_CHECKPOINT_V2], (PVOID)hook_sqlite3_wal_checkpoint_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_HOOK] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WAL_HOOK);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WAL_HOOK], (PVOID)hook_sqlite3_wal_hook);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_IS_NT] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_IS_NT);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_IS_NT], (PVOID)hook_sqlite3_win32_is_nt);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8], (PVOID)hook_sqlite3_win32_mbcs_to_utf8);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_MBCS_TO_UTF8_V2], (PVOID)hook_sqlite3_win32_mbcs_to_utf8_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY], (PVOID)hook_sqlite3_win32_set_directory);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY16] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY16);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY16], (PVOID)hook_sqlite3_win32_set_directory16);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY8] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY8);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SET_DIRECTORY8], (PVOID)hook_sqlite3_win32_set_directory8);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SLEEP] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SLEEP);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_SLEEP], (PVOID)hook_sqlite3_win32_sleep);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UNICODE_TO_UTF8] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UNICODE_TO_UTF8);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UNICODE_TO_UTF8], (PVOID)hook_sqlite3_win32_unicode_to_utf8);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS], (PVOID)hook_sqlite3_win32_utf8_to_mbcs);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS_V2] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS_V2);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_MBCS_V2], (PVOID)hook_sqlite3_win32_utf8_to_mbcs_v2);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_UNICODE] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_UNICODE);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_UTF8_TO_UNICODE], (PVOID)hook_sqlite3_win32_utf8_to_unicode);
+;
 
-sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_WRITE_DEBUG] = getOriginalFunctionFarprocPtr(SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_WRITE_DEBUG);
-DetourAttach(&(PVOID&)sqlite3orgFuncPointers[SQLITE3_ORG_FN_IDX_SQLITE3_WIN32_WRITE_DEBUG], (PVOID)hook_sqlite3_win32_write_debug);
+;
 
 
-DetourTransactionCommit();
+;
 

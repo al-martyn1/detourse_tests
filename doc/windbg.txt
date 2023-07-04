@@ -1,0 +1,1253 @@
+
+Microsoft (R) Windows Debugger Version 10.0.22621.1778 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00007ff6`94a30000 00007ff6`94a7b000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\WhatsApp.exe
+ModLoad: 00007ff8`73450000 00007ff8`73648000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ff8`71d70000 00007ff8`71e2f000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff8`70bd0000 00007ff8`70ec6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff8`016d0000 00007ff8`06233000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\WhatsApp.dll
+ModLoad: 00007ff8`725f0000 00007ff8`7271a000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ff8`71020000 00007ff8`71120000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ff8`71770000 00007ff8`71896000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ff8`730b0000 00007ff8`73404000   C:\Windows\System32\combase.dll
+ModLoad: 00007ff8`71690000 00007ff8`716bc000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ff8`70ed0000 00007ff8`70ef2000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ff8`70f00000 00007ff8`71015000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ff8`70b30000 00007ff8`70bcd000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ff8`72dd0000 00007ff8`72f6d000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ff8`71c90000 00007ff8`71d3f000   C:\Windows\System32\advapi32.dll
+ModLoad: 00007ff8`71550000 00007ff8`715ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff8`714b0000 00007ff8`7154c000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ff8`713d0000 00007ff8`713f7000   C:\Windows\System32\BCrypt.dll
+ModLoad: 00007ff8`26820000 00007ff8`268a6000   C:\Program Files\WindowsApps\Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe\mrt100_app.dll
+ModLoad: 00007ff8`718b0000 00007ff8`7197d000   C:\Windows\System32\OleAut32.dll
+ModLoad: 00007ff8`718a0000 00007ff8`718a8000   C:\Windows\System32\Normaliz.dll
+ModLoad: 00007ff8`71270000 00007ff8`713ce000   C:\Windows\System32\crypt32.dll
+ModLoad: 00007ff8`71e30000 00007ff8`71e9b000   C:\Windows\System32\ws2_32.dll
+ModLoad: 00007ff8`35ee0000 00007ff8`35efb000   C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe\VCRUNTIME140_APP.dll
+ModLoad: 00007ff8`70510000 00007ff8`70538000   C:\Windows\SYSTEM32\ncrypt.dll
+ModLoad: 00007ff8`6fef0000 00007ff8`6ff2c000   C:\Windows\SYSTEM32\iphlpapi.dll
+ModLoad: 00007ff8`64bd0000 00007ff8`64be3000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\clrcompression.dll
+ModLoad: 00007ff8`6d430000 00007ff8`6d584000   C:\Windows\SYSTEM32\wintypes.dll
+ModLoad: 00007ff8`71190000 00007ff8`71212000   C:\Windows\System32\bcryptPrimitives.dll
+ModLoad: 00007ff8`709f0000 00007ff8`70a22000   C:\Windows\SYSTEM32\sspicli.dll
+ModLoad: 00007ff8`27e40000 00007ff8`27fb9000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\e_sqlite3.dll
+ModLoad: 00007ff8`61130000 00007ff8`61139000   C:\Windows\SYSTEM32\mrt100.dll
+ModLoad: 00007ff8`6ea00000 00007ff8`6ea12000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ff8`6e820000 00007ff8`6e84a000   C:\Windows\System32\rmclient.dll
+ModLoad: 00007ff8`72780000 00007ff8`727b0000   C:\Windows\System32\IMM32.DLL
+ModLoad: 00007ff8`704d0000 00007ff8`7050b000   C:\Windows\SYSTEM32\NTASN1.dll
+ModLoad: 00007ff8`6bc50000 00007ff8`6be57000   C:\Windows\SYSTEM32\twinapi.appcore.dll
+ModLoad: 00007ff8`5e580000 00007ff8`5f63f000   C:\Windows\System32\Windows.UI.Xaml.dll
+ModLoad: 00007ff8`716c0000 00007ff8`7176d000   C:\Windows\System32\shcore.dll
+ModLoad: 00007ff8`6dee0000 00007ff8`6dfd2000   C:\Windows\SYSTEM32\CoreMessaging.dll
+ModLoad: 00007ff8`5ff40000 00007ff8`5ff9b000   C:\Windows\SYSTEM32\Bcp47Langs.dll
+ModLoad: 00007ff8`67b90000 00007ff8`67e41000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ff8`6d590000 00007ff8`6d773000   C:\Windows\SYSTEM32\dcomp.dll
+ModLoad: 00007ff8`68100000 00007ff8`68111000   C:\Windows\SYSTEM32\windows.staterepositorycore.dll
+ModLoad: 00007ff8`5f740000 00007ff8`5f881000   C:\Windows\System32\Windows.UI.dll
+ModLoad: 00007ff8`6be60000 00007ff8`6bf01000   C:\Windows\SYSTEM32\WindowManagementAPI.dll
+ModLoad: 00007ff8`5fc40000 00007ff8`5fd39000   C:\Windows\SYSTEM32\TextInputFramework.dll
+ModLoad: 00007ff8`63230000 00007ff8`63382000   C:\Windows\SYSTEM32\InputHost.dll
+ModLoad: 00007ff8`6db80000 00007ff8`6dede000   C:\Windows\SYSTEM32\CoreUIComponents.dll
+ModLoad: 00007ff8`6d330000 00007ff8`6d426000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ff8`6fc40000 00007ff8`6fc73000   C:\Windows\SYSTEM32\ntmarta.dll
+ModLoad: 00007ff8`6ad30000 00007ff8`6b4fd000   C:\Windows\System32\OneCoreUAPCommonProxyStub.dll
+ModLoad: 00007ff8`6e4b0000 00007ff8`6e54e000   C:\Windows\system32\uxtheme.dll
+ModLoad: 00007ff8`67e50000 00007ff8`6803c000   C:\Windows\SYSTEM32\urlmon.dll
+ModLoad: 00007ff8`679f0000 00007ff8`67a18000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ff8`6ff80000 00007ff8`6ff8c000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ff8`6f3e0000 00007ff8`6f4d3000   C:\Windows\SYSTEM32\dxgi.dll
+ModLoad: 00007ff8`6d0c0000 00007ff8`6d323000   C:\Windows\SYSTEM32\d3d11.dll
+ModLoad: 00007ff8`69ff0000 00007ff8`6a6e6000   C:\Windows\SYSTEM32\d3d10warp.dll
+ModLoad: 00007ff8`69f50000 00007ff8`69f8b000   C:\Windows\SYSTEM32\dxcore.dll
+ModLoad: 00007ff8`71220000 00007ff8`7126e000   C:\Windows\System32\cfgmgr32.dll
+ModLoad: 00007ff8`6cb00000 00007ff8`6d0c0000   C:\Windows\SYSTEM32\d2d1.dll
+ModLoad: 00007ff8`5e1c0000 00007ff8`5e43f000   C:\Windows\SYSTEM32\dwrite.dll
+ModLoad: 00007ff8`5d960000 00007ff8`5da0c000   C:\Windows\SYSTEM32\TextShaping.dll
+ModLoad: 00007ff8`20d00000 00007ff8`2199e000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\WhatsAppNative.dll
+ModLoad: 00007ff8`0c3c0000 00007ff8`0c4ca000   C:\Windows\SYSTEM32\MFReadWrite.dll
+ModLoad: 00007ff8`33a80000 00007ff8`33ad1000   C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe\vccorlib140_app.DLL
+ModLoad: 00007ff8`33a30000 00007ff8`33a7a000   C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe\CONCRT140_APP.dll
+ModLoad: 00007ff8`35f00000 00007ff8`35f8e000   C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe\MSVCP140_APP.dll
+ModLoad: 00007ff8`35f90000 00007ff8`35f9c000   C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe\VCRUNTIME140_1_APP.dll
+ModLoad: 00007ff8`69300000 00007ff8`69385000   C:\Windows\SYSTEM32\MMDevAPI.DLL
+ModLoad: 00007ff8`70820000 00007ff8`7084c000   C:\Windows\SYSTEM32\DEVOBJ.dll
+ModLoad: 00007ff8`51d00000 00007ff8`51ebc000   C:\Windows\SYSTEM32\MFPlat.DLL
+ModLoad: 00007ff8`51c80000 00007ff8`51cb4000   C:\Windows\SYSTEM32\RTWorkQ.DLL
+ModLoad: 00007ff8`6ec00000 00007ff8`6f393000   C:\Windows\system32\windows.storage.dll
+ModLoad: 00007ff8`704a0000 00007ff8`704ce000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ff8`5cfd0000 00007ff8`5d010000   C:\Windows\SYSTEM32\windows.staterepositoryclient.dll
+ModLoad: 00007ff8`65f50000 00007ff8`66044000   C:\Windows\System32\MrmCoreR.dll
+ModLoad: 00007ff8`70a70000 00007ff8`70a8f000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ff8`63200000 00007ff8`6322d000   C:\Windows\SYSTEM32\bcp47mrm.dll
+ModLoad: 00007ff8`71980000 00007ff8`719d5000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ff8`6ba20000 00007ff8`6bbd4000   C:\Windows\system32\windowscodecs.dll
+ModLoad: 00007ff8`70a30000 00007ff8`70a5e000   C:\Windows\SYSTEM32\USERENV.dll
+ModLoad: 00007ff8`6f7f0000 00007ff8`6f819000   C:\Windows\SYSTEM32\profext.dll
+ModLoad: 00007ff8`2b770000 00007ff8`2b7d1000   C:\Windows\System32\CryptoWinRT.dll
+ModLoad: 00007ff8`52ee0000 00007ff8`52f1b000   C:\Windows\SYSTEM32\rometadata.dll
+ModLoad: 00007ff8`576b0000 00007ff8`57716000   C:\Windows\System32\Windows.Storage.ApplicationData.dll
+ModLoad: 00007ff8`64e60000 00007ff8`64f46000   C:\Windows\System32\Windows.ApplicationModel.dll
+ModLoad: 00007ff8`5d0a0000 00007ff8`5d0b4000   C:\Windows\System32\threadpoolwinrt.dll
+ModLoad: 00007ff8`68b70000 00007ff8`68b86000   C:\Windows\system32\mskeyprotect.dll
+ModLoad: 00007ff8`70850000 00007ff8`7085a000   C:\Windows\SYSTEM32\DPAPI.DLL
+ModLoad: 00007ff8`70410000 00007ff8`7041c000   C:\Windows\SYSTEM32\CRYPTBASE.dll
+ModLoad: 00007ff8`38a10000 00007ff8`38a25000   C:\Windows\System32\Windows.System.Profile.SystemId.dll
+ModLoad: 00007ff8`2aec0000 00007ff8`2aef0000   C:\Windows\SYSTEM32\CLIPC.dll
+ModLoad: 00007ff8`703f0000 00007ff8`70408000   C:\Windows\SYSTEM32\cryptsp.dll
+ModLoad: 00007ff8`00070000 00007ff8`0064b000   C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.8_8.2305.5001.0_x64__8wekyb3d8bbwe\Microsoft.UI.Xaml.dll
+ModLoad: 00007ff8`31f70000 00007ff8`31fa5000   C:\Windows\System32\Windows.Energy.dll
+ModLoad: 00007ff8`5da10000 00007ff8`5ddec000   C:\Windows\SYSTEM32\Windows.UI.Xaml.Controls.dll
+ModLoad: 00007ff8`574e0000 00007ff8`57533000   C:\Windows\System32\biwinrt.dll
+ModLoad: 00007ff8`719e0000 00007ff8`71af4000   C:\Windows\System32\msctf.dll
+ModLoad: 00007ff8`68c10000 00007ff8`68ca3000   C:\Windows\System32\Windows.Media.Devices.dll
+ModLoad: 00007ff8`5bad0000 00007ff8`5bb57000   C:\Windows\System32\Windows.Devices.Enumeration.dll
+ModLoad: 00007ff8`5b750000 00007ff8`5b770000   C:\Windows\System32\DevDispItemProvider.dll
+ModLoad: 00007ff8`6b850000 00007ff8`6b85e000   C:\Windows\System32\DDORes.dll
+ModLoad: 00007ff8`66050000 00007ff8`66058000   C:\Windows\System32\DefaultDeviceManager.dll
+ModLoad: 00007ff8`5ffa0000 00007ff8`60059000   C:\Windows\System32\Windows.Networking.Connectivity.dll
+ModLoad: 00007ff8`51270000 00007ff8`512a9000   C:\Windows\SYSTEM32\Windows.Networking.HostName.dll
+ModLoad: 00007ff8`70200000 00007ff8`7026a000   C:\Windows\system32\mswsock.dll
+ModLoad: 00007ff8`5d290000 00007ff8`5d2a5000   C:\Windows\System32\wshBth.dll
+ModLoad: 00007ff8`6ff90000 00007ff8`7005a000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ff8`71d60000 00007ff8`71d68000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ff8`69d00000 00007ff8`69d17000   C:\Windows\SYSTEM32\dhcpcsvc6.DLL
+ModLoad: 00007ff8`69ce0000 00007ff8`69cfd000   C:\Windows\SYSTEM32\dhcpcsvc.DLL
+ModLoad: 00007ff8`67b60000 00007ff8`67b6a000   C:\Windows\System32\rasadhlp.dll
+ModLoad: 00007ff8`68340000 00007ff8`683c2000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ff8`5cbc0000 00007ff8`5cd14000   C:\Windows\System32\wpnapps.dll
+ModLoad: 00007ff8`6c660000 00007ff8`6c696000   C:\Windows\SYSTEM32\XmlLite.dll
+ModLoad: 00007ff8`5a790000 00007ff8`5a9ef000   C:\Windows\System32\msxml6.dll
+ModLoad: 00007ff8`65cf0000 00007ff8`65ed4000   C:\Windows\SYSTEM32\dbghelp.dll
+ModLoad: 00007ff8`65cb0000 00007ff8`65ce4000   C:\Windows\SYSTEM32\dbgcore.DLL
+ModLoad: 00007ff8`55710000 00007ff8`55887000   C:\Windows\System32\Windows.Web.Http.dll
+ModLoad: 00007ff8`62c90000 00007ff8`63166000   C:\Windows\SYSTEM32\WININET.dll
+ModLoad: 00007ff8`637c0000 00007ff8`637d7000   C:\Windows\SYSTEM32\ondemandconnroutehelper.dll
+ModLoad: 00007ff8`69520000 00007ff8`6962a000   C:\Windows\SYSTEM32\winhttp.dll
+ModLoad: 00007ff8`6f740000 00007ff8`6f7e1000   C:\Windows\SYSTEM32\firewallapi.dll
+ModLoad: 00007ff8`6f6d0000 00007ff8`6f70a000   C:\Windows\SYSTEM32\fwbase.dll
+ModLoad: 00007ff8`69eb0000 00007ff8`69ebb000   C:\Windows\SYSTEM32\WINNSI.DLL
+ModLoad: 00007ff8`6fa40000 00007ff8`6fad7000   C:\Windows\system32\schannel.DLL
+ModLoad: 00007ff8`65730000 00007ff8`65756000   C:\Windows\system32\ncryptsslp.dll
+ModLoad: 00007ff8`70630000 00007ff8`70642000   C:\Windows\SYSTEM32\MSASN1.dll
+ModLoad: 00007ff8`71120000 00007ff8`71187000   C:\Windows\System32\WINTRUST.dll
+ModLoad: 00007ff8`6fb20000 00007ff8`6fb54000   C:\Windows\system32\rsaenh.dll
+ModLoad: 00007ff8`5a590000 00007ff8`5a5c1000   C:\Windows\System32\cryptnet.dll
+ModLoad: 00007ff8`65920000 00007ff8`659b8000   C:\Windows\SYSTEM32\webio.dll
+ModLoad: 00007ff8`64840000 00007ff8`6489d000   C:\Windows\System32\Windows.System.Diagnostics.dll
+ModLoad: 00007ff8`6f3b0000 00007ff8`6f3d3000   C:\Windows\SYSTEM32\gpapi.dll
+ModLoad: 00007ff8`30590000 00007ff8`308cc000   C:\Windows\System32\certenroll.dll
+ModLoad: 00007ff8`304c0000 00007ff8`3058d000   C:\Windows\SYSTEM32\certca.dll
+ModLoad: 00007ff8`67990000 00007ff8`6799c000   C:\Windows\SYSTEM32\DSPARSE.dll
+ModLoad: 00007ff8`72720000 00007ff8`72776000   C:\Windows\System32\WLDAP32.dll
+ModLoad: 00007ff8`645c0000 00007ff8`645dd000   C:\Windows\System32\Windows.Shell.ServiceHostBuilder.dll
+ModLoad: 00007ff8`60100000 00007ff8`60118000   C:\Windows\system32\execmodelproxy.dll
+ModLoad: 00007ff8`63390000 00007ff8`63431000   C:\Windows\System32\UiaManager.dll
+ModLoad: 00007ff8`58cc0000 00007ff8`58dc4000   C:\Windows\SYSTEM32\windows.ui.core.textinput.dll
+ModLoad: 00007ff8`5e440000 00007ff8`5e579000   C:\Windows\System32\Windows.UI.Immersive.dll
+ModLoad: 00007ff8`5aee0000 00007ff8`5af1e000   C:\Windows\system32\DataExchange.dll
+ModLoad: 00007ff8`5fd90000 00007ff8`5ff36000   C:\Windows\System32\Windows.Globalization.dll
+ModLoad: 00007ff8`4b0e0000 00007ff8`4b15d000   C:\Windows\System32\Geolocation.dll
+ModLoad: 00007ff8`6fbb0000 00007ff8`6fc3a000   C:\Windows\SYSTEM32\msvcp110_win.dll
+ModLoad: 00007ff8`6a8b0000 00007ff8`6a93d000   C:\Windows\System32\Windows.Graphics.dll
+ModLoad: 00007ff8`553c0000 00007ff8`55708000   C:\Windows\SYSTEM32\msftedit.dll
+ModLoad: 00007ff8`55390000 00007ff8`553b5000   C:\Windows\SYSTEM32\globinputhost.dll
+ModLoad: 00007ff8`5e080000 00007ff8`5e1bc000   C:\Windows\System32\Windows.UI.Xaml.Phone.dll
+ModLoad: 00007ff8`50490000 00007ff8`506c3000   C:\Windows\System32\Windows.ApplicationModel.Store.dll
+ModLoad: 00007ff8`69f20000 00007ff8`69f49000   C:\Windows\SYSTEM32\Cabinet.dll
+ModLoad: 00007ff8`4f800000 00007ff8`4f953000   C:\Windows\SYSTEM32\webservices.dll
+ModLoad: 00007ff8`5d8c0000 00007ff8`5d95e000   C:\Windows\system32\directmanipulation.dll
+ModLoad: 00007ff8`5d7f0000 00007ff8`5d899000   C:\Windows\System32\twinapi.dll
+ModLoad: 00007ff8`598c0000 00007ff8`59941000   C:\Windows\SYSTEM32\PhotoMetadataHandler.dll
+ModLoad: 00007ff8`4cc30000 00007ff8`4cdc0000   C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm\Microsoft.Graphics.Canvas.dll
+ModLoad: 00007ff8`62350000 00007ff8`62393000   C:\Windows\SYSTEM32\wuceffects.dll
+ModLoad: 00007ff8`4ee90000 00007ff8`4ef7d000   C:\Windows\System32\MsSpellCheckingFacility.dll
+(bd0.f58): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ff8`734f0be0 cc              int     3
+0:044> .querypackages
+Package Full Name: Microsoft.BioEnrollment_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.BioEnrollment_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.BioEnrollment_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.CloudExperienceHost_10.0.19041.1266_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy
+Version: 19041.10.0.1266
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.AAD.BrokerPlugin_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.OOBENetworkConnectionFlow_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.OOBENetworkConnectionFlow_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.OOBENetworkConnectionFlow_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.OOBENetworkCaptivePortal_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.OOBENetworkCaptivePortal_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.OOBENetworkCaptivePortal_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: MicrosoftWindows.Client.CBS_1000.19041.1000.0_x64__cw5n1h2txyewy
+Package Family Name: MicrosoftWindows.Client.CBS_cw5n1h2txyewy
+Version: 1000.1000.19041.0
+Processor Architecture: x64
+Install Folder: C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy
+Package State: Running
+AppId: PackageMetadata
+AppId: Global.AppListBackup
+AppId: InputApp
+AppId: Global.IrisService
+AppId: ScreenClipping
+
+Package Full Name: 1527c705-839a-4832-9118-54d4Bd6a0c89_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: 1527c705-839a-4832-9118-54d4Bd6a0c89_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.FilePicker_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.Windows.FilePicker
+
+Package Full Name: c5e2524a-ea46-4f67-841f-6a9465d9d515_10.0.19041.1949_neutral_neutral_cw5n1h2txyewy
+Package Family Name: c5e2524a-ea46-4f67-841f-6a9465d9d515_cw5n1h2txyewy
+Version: 19041.10.0.1949
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.FileExplorer_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.CapturePicker_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.CapturePicker_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.CapturePicker_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Windows.PrintDialog_6.2.1.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Windows.PrintDialog_cw5n1h2txyewy
+Version: 1.6.2.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\PrintDialog
+Package State: Unknown
+AppId: Microsoft.Windows.PrintDialog
+
+Package Full Name: windows.immersivecontrolpanel_10.0.2.1000_neutral_neutral_cw5n1h2txyewy
+Package Family Name: windows.immersivecontrolpanel_cw5n1h2txyewy
+Version: 2.10.0.1000
+Processor Architecture: neutral
+Install Folder: C:\Windows\ImmersiveControlPanel
+Package State: Suspended
+AppId: microsoft.windows.immersivecontrolpanel
+
+Package Full Name: Windows.CBSPreview_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Windows.CBSPreview_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Windows.CBSPreview_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.Windows.CBSPreview
+
+Package Full Name: Microsoft.Windows.AssignedAccessLockApp_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.AssignedAccessLockApp_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.AssignedAccessLockApp_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: MicrosoftWindows.UndockedDevKit_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: MicrosoftWindows.UndockedDevKit_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\MicrosoftWindows.UndockedDevKit_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.Apprep.ChxApp_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.Apprep.ChxApp_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.CallingShellApp_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.CallingShellApp_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.CallingShellApp_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.Windows.CallingShellApp
+
+Package Full Name: Microsoft.Win32WebViewHost_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Win32WebViewHost_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Win32WebViewHost_cw5n1h2txyewy
+Package State: Unknown
+AppId: DPI.PerMonitorAware
+AppId: DPI.SystemAware
+AppId: DPI.Unaware
+
+Package Full Name: Microsoft.Windows.ShellExperienceHost_10.0.19041.1949_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy
+Version: 19041.10.0.1949
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
+Package State: Suspended
+AppId: App
+
+Package Full Name: Microsoft.Windows.SecHealthUI_10.0.19041.1865_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.SecHealthUI_cw5n1h2txyewy
+Version: 19041.10.0.1865
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.SecHealthUI_cw5n1h2txyewy
+Package State: Unknown
+AppId: SecHealthUI
+
+Package Full Name: Microsoft.Windows.SecureAssessmentBrowser_10.0.19041.2311_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.SecureAssessmentBrowser_cw5n1h2txyewy
+Version: 19041.10.0.2311
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.SecureAssessmentBrowser_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.AccountsControl_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.AccountsControl_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.AccountsControl_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.PinningConfirmationDialog_1000.19041.1023.0_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.PinningConfirmationDialog_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.PinningConfirmationDialog_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.ParentalControls_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.ParentalControls_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\ParentalControls_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.AddSuggestedFoldersToLibraryDialog_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.ECApp_10.0.19041.1023_neutral__8wekyb3d8bbwe
+Package Family Name: Microsoft.ECApp_8wekyb3d8bbwe
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.ECApp_8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.NarratorQuickStart_10.0.19041.1023_neutral_neutral_8wekyb3d8bbwe
+Package Family Name: Microsoft.Windows.NarratorQuickStart_8wekyb3d8bbwe
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\microsoft.windows.narratorquickstart_8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.PeopleExperienceHost_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.ContentDeliveryManager_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-280811.UpdatePlacementTask
+Background Task Id: {53200661-ead4-47ae-bf57-7c1a52eca564}
+Background Task Name: ContentDeliveryManager.Background.AppUninstalled.CustomEventListenerTask
+Background Task Id: {c08a9a16-8ffc-4de1-95c4-c40852255bf9}
+Background Task Name: ContentDeliveryManager.Background.OnFeatureUsageImpression.CustomEventListenerTask
+Background Task Id: {e3e34c21-49ee-441f-ba91-a640a588b2ce}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-338389.UpdatePlacementTask
+Background Task Id: {35d0ad1f-ee7a-42b2-980c-ec87867a2ee1}
+Background Task Name: ContentDeliveryManager.Background.StartLayoutReady.CustomEventListenerTask
+Background Task Id: {c5db4993-b9d7-4922-a51a-3e5854c65e41}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-88000045.UpdatePlacementTask
+Background Task Id: {3ec6031f-59ab-4748-8130-23b251460f36}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-338388.UpdatePlacementTask
+Background Task Id: {22b9d777-e7b5-47e0-a78c-c76caacfd973}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-88000163.UpdatePlacementTask
+Background Task Id: {218be6dd-6797-4288-af1b-2e70d16f1d4f}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-202914.UpdatePlacementTask
+Background Task Id: {0bf52f76-a7fd-4a3b-94ca-09bf24672750}
+Background Task Name: ContentDeliveryManager.Background.AppInstallFinished.CustomEventListenerTask
+Background Task Id: {8b7c4a4b-5d32-45ab-8a72-f5c2897101d4}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-88000165.UpdatePlacementTask
+Background Task Id: {46ba6727-71a6-4cc0-87e4-97943457ea71}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-280815.UpdatePlacementTask
+Background Task Id: {2d64c29b-c496-442d-9e3f-1fcd90279963}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-353698.UpdatePlacementTask
+Background Task Id: {516025de-ab9d-4c54-b8fa-b221776ca88c}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-280810.UpdatePlacementTask
+Background Task Id: {756a6e8b-bbe6-404a-97c2-01d123c6d268}
+Background Task Name: ContentDeliveryManager.Background.ProcessCreativeEventsTask
+Background Task Id: {56cdae16-3733-4c07-8968-20639316e252}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-88000161.UpdatePlacementTask
+Background Task Id: {602ed6e7-5faa-413f-aa31-a02f3ed73ca1}
+Background Task Name: ContentDeliveryManager.Background.SubscriptionActivated.CustomEventListenerTask
+Background Task Id: {606cfe04-2d0d-4083-ab08-1e739c290837}
+Background Task Name: ContentDeliveryManager.Background.RemediateContentTask
+Background Task Id: {2b2473a4-fbe9-4ad8-8449-603690a962fa}
+Background Task Name: ContentDeliveryManager.Background.RefreshCacheTask
+Background Task Id: {5f23b8e7-1ac6-49fe-9303-4342374a3087}
+Background Task Name: ContentDeliveryManager.Background.PolicyChanged.CustomEventListenerTask
+Background Task Id: {0ca30cc5-7f97-4b90-9e88-d1100916ea3e}
+Background Task Name: ContentDeliveryManager.Background.MaintenanceTask
+Background Task Id: {dd329afa-5f1d-4d30-b418-097928450ec8}
+Background Task Name: ContentDeliveryManager.Background.TaskbarPinsUpdated.CustomEventListenerTask
+Background Task Id: {975da555-5e58-4e3e-b57e-3dc7aea7d107}
+Background Task Name: ContentDeliveryManager.Background.AppTileCreated.CustomEventListenerTask
+Background Task Id: {1557ec1a-07d6-4de1-a20b-7535103eddb2}
+Background Task Name: ContentDeliveryManager.Background.ServicingTask
+Background Task Id: {ad447ac1-8816-4797-a520-708e90a0b336}
+Background Task Name: ContentDeliveryManager.Background.SubscribedContent-338387.UpdatePlacementTask
+Background Task Id: {2440e14d-c430-43cd-a5ad-744551718ef2}
+Background Task Name: ContentDeliveryManager.Background.ManageMobilityProcessingTask
+Background Task Id: {b25c7b4d-8e78-4a0d-b7f6-b0066567deae}
+Background Task Name: ContentDeliveryManager.Background.ProcessCreativeEventsBatterySaverOverrideTask
+Background Task Id: {487a5ab1-b823-4996-b24b-dfccc25ac968}
+Background Task Name: ContentDeliveryManager.Background.NotificationChannelTask
+Background Task Id: {222d187c-2f5c-45c1-b76f-480d2ddf1b0f}
+
+Package Full Name: Microsoft.UI.Xaml.2.0_2.1810.18004.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.0
+Package Family Name: Microsoft.UI.Xaml.2.0_8wekyb3d8bbwe
+Version: 2.1810.18004.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.0_2.1810.18004.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.XboxGameCallableUI_1000.19041.1023.0_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.XboxGameCallableUI_cw5n1h2txyewy
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.XboxGameCallableUI_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.XboxGameCallableUI
+
+Package Full Name: Microsoft.Windows.XGpuEjectDialog_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.XGpuEjectDialog_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.XGpuEjectDialog_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.Windows.XGpuEjectDialog
+
+Package Full Name: Microsoft.Windows.StartMenuExperienceHost_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy
+Package State: Running
+AppId: App
+Background Task Name: Placeholder tile event based initialization
+Background Task Id: {e6ddc595-a272-4d72-8ec3-b20fc16b8a4c}
+
+Package Full Name: Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.CredDialogHost_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.CredDialogHost_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\microsoft.creddialoghost_cw5n1h2txyewy
+Package State: Unknown
+AppId: App
+
+Package Full Name: NcsiUwpApp_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe
+Package Family Name: NcsiUwpApp_8wekyb3d8bbwe
+Version: 1023.1000.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\NcsiUwpApp_8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+Background Task Name: NcsiUwpAppMaintenanceTask
+Background Task Id: {3ccdf133-c8f6-4afc-8752-e80b47ce327e}
+
+Package Full Name: E2A4F912-2574-4A75-9BB0-0D023378592B_10.0.19041.1023_neutral_neutral_cw5n1h2txyewy
+Package Family Name: E2A4F912-2574-4A75-9BB0-0D023378592B_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.AppResolverUX_cw5n1h2txyewy
+Package State: Unknown
+AppId: Microsoft.Windows.AppResolverUX
+
+Package Full Name: Microsoft.AsyncTextService_10.0.19041.1023_neutral__8wekyb3d8bbwe
+Package Family Name: Microsoft.AsyncTextService_8wekyb3d8bbwe
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.AsyncTextService_8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.LockApp_10.0.19041.1023_neutral__cw5n1h2txyewy
+Package Family Name: Microsoft.LockApp_cw5n1h2txyewy
+Version: 19041.10.0.1023
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.LockApp_cw5n1h2txyewy
+Package State: Suspended
+AppId: WindowsDefaultLockScreen
+
+Package Full Name: Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftEdge_8wekyb3d8bbwe
+Version: 1266.44.19041.0
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe
+Package State: Unknown
+AppId: MicrosoftEdge
+AppId: PdfReader
+
+Package Full Name: Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Runtime Package 2.2
+Package Family Name: Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe
+Version: 2.2.28604.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Runtime Package 2.2
+Package Family Name: Microsoft.NET.Native.Runtime.2.2_8wekyb3d8bbwe
+Version: 2.2.28604.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Runtime.2.2_2.2.28604.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Framework Package 2.2
+Package Family Name: Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe
+Version: 2.2.29512.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Framework Package 2.2
+Package Family Name: Microsoft.NET.Native.Framework.2.2_8wekyb3d8bbwe
+Version: 2.2.29512.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Framework.2.2_2.2.29512.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.5_2.52012.2002.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.5
+Package Family Name: Microsoft.UI.Xaml.2.5_8wekyb3d8bbwe
+Version: 2.52012.2002.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.5_2.52012.2002.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.5_2.52012.2002.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.5
+Package Family Name: Microsoft.UI.Xaml.2.5_8wekyb3d8bbwe
+Version: 2.52012.2002.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.5_2.52012.2002.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.VCLibs.140.00_14.0.32530.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft Visual C++ 2015 UWP Runtime Package
+Package Family Name: Microsoft.VCLibs.140.00_8wekyb3d8bbwe
+Version: 14.0.32530.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft Visual C++ 2015 UWP Runtime Package
+Package Family Name: Microsoft.VCLibs.140.00_8wekyb3d8bbwe
+Version: 14.0.32530.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00_14.0.32530.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: A025C540.Yandex.Music_4.54.8517.0_x64__vfvw9svesycw6
+Package Family Name: A025C540.Yandex.Music_vfvw9svesycw6
+Version: 8517.4.54.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\A025C540.Yandex.Music_4.54.8517.0_x64__vfvw9svesycw6
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.UI.Xaml.2.8_8.2305.5001.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.8
+Package Family Name: Microsoft.UI.Xaml.2.8_8wekyb3d8bbwe
+Version: 8.2305.5001.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.8_8.2305.5001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.8_8.2305.5001.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.8
+Package Family Name: Microsoft.UI.Xaml.2.8_8wekyb3d8bbwe
+Version: 8.2305.5001.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.8_8.2305.5001.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.VCLibs.140.00.UWPDesktop_14.0.32530.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft Visual C++ 2015 UWP Desktop Runtime Package
+Package Family Name: Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe
+Version: 14.0.32530.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00.UWPDesktop_14.0.32530.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.VCLibs.140.00.UWPDesktop_14.0.32530.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft Visual C++ 2015 UWP Desktop Runtime Package
+Package Family Name: Microsoft.VCLibs.140.00.UWPDesktop_8wekyb3d8bbwe
+Version: 14.0.32530.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.VCLibs.140.00.UWPDesktop_14.0.32530.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.Wallet_2.4.18324.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Wallet_8wekyb3d8bbwe
+Version: 18324.2.4.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Wallet_2.4.18324.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+Background Task Name: Microsoft.Pay.Background.LocalMaintenanceTask
+Background Task Id: {cc226788-b370-42ce-9788-3b1c75f7187f}
+
+Package Full Name: Microsoft.LanguageExperiencePackru-RU_19041.63.201.0_neutral__8wekyb3d8bbwe
+Package Family Name: Microsoft.LanguageExperiencePackru-RU_8wekyb3d8bbwe
+Version: 201.19041.63.0
+Processor Architecture: neutral
+Install Folder: C:\Program Files\WindowsApps\Microsoft.LanguageExperiencePackru-RU_19041.63.201.0_neutral__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.Search_1.14.10.19041_neutral_neutral_cw5n1h2txyewy
+Package Family Name: Microsoft.Windows.Search_cw5n1h2txyewy
+Version: 10.1.14.19041
+Processor Architecture: neutral
+Install Folder: C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy
+Package State: Suspended
+AppId: CortanaUI
+AppId: ShellFeedsUI
+Background Task Name: AppProviderMaintenanceTask
+Background Task Id: {ff7289e3-19b5-45e1-b593-155598216d37}
+Background Task Name: ConfigPollerBackgroundTask
+Background Task Id: {e15c4f83-0e58-453d-8d51-fc7dc876cd20}
+Background Task Name: DynamicSearchBoxRefresherBackgroundTaskSessionConnected
+Background Task Id: {9b8b77ab-7800-48d4-8e7e-4f00e60932b1}
+Background Task Name: DynamicSearchBoxRefresherBackgroundTaskDeviceUnlock
+Background Task Id: {fd0033bb-7d97-4e4b-9038-f20fdc395c2b}
+Background Task Name: SettingsEnvironmentChangedTask
+Background Task Id: {b0f23f7e-353a-4464-830d-2f4f4897a94f}
+Background Task Name: SettingsProviderBackgroundTask
+Background Task Id: {97f70175-893f-4ff1-9185-e0a81698de50}
+Background Task Name: AppProviderAppxUninstallTaskName
+Background Task Id: {861bc404-3af2-45d5-9f4d-a2eb56765dc3}
+Background Task Name: AppProviderAppxInstallTaskName
+Background Task Id: {996476a0-edaa-4747-986a-a376ca8aaacf}
+Background Task Name: AppProviderAppResolverNotificationsTaskName
+Background Task Id: {070f6767-eeae-4906-b07f-531c0dee24b7}
+Background Task Name: DynamicSearchBoxRefresherBackgroundTaskTimeTrigger
+Background Task Id: {9001bfb8-12d7-4343-9beb-f85b4d380ca7}
+
+Package Full Name: Microsoft.XboxGameOverlay_1.54.4001.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.XboxGameOverlay_8wekyb3d8bbwe
+Version: 4001.1.54.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.XboxGameOverlay_1.54.4001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.XboxSpeechToTextOverlay_1.21.13002.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.XboxSpeechToTextOverlay_8wekyb3d8bbwe
+Version: 13002.1.21.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.XboxSpeechToTextOverlay_1.21.13002.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Xbox.TCUI_1.24.10001.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Xbox.TCUI_8wekyb3d8bbwe
+Version: 10001.1.24.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Xbox.TCUI_1.24.10001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.Xbox.TCUI
+
+Package Full Name: Microsoft.WebpImageExtension_1.0.52351.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WebpImageExtension_8wekyb3d8bbwe
+Version: 52351.1.0.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WebpImageExtension_1.0.52351.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Framework Package 1.7
+Package Family Name: Microsoft.NET.Native.Framework.1.7_8wekyb3d8bbwe
+Version: 1.7.27413.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Framework Package 1.7
+Package Family Name: Microsoft.NET.Native.Framework.1.7_8wekyb3d8bbwe
+Version: 1.7.27413.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Framework.1.7_1.7.27413.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Runtime Package 1.7
+Package Family Name: Microsoft.NET.Native.Runtime.1.7_8wekyb3d8bbwe
+Version: 1.7.27422.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft .Net Native Runtime Package 1.7
+Package Family Name: Microsoft.NET.Native.Runtime.1.7_8wekyb3d8bbwe
+Version: 1.7.27422.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.NET.Native.Runtime.1.7_1.7.27422.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.XboxApp_48.89.25001.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.XboxApp_8wekyb3d8bbwe
+Version: 25001.48.89.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.XboxApp_48.89.25001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.XboxApp
+
+Package Full Name: Microsoft.XboxIdentityProvider_12.95.3001.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.XboxIdentityProvider_8wekyb3d8bbwe
+Version: 3001.12.95.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.XboxIdentityProvider_12.95.3001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.XboxIdentityProvider
+
+Package Full Name: Microsoft.UI.Xaml.2.0_2.1810.18004.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.0
+Package Family Name: Microsoft.UI.Xaml.2.0_8wekyb3d8bbwe
+Version: 2.1810.18004.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.0_2.1810.18004.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.MSPaint_6.2203.1037.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.MSPaint_8wekyb3d8bbwe
+Version: 1037.6.2203.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MSPaint_6.2203.1037.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.MSPaint
+
+Package Full Name: Microsoft.WindowsCalculator_11.2210.0.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsCalculator_8wekyb3d8bbwe
+Version: 0.11.2210.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsCalculator_11.2210.0.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.UI.Xaml.2.1_2.11906.6001.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.1
+Package Family Name: Microsoft.UI.Xaml.2.1_8wekyb3d8bbwe
+Version: 2.11906.6001.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.1_2.11906.6001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.1_2.11906.6001.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.1
+Package Family Name: Microsoft.UI.Xaml.2.1_8wekyb3d8bbwe
+Version: 2.11906.6001.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.1_2.11906.6001.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.Microsoft3DViewer_7.2211.24012.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Microsoft3DViewer_8wekyb3d8bbwe
+Version: 24012.7.2211.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Microsoft3DViewer_7.2211.24012.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.Microsoft3DViewer
+
+Package Full Name: Microsoft.UI.Xaml.2.7_7.2208.15002.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.7
+Package Family Name: Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe
+Version: 7.2208.15002.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.7_7.2208.15002.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.7_7.2208.15002.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.7
+Package Family Name: Microsoft.UI.Xaml.2.7_8wekyb3d8bbwe
+Version: 7.2208.15002.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.7_7.2208.15002.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.549981C3F5F10_4.2204.13303.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.549981C3F5F10_8wekyb3d8bbwe
+Version: 13303.4.2204.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.549981C3F5F10_4.2204.13303.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.MicrosoftSolitaireCollection_4.16.3140.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe
+Version: 3140.4.16.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MicrosoftSolitaireCollection_4.16.3140.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.MixedReality.Portal_2000.21051.1282.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.MixedReality.Portal_8wekyb3d8bbwe
+Version: 1282.2000.21051.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MixedReality.Portal_2000.21051.1282.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.XboxGamingOverlay_5.823.3261.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.XboxGamingOverlay_8wekyb3d8bbwe
+Version: 3261.5.823.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.XboxGamingOverlay_5.823.3261.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.MicrosoftStickyNotes_4.6.0.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe
+Version: 0.4.6.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MicrosoftStickyNotes_4.6.0.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.GetHelp_10.2303.10961.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.GetHelp_8wekyb3d8bbwe
+Version: 10961.10.2303.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.GetHelp_10.2303.10961.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.UI.Xaml.2.4_2.42007.9001.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.4
+Package Family Name: Microsoft.UI.Xaml.2.4_8wekyb3d8bbwe
+Version: 2.42007.9001.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.4_2.42007.9001.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.4_2.42007.9001.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.4
+Package Family Name: Microsoft.UI.Xaml.2.4_8wekyb3d8bbwe
+Version: 2.42007.9001.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.4_2.42007.9001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.ScreenSketch_10.2008.3001.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.ScreenSketch_8wekyb3d8bbwe
+Version: 3001.10.2008.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.ScreenSketch_10.2008.3001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.WindowsFeedbackHub_1.2304.1243.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe
+Version: 1243.1.2304.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsFeedbackHub_1.2304.1243.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.WindowsMaps_11.2303.5.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsMaps_8wekyb3d8bbwe
+Version: 5.11.2303.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsMaps_11.2303.5.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.ZuneVideo_10.22091.10041.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.ZuneVideo_8wekyb3d8bbwe
+Version: 10041.10.22091.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.ZuneVideo_10.22091.10041.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.ZuneVideo
+
+Package Full Name: Microsoft.HEIFImageExtension_1.0.61171.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.HEIFImageExtension_8wekyb3d8bbwe
+Version: 61171.1.0.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.HEIFImageExtension_1.0.61171.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.BingWeather_4.53.51461.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.BingWeather_8wekyb3d8bbwe
+Version: 51461.4.53.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.BingWeather_4.53.51461.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.People_10.2202.31.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.People_8wekyb3d8bbwe
+Version: 31.10.2202.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.People_10.2202.31.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: x4c7a3b7dy2188y46d4ya362y19ac5a5805e5x
+
+Package Full Name: Microsoft.ZuneMusic_11.2304.2.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.ZuneMusic_8wekyb3d8bbwe
+Version: 2.11.2304.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.ZuneMusic_11.2304.2.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.ZuneMusic
+
+Package Full Name: Microsoft.UI.Xaml.2.3_2.32002.13001.0_x86__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.3
+Package Family Name: Microsoft.UI.Xaml.2.3_8wekyb3d8bbwe
+Version: 2.32002.13001.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.3_2.32002.13001.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.UI.Xaml.2.3_2.32002.13001.0_x64__8wekyb3d8bbwe
+Package Display Name: Microsoft.UI.Xaml.2.3
+Package Family Name: Microsoft.UI.Xaml.2.3_8wekyb3d8bbwe
+Version: 2.32002.13001.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Platform Extensions
+Install Folder: C:\Program Files\WindowsApps\Microsoft.UI.Xaml.2.3_2.32002.13001.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.WindowsSoundRecorder_10.2103.28.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe
+Version: 28.10.2103.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsSoundRecorder_10.2103.28.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.WindowsCamera_2023.2304.11.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsCamera_8wekyb3d8bbwe
+Version: 11.2023.2304.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsCamera_2023.2304.11.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.Windows.Photos_2023.10030.27002.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Windows.Photos_8wekyb3d8bbwe
+Version: 27002.2023.10030.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2023.10030.27002.0_x64__8wekyb3d8bbwe
+Package State: Suspended
+AppId: App
+AppId: SecondaryEntry
+Background Task Name: InitialMaintenanceTriggerTask
+Background Task Id: {3607d740-a16b-4749-aa1c-434ef30b9db0}
+
+Package Full Name: Microsoft.Getstarted_10.2303.3.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Getstarted_8wekyb3d8bbwe
+Version: 3.10.2303.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Getstarted_10.2303.3.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.DesktopAppInstaller_1.19.11071.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+Version: 11071.1.19.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.19.11071.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+AppId: PythonRedirector
+AppId: winget
+AppId: WinGetComServer
+
+Package Full Name: Microsoft.MicrosoftOfficeHub_18.2305.1222.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe
+Version: 1222.18.2305.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MicrosoftOfficeHub_18.2305.1222.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: Microsoft.MicrosoftOfficeHub
+AppId: LocalBridge
+AppId: OfficeHubHWA
+Background Task Name: NotificationTask
+Background Task Id: {ae5c290f-ea13-46e3-9b81-fc9a6b9a0cb5}
+
+Package Full Name: Microsoft.WindowsAppRuntime.1.3_3000.882.2207.0_x64__8wekyb3d8bbwe
+Package Display Name: WindowsAppRuntime.1.3
+Package Family Name: Microsoft.WindowsAppRuntime.1.3_8wekyb3d8bbwe
+Version: 3000.882.2207.0
+Processor Architecture: x64
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsAppRuntime.1.3_3000.882.2207.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.WindowsAppRuntime.1.3_3000.882.2207.0_x86__8wekyb3d8bbwe
+Package Display Name: WindowsAppRuntime.1.3
+Package Family Name: Microsoft.WindowsAppRuntime.1.3_8wekyb3d8bbwe
+Version: 3000.882.2207.0
+Processor Architecture: x86
+Publisher: CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+Publisher Display Name: Microsoft Corporation
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsAppRuntime.1.3_3000.882.2207.0_x86__8wekyb3d8bbwe
+Package State: Unknown
+
+Package Full Name: Microsoft.YourPhone_1.23042.108.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.YourPhone_8wekyb3d8bbwe
+Version: 108.1.23042.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.YourPhone_1.23042.108.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+Background Task Name: TaskbarBackgroundTask
+Background Task Id: {7f80d65d-a956-4a4b-95df-585281fad80d}
+Background Task Name: UpdateConfigAndTelemetryBackgroundTask
+Background Task Id: {c40fbdfe-bd45-44be-ac2e-9552a279dfc7}
+
+Package Full Name: Microsoft.SkypeApp_15.98.3407.0_x64__kzf8qxf38zg5c
+Package Family Name: Microsoft.SkypeApp_kzf8qxf38zg5c
+Version: 3407.15.98.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.SkypeApp_15.98.3407.0_x64__kzf8qxf38zg5c
+Package State: Unknown
+AppId: App
+Background Task Name: HeadlessJSTask.SignInOnDefaultMSAConnected
+Background Task Id: {b3e9e4cd-2d25-41a3-9619-8894431c2ff8}
+Background Task Name: HeadlessJSTask.OnMaintenanceWindowStart
+Background Task Id: {18e908f1-211e-4031-9608-394bb2acaf82}
+Background Task Name: HeadlessJSTask.SignInOnUserSessionConnected
+Background Task Id: {99c0dbe3-84b4-4d43-aa76-d489eed722c6}
+Background Task Name: HeadlessJSTask.BackgroundHeartbeatTelemetry
+Background Task Id: {d59659a9-700b-49ac-bf56-677ebc039889}
+
+Package Full Name: Microsoft.StorePurchaseApp_12303.1401.1.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.StorePurchaseApp_8wekyb3d8bbwe
+Version: 1.12303.1401.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.StorePurchaseApp_12303.1401.1.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.VP9VideoExtensions_1.0.61591.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.VP9VideoExtensions_8wekyb3d8bbwe
+Version: 61591.1.0.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.VP9VideoExtensions_1.0.61591.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.WindowsAlarms_11.2304.0.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsAlarms_8wekyb3d8bbwe
+Version: 0.11.2304.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsAlarms_11.2304.0.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+Background Task Name: LockScreenApplicationAddedTask
+Background Task Id: {6e0b7f85-7674-4dc2-b77c-125b84c48a2e}
+Background Task Name: LockScreenApplicationRemovedTask
+Background Task Id: {33b54340-2940-4f41-a1fe-3be5da00b9d9}
+Background Task Name: TimeZoneChangedTask
+Background Task Id: {7fb3fedf-ec1b-429f-81dc-e2825b723c0c}
+
+Package Full Name: Microsoft.Office.OneNote_16001.14326.21452.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.Office.OneNote_8wekyb3d8bbwe
+Version: 21452.16001.14326.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.Office.OneNote_16001.14326.21452.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: microsoft.onenoteim
+
+Package Full Name: microsoft.windowscommunicationsapps_16005.14326.21480.0_x64__8wekyb3d8bbwe
+Package Family Name: microsoft.windowscommunicationsapps_8wekyb3d8bbwe
+Version: 21480.16005.14326.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\microsoft.windowscommunicationsapps_16005.14326.21480.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: microsoft.windowslive.mail
+AppId: microsoft.windowslive.calendar
+AppId: microsoft.windowslive.manageaccounts
+Background Task Name: HxAppUpgradeTask
+Background Task Id: {1c10ee45-3daa-4596-9d50-a9c47fb92fe7}
+Background Task Name: HxTimeZoneChangedTask
+Background Task Id: {c3848db0-9f5b-4568-a019-cccadde9ee34}
+Background Task Name: HxDefaultSignInAccountChangedTask
+Background Task Id: {4348802d-ba95-4c58-8719-8b701cf6d087}
+Background Task Name: PeriodicRemindersUpdateTask
+Background Task Id: {3967e7b4-0eab-4d3e-aba3-fbaefb436df7}
+Background Task Name: HxMaintenanceTask
+Background Task Id: {7642a491-7512-4e84-b9a4-5656e03a5b74}
+Background Task Name: HxPeriodicWeatherUpdateTask_v2
+Background Task Id: {e1657e42-bf29-43e2-89bb-0d13d1ab2419}
+
+Package Full Name: 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+Package Family Name: 5319275A.WhatsAppDesktop_cv1g1gvanyjgm
+Version: 2.2.2323.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+Package State: Running
+AppId: App
+Background Task Name: WhatsApp Periodic Trigger
+Background Task Id: {f61b015f-144a-494b-8876-2791e68d2be0}
+Background Task Name: WhatsApp Timezone Change
+Background Task Id: {4d389415-7b9c-4b0d-9d08-117d44b3f6c8}
+
+Package Full Name: Microsoft.WindowsStore_22305.1401.1.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WindowsStore_8wekyb3d8bbwe
+Version: 1.22305.1401.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WindowsStore_22305.1401.1.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+Background Task Name: OfferNotificationsTask
+Background Task Id: {8754575b-37bd-4a13-b3ca-786f9bc82a99}
+Background Task Name: OEMDiscoveryTask
+Background Task Id: {62100d95-9606-4ea2-bdec-967c35f1c57d}
+
+Package Full Name: Microsoft.MicrosoftEdge.Stable_114.0.1823.51_neutral__8wekyb3d8bbwe
+Package Family Name: Microsoft.MicrosoftEdge.Stable_8wekyb3d8bbwe
+Version: 1823.114.0.51
+Processor Architecture: neutral
+Install Folder: C:\Program Files\WindowsApps\Microsoft.MicrosoftEdge.Stable_114.0.1823.51_neutral__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+
+Package Full Name: Microsoft.WebMediaExtensions_1.0.61591.0_x64__8wekyb3d8bbwe
+Package Family Name: Microsoft.WebMediaExtensions_8wekyb3d8bbwe
+Version: 61591.1.0.0
+Processor Architecture: x64
+Install Folder: C:\Program Files\WindowsApps\Microsoft.WebMediaExtensions_1.0.61591.0_x64__8wekyb3d8bbwe
+Package State: Unknown
+AppId: App
+

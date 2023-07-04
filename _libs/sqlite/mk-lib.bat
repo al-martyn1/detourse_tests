@@ -14,5 +14,15 @@ rem gendef "C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2321.4.0_x64
 rem %LIB% /MACHINE:X64 /def:e_sqlite3.def /out:..\..\.out\msvc2019\x64\Debug\e_sqlite3.lib
 rem %LIB% /MACHINE:X64 /def:e_sqlite3.def /out:..\..\.out\msvc2019\x64\Release\e_sqlite3.lib
 
-%LIB% /MACHINE:X64 /def:e_sqlite3.def /out:..\..\.out\msvc2019\x64\Debug\e_sqlite3_org.lib
-%LIB% /MACHINE:X64 /def:e_sqlite3.def /out:..\..\.out\msvc2019\x64\Release\e_sqlite3_org.lib
+%LIB% /MACHINE:X64 /def:e_sqlite3_org.def /out:..\..\.out\msvc2019\x64\Debug\e_sqlite3_org.lib
+%LIB% /MACHINE:X64 /def:e_sqlite3_org.def /out:..\..\.out\msvc2019\x64\Release\e_sqlite3_org.lib
+
+
+@rem "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\lib.exe"
+@rem "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\dumpbin" /EXPORTS /OUT:e_sqlite3.exports "C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2321.4.0_x64__cv1g1gvanyjgm\e_sqlite3.dll"
+
+@rem "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\dumpbin" /EXPORTS /OUT:kernel32.exports C:\Windows\System32\kernel32.dll
+
+@rem "C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2321.4.0_x64__cv1g1gvanyjgm\e_sqlite3.dll"
+
+@rem dumpbin /EXPORTS /OUT:e_sqlite3.exports

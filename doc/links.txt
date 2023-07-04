@@ -26,3 +26,10 @@ Detour a UWP app - https://github.com/microsoft/Detours/discussions/279
 
 Create your Proxy DLLs automatically (wrappit) - https://www.codeproject.com/Articles/16541/Create-your-Proxy-DLLs-automatically
 
+
+Don't trust the return address - https://devblogs.microsoft.com/oldnewthing/20040101-00/?p=41223
+You can't even trust the identity of the calling executable - https://devblogs.microsoft.com/oldnewthing/20060203-00/?p=32403
+
+Forward an invocation of a variadic function in C
+  https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c/61545433#61545433
+  https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c/16777608#16777608

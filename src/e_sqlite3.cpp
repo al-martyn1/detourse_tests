@@ -177,6 +177,9 @@ SQLITE_ERROR
 #include "e_sqlite3/sqlite_proxybodies.h"
 
 
+// Принудительно линкуем e_sqlite3_org - или не?
+static int (*true_sqlite3_close)(sqlite3*)    = sqlite3_close;
+static int (*true_sqlite3_close_v2)(sqlite3*) = sqlite3_close_v2;
 
 
 

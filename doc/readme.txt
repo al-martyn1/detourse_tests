@@ -100,3 +100,78 @@ Sandboxing Antimalware Products for Fun and Profit - https://www.elastic.co/secu
 
 https://github.com/winsiderss/systeminformer/releases/tag/v2.39
 
+Винда 10 полеченная
+  https://rutracker.org/forum/viewtopic.php?t=6364960
+  https://rutracker.org/forum/viewtopic.php?t=6364674
+  https://rutracker.org/forum/viewtopic.php?t=6364673
+
+Прямое использование гостем жесткого диска хост системы - http://mirspo.narod.ru/vbox/ch09s10.html
+Образы жестких дисков VHD могут быть смонтированы в Microsoft Windows Server 2008 и таких программах виртуализации, как VirtualBox и VMware. Содержимое файла VHD также можно просмотреть с помощью программы 7-Zip. 
+
+Windows 10 Домашняя: YTMG3-N6DKC-DKB77-7M9GH-8HVX7
+Windows 10 Домашняя N: 4CPRK-NM3K3-X6XXQ-RXX86-WXCHW
+Windows 10 Home для одного языка: BT79Q-G7N6G-PGBYW-4YWX6-6F4BT
+Windows 10 Pro: VK7JG-NPHTM-C97JM-9MPGT-3V66T
+Windows 10 Pro N: 2B87N-8KFHP-DKV6R-Y2C8J-PKCKT
+Windows 10 Pro для рабочих станций: DXG7C-N36C4-C4HTG-X4T3X-2YV77
+Windows 10 Pro N для рабочих станций: WYPNQ-8C467-V2W6J-TX4WX-WT2RQ
+Windows 10 Pro для образовательных учреждений: 8PTT6-RNW4C-6V7J2-C2D3X-MHBPB
+Windows 10 Pro для образовательных учреждений N: GJTYN-HDMQY-FRR76-HVGC7-QPF8P
+Windows 10 для образовательных учреждений: YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY
+Windows 10 Education N: 84NGF-MHBT6-FXBX8-QWJK7-DRR8H
+Windows 10 Корпоративная: XGVPP-NMH47-7TTHJ-W3FW7-8HV2C
+Windows 10 Enterprise GN: FW7NV-4T673-HF4VX-9X4MM-B4H4T
+Windows 10 Корпоративная N: WGGHN-J84D6-QYCPR-T7PJ7-X766F
+Windows 10 Корпоративная N LTSB 2016: RW7WN-FMT44-KRGBK-G44WK-QV7YK
+Windows 10 Корпоративная S: NK96Y-D9CD8-W44CQ-R8YTK-DYJWX
+Windows 10 S: 3NF4D-GF9GY-63VKH-QRC3V-7QW8P
+  Подробнее: https://pro-spo.ru/system/5689-universalnyj-klyuch-aktivaczii-windows
+
+Диск отключен из-за конфликта подписей с другим диском, находящимся в сети - http://proftech19.ru/2016/02/%D0%B4%D0%B8%D1%81%D0%BA-%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD-%D0%B8%D0%B7-%D0%B7%D0%B0-%D0%BA%D0%BE%D0%BD%D1%84%D0%BB%D0%B8%D0%BA%D1%82%D0%B0-%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B5/
+C:>diskpart
+
+DISKPART> list disk
+ Диск 0    В сети          232 Gбайт  1024 Kбайт
+ Диск 1    Вне сети        298 Gбайт  1024 Kбайт
+
+DISKPART> select disk 1
+Выбран диск 1.
+
+DISKPART> online disk
+DiskPart успешно перевел выбранный диск в состояние «в сети».
+
+После произведенный действий, все диски будут подключены к системе и с ними можно будет работать.
+
+How to Decrypt WhatsApp DataBase Crypt8/12/14 Without Key Online/PC
+  https://www.imyfone.com/whatsapp/decrypt-whatsapp-database-without-key/
+На PC считывает с андроида - https://github.com/EliteAndroidApps/WhatsApp-Key-DB-Extractor
+
+WhatsApp DB folder - "C:\Users\martinov\AppData\Local\Application Data\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\" 
+Where Are WhatsApp Messages Stored On PC? - https://www.techuntold.com/where-whatsapp-messages-stored/
+
+Linux Live CD to access NTFS - Linux Mint - https://superuser.com/questions/940693/editing-creating-files-in-c-program-files-windowsapps
+  Linux Mint 19.3 Cinnamon Edition (Live CD?) - https://linuxmint.com/edition.php?id=274
+
+  >sudo parted -l
+  >sudo mkdir /mnt/ntfs
+  >sudo mount -t ntfs /dev/sda2 /mnt/ntfs
+
+
+Debugging Tools for Windows - https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugger-download-tools
+Debugging a UWP app using WinDbg - https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/debugging-a-uwp-app-using-windbg
+  "C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe"
+  C:\Program Files\WindowsApps\Microsoft.WinDbg_1.2306.12001.0_x64__8wekyb3d8bbwe\DbgX.Shell.exe
+
+Windows 10 universal Windows platform (UWP) app lifecycle - https://learn.microsoft.com/en-us/windows/uwp/launch-resume/app-lifecycle
+Launching, resuming, and background tasks - https://learn.microsoft.com/en-us/windows/uwp/launch-resume/
+
+Collecting User-Mode Dumps - https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps
+
+gpedit.msc
+  https://learn.microsoft.com/ru-ru/troubleshoot/windows-client/system-management-components/windows-error-reporting-diagnostics-enablement-guidance
+  https://datbaze.ru/windows/sistema-windows-error-reporting.html
+  https://its.1c.ru/db/metod8dev/content/2924/hdoc
+
+Тегирование EXE файлов без повреждения цифровой подписи - https://habr.com/ru/companies/alawar/articles/155365/
+Инструменты для подписывания файлов и проверки подписей - https://learn.microsoft.com/ru-ru/windows/win32/seccrypto/tools-to-sign-files-and-check-signatures
+MakeCat - https://learn.microsoft.com/ru-ru/windows/win32/seccrypto/makecat

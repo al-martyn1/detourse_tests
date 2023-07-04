@@ -1,0 +1,14 @@
+
+Package Full Name: 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+Package Family Name: 5319275A.WhatsAppDesktop_cv1g1gvanyjgm
+AppId: App
+
+windbg.exe -plmPackage <PLMPackageName> -plmApp <ApplicationId> [<parameters>]
+
+windbg.exe -plmPackage 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm -plmApp App -ServerName:App.AppXkf4yh0averk473g9chjmra34tgccdh3d.mca
+.enablepackagedebug 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+.resumepackage 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+.createpackageapp e24caf14-8483-4743-b80c-ca46c28c75df_1.0.0.0_x86__97ghe447vaan8 App
+.disablepackagedebug 5319275A.WhatsAppDesktop_2.2323.2.0_x64__cv1g1gvanyjgm
+
+FAILURE HR=0x80070102
