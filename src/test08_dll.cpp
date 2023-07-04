@@ -14,7 +14,7 @@
 
 #include "helpers.h"
 #include "toolhelp.h"
-#include "match.h"
+#include "simple_bin_pattern_match.h"
 
 #include <../_3dp/Detours/src/detours.h>
 
@@ -108,6 +108,8 @@ void init_hook(HINSTANCE hinstDLL)
     //                          );
 
     std::vector<ModuleInfo> modulesInfo = toolhelp.getModulesInfo();
+
+    using namespace simple_bin_pattern_match;
 
 
     #include "code_signature_sqlite3_key.h"

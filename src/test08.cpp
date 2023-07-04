@@ -1,5 +1,5 @@
 /*! \file
-    \brief Запускатель WhatsApp и инжектора хука test08_dll
+    \brief Запускатель WhatsApp и инжектора хука test08_dll. Заодно проверяем поиск сигнатуры на ватсапповской DLL
  */
 
 /*
@@ -65,7 +65,7 @@ C:\Windows\WinSxS\amd64_microsoft-windows-userexperience-desktop_31bf3856ad364e3
 
 #include "helpers.h"
 
-#include "match.h"
+#include "simple_bin_pattern_match.h"
 
 #include <../_3dp/Detours/src/detours.h>
 
@@ -98,10 +98,15 @@ std::string whatsAppExeName = "WhatsApp.exe";
 int main(int argc, char* argv[])
 {
 
-    // testMemMatch();
+    using namespace simple_bin_pattern_match;
+
+    testMemMatch();
+    // return 0;
+
 
     const wchar_t *whatsappnativedllName = L"c:\\program files\\windowsapps\\5319275a.whatsappdesktop_2.2324.6.0_x64__cv1g1gvanyjgm\\whatsappnative.dll";
 
+    // https://stackoverflow.com/questions/13288452/what-is-the-purpose-of-the-win32-createfile2-api-call
     HANDLE hFile = CreateFile2( whatsappnativedllName
                       , GENERIC_READ
                       , FILE_SHARE_READ
@@ -115,9 +120,74 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+    DWORD fileSizeHi = 0;
+    DWORD fileSizeLo = GetFileSize(hFile, &fileSizeHi);
+    if (fileSizeLo==INVALID_FILE_SIZE)
+    {
+        std::cout << "Failed to get 'whatsappnative.dll' file size\n";
+        CloseHandle(hFile);
+        return 0;
+    }
+
+    std::vector<std::uint8_t> whatsappnativedllData = std::vector<std::uint8_t>((std::size_t)fileSizeLo, 0);
+    if (!ReadFile(hFile, (LPVOID)&whatsappnativedllData[0], fileSizeLo, 0, 0))
+    {
+        std::cout << "Failed to read 'whatsappnative.dll' file\n";
+        CloseHandle(hFile);
+        return 0;
+    }
+
+    CloseHandle(hFile);
+
+    
+
+    #include "code_signature_sqlite3_key.h"
+
+    std::size_t exactMatchLen = 0;
+    std::size_t matchFullLen  = calcMatchLen(code_signature_sqlite3_key, &exactMatchLen);
+
+    std::cout << "matchFullLen : " << matchFullLen << "\n";
+    std::cout << "exactMatchLen: " << exactMatchLen << "\n";
+
+    std::cout << "Looking for signature: '" << formatToIdaMatchString(code_signature_sqlite3_key) << "'\n";
+
+    const std::uint8_t *pRawDataBase = &whatsappnativedllData[0];
+    const std::uint8_t *pRawData     = pRawDataBase;
+    std::size_t rawDataLen = whatsappnativedllData.size();
+
+    std::size_t matchCount = 0;
+
+    std::size_t matchPos = 0;
+    do
+    {
+        matchPos = findMemMatch(code_signature_sqlite3_key, pRawData, rawDataLen);
+        if (matchPos!=(std::size_t )-1)
+        {
+            const std::uint8_t *pMatchPos = pRawData + matchPos;
+            // WHATSAPP_TRACE2(("Found match, addr: %s, module: %s\n", formatPtr(pMatchPos).c_str(), to_ascii(mi.moduleName).c_str() ));
+            std::size_t matchOffsetFromStart = (pMatchPos - pRawDataBase);
+            std::cout << "Found match, addr: " << formatPtr(pMatchPos) << ", offset: " << matchOffsetFromStart << "\n";
+
+            pRawData   += matchPos+1;
+            rawDataLen -= matchPos+1;
+            ++matchCount;
+        }
+    }
+    while(matchPos!=(std::size_t)-1);
+
+    if (matchCount)
+    {
+        std::cout << "Match count: " << (unsigned)matchCount << "\n";
+    }
+    else
+    {
+        std::cout << "No signature matches found\n";
+    }
 
 
     return 0;
+
+
 
 
     CoInit coInit;
