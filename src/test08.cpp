@@ -65,7 +65,7 @@ C:\Windows\WinSxS\amd64_microsoft-windows-userexperience-desktop_31bf3856ad364e3
 
 #include "helpers.h"
 
-#include "simple_bin_pattern_match.h"
+#include "simple_bin_signature_match.h"
 
 #include <../_3dp/Detours/src/detours.h>
 
@@ -98,9 +98,9 @@ std::string whatsAppExeName = "WhatsApp.exe";
 int main(int argc, char* argv[])
 {
 
-    using namespace simple_bin_pattern_match;
+    using namespace simple_bin_signature_match;
 
-    testMemMatch();
+    testSignatureMatch();
     // return 0;
 
 
@@ -142,52 +142,65 @@ int main(int argc, char* argv[])
     
 
     #include "code_signature_sqlite3_key.h"
+    #include "code_signature_sqlite3_open.h"
 
-    std::size_t exactMatchLen = 0;
-    std::size_t matchFullLen  = calcMatchLen(code_signature_sqlite3_key, &exactMatchLen);
-
-    std::cout << "matchFullLen : " << matchFullLen << "\n";
-    std::cout << "exactMatchLen: " << exactMatchLen << "\n";
-
-    std::cout << "Looking for signature: '" << formatToIdaMatchString(code_signature_sqlite3_key) << "'\n";
+    // std::size_t exactMatchLen = 0;
+    // std::size_t matchFullLen  = calcMatchLen(code_signature_sqlite3_key, &exactMatchLen);
+    //  
+    // std::cout << "matchFullLen : " << matchFullLen << "\n";
+    // std::cout << "exactMatchLen: " << exactMatchLen << "\n";
+    //  
+    // std::cout << "Looking for signature: '" << formatToIdaMatchString(code_signature_sqlite3_key) << "'\n";
 
     const std::uint8_t *pRawDataBase = &whatsappnativedllData[0];
     const std::uint8_t *pRawData     = pRawDataBase;
     std::size_t rawDataLen = whatsappnativedllData.size();
 
-    std::size_t matchCount = 0;
-
-    std::size_t matchPos = 0;
-    do
+    if (findUniqueSignatureMatch(code_signature_sqlite3_key, pRawData, rawDataLen))
     {
-        matchPos = findMemMatch(code_signature_sqlite3_key, pRawData, rawDataLen);
-        if (matchPos!=(std::size_t )-1)
-        {
-            const std::uint8_t *pMatchPos = pRawData + matchPos;
-            // WHATSAPP_TRACE2(("Found match, addr: %s, module: %s\n", formatPtr(pMatchPos).c_str(), to_ascii(mi.moduleName).c_str() ));
-            std::size_t matchOffsetFromStart = (pMatchPos - pRawDataBase);
-            std::cout << "Found match, addr: " << formatPtr(pMatchPos) << ", offset: " << matchOffsetFromStart << "\n";
-
-            pRawData   += matchPos+1;
-            rawDataLen -= matchPos+1;
-            ++matchCount;
-        }
-    }
-    while(matchPos!=(std::size_t)-1);
-
-    if (matchCount)
-    {
-        std::cout << "Match count: " << (unsigned)matchCount << "\n";
+        std::cout << "Found single signature match (key)\n";
     }
     else
     {
-        std::cout << "No signature matches found\n";
+        std::cout << "No signature (key) matches found\n";
+    }
+
+    if (findUniqueSignatureMatch(code_signature_sqlite3_open, pRawData, rawDataLen))
+    {
+        std::cout << "Found single signature match (open)\n";
+    }
+    else
+    {
+        std::cout << "No signature (open) matches found\n";
     }
 
 
-    return 0;
+    // std::vector<std::uint8_t*> addrList;
+    // std::size_t 
+    // matchCount = findMemMatches(code_signature_sqlite3_key, pRawData, rawDataLen, &addrList);
+    //  
+    // if (matchCount)
+    // {
+    //     std::cout << "Match count (key): " << (unsigned)matchCount << "\n";
+    // }
+    // else
+    // {
+    //     std::cout << "No signature (key) matches found\n";
+    // }
+    //  
+    // matchCount = findMemMatches(code_signature_sqlite3_open, pRawData, rawDataLen, &addrList);
+    //  
+    // if (matchCount)
+    // {
+    //     std::cout << "Match count (open): " << (unsigned)matchCount << "\n";
+    // }
+    // else
+    // {
+    //     std::cout << "No signature (open) matches found\n";
+    // }
 
 
+    // return 0;
 
 
     CoInit coInit;

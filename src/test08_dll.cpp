@@ -14,9 +14,14 @@
 
 #include "helpers.h"
 #include "toolhelp.h"
-#include "simple_bin_pattern_match.h"
+#include "simple_bin_signature_match.h"
 
 #include <../_3dp/Detours/src/detours.h>
+#include "../_3dp/sqlite/sqlite3.h"
+#include "../_3dp/sqlite/sqlite3ext.h"
+
+#include "generated_hook/sqlite_proxytypes.h"
+
 
 #include "detours_helpers.h"
 
@@ -68,6 +73,33 @@ void log_print( char const * const format, ... )
 
 #define WHATSAPP_TRACE2(x) do{ debug_print x ; log_print x ; } while(0)
 
+#define SQLITE3_PROXY_HELO_TRACE(x) WHATSAPP_TRACE2(x)
+
+// https://github.com/microsoft/detours/wiki/OverviewInterception
+
+
+sqlite3_key_fn_ptr_t   sqlite3_key_fn_ptr  = 0;
+sqlite3_open_fn_ptr_t  sqlite3_open_fn_ptr = 0;
+
+using namespace simple_bin_signature_match;
+
+#include "code_signature_sqlite3_key.h"
+#include "code_signature_sqlite3_open.h"
+
+
+// https://github.com/microsoft/detours/wiki/Using-Detours
+
+int hook_sqlite3_key(sqlite3* db, const void* pKey, int nKey)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_key"));
+    return sqlite3_key_fn_ptr(db, pKey, nKey);
+}
+
+int hook_sqlite3_open(const char* pcStr, sqlite3** ppDb)
+{
+    SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_open"));
+    return sqlite3_open_fn_ptr(pcStr, ppDb);
+}
 
 
 void init_hook(HINSTANCE hinstDLL)
@@ -100,25 +132,18 @@ void init_hook(HINSTANCE hinstDLL)
     }
 
 
-    // toolhelp.enumerateModules( [&](const MODULEENTRY32 &me)
-    //                            {
-    //                                // moduleInfoList.emplace_back(me);
-    //                                return true; // allow continue
-    //                            }
-    //                          );
-
     std::vector<ModuleInfo> modulesInfo = toolhelp.getModulesInfo();
 
-    using namespace simple_bin_pattern_match;
+    using namespace simple_bin_signature_match;
 
 
     #include "code_signature_sqlite3_key.h"
 
-    static std::unordered_set<std::string> whatsapps = { "whatsapp.exe", "whatsapp.dll", "whatsappnative.dll" };
+    static std::unordered_set<std::string> whatsapps = {  /* "whatsapp.exe", "whatsapp.dll", */  "whatsappnative.dll" };
 
     for(const auto &mi: modulesInfo)
     {
-        WHATSAPP_TRACE2(("Module: %s (%s)\n", to_ascii(mi.moduleName).c_str(), to_ascii(mi.moduleExeName).c_str() ));
+        //WHATSAPP_TRACE2(("Module: %s (%s)\n", to_ascii(mi.moduleName).c_str(), to_ascii(mi.moduleExeName).c_str() ));
 
         std::string modNameAsciiLower = to_lower(to_ascii(mi.moduleName));
         if (whatsapps.find(modNameAsciiLower)==whatsapps.end())
@@ -126,39 +151,80 @@ void init_hook(HINSTANCE hinstDLL)
             continue;
         }
 
-        const std::uint8_t *pRawData = mi.pbAddress;
-        std::size_t rawDataLen = mi.blockSize;
+        
+        sqlite3_key_fn_ptr  = (sqlite3_key_fn_ptr_t )findUniqueSignatureMatch(code_signature_sqlite3_key , mi.pbAddress, mi.blockSize );
+        sqlite3_open_fn_ptr = (sqlite3_open_fn_ptr_t)findUniqueSignatureMatch(code_signature_sqlite3_open, mi.pbAddress, mi.blockSize );
 
-        std::size_t matchCount = 0;
-
-        std::size_t matchPos = 0;
-        do
+        if (sqlite3_key_fn_ptr)
         {
-            matchPos = findMemMatch(code_signature_sqlite3_key, pRawData, rawDataLen);
-            if (matchPos!=(std::size_t )-1)
-            {
-                const std::uint8_t *pMatchPos = pRawData + matchPos;
-                // WHATSAPP_TRACE2(("Found match, addr: %s, module: %s\n", formatPtr(pMatchPos).c_str(), to_ascii(mi.moduleName).c_str() ));
-                WHATSAPP_TRACE2(("Found match, addr: %s\n", formatPtr(pMatchPos).c_str() ));
-                pRawData   += matchPos+1;
-                rawDataLen -= matchPos+1;
-                ++matchCount;
-            }
+            WHATSAPP_TRACE2(("Found sqlite3_key\n"));
         }
-        while(matchPos!=(std::size_t)-1);
-
-        if (matchCount)
+        if (sqlite3_open_fn_ptr)
         {
-            WHATSAPP_TRACE2(("Match count: %d\n", (unsigned)matchCount ));
+            WHATSAPP_TRACE2(("Found sqlite3_open\n"));
         }
+
+        break;
 
     }
+
+    DetourTransactionBegin();
+    DetourUpdateThread(GetCurrentThread());
+
+    LONG detRes = 0;
+
+    if (sqlite3_key_fn_ptr )
+    {
+        WHATSAPP_TRACE2(("Detouring sqlite3_key\n"));
+        WHATSAPP_TRACE2(("Original proc: %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
+        detRes = DetourAttach(&(PVOID&)sqlite3_key_fn_ptr , (PVOID)hook_sqlite3_key);
+        WHATSAPP_TRACE2(("Detoured proc: %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
+        if (detRes)
+        {
+            WHATSAPP_TRACE2(("Detouring failed: %d\n", detRes));
+        }
+    }
+
+    if (sqlite3_open_fn_ptr)
+    {
+        WHATSAPP_TRACE2(("Detouring sqlite3_open\n"));
+        WHATSAPP_TRACE2(("Original proc: %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
+        detRes = DetourAttach(&(PVOID&)sqlite3_open_fn_ptr, (PVOID)hook_sqlite3_open);
+        WHATSAPP_TRACE2(("Detoured proc: %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
+        if (detRes)
+        {
+            WHATSAPP_TRACE2(("Detouring failed: %d\n", detRes));
+        }
+    }
+
+    WHATSAPP_TRACE2(("init_hook done\n"));
+
+    DetourTransactionCommit();
+
+    WHATSAPP_TRACE2(("After commit\n", detRes));
+    WHATSAPP_TRACE2(("Detoured proc (1): %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
+    WHATSAPP_TRACE2(("Detoured proc (2): %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
 
 }
 
 void deinit_hook(HINSTANCE hinstDLL)
 {
     WHATSAPP_TRACE(("Hello debugger from WhatsApp deinit_hook!\n"));
+
+    DetourTransactionBegin();
+    DetourUpdateThread(GetCurrentThread());
+
+    if (sqlite3_key_fn_ptr)
+    {
+        DetourDetach(&(PVOID&)sqlite3_key_fn_ptr, (PVOID)hook_sqlite3_key);
+    }
+
+    if (sqlite3_open_fn_ptr)
+    {
+        DetourDetach(&(PVOID&)sqlite3_open_fn_ptr, (PVOID)hook_sqlite3_open);
+    }
+
+    DetourTransactionCommit();
 
 }
 

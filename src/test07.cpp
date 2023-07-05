@@ -65,7 +65,7 @@ C:\Windows\WinSxS\amd64_microsoft-windows-userexperience-desktop_31bf3856ad364e3
 
 #include "helpers.h"
 
-#include "match.h"
+#include "simple_bin_signature_match.h"
 
 #include <../_3dp/Detours/src/detours.h>
 
@@ -98,7 +98,7 @@ std::string whatsAppExeName = "WhatsApp.exe";
 int main(int argc, char* argv[])
 {
 
-    testMemMatch();
+    simple_bin_signature_match::testSignatureMatch();
 
     // return 0;
 

@@ -1,7 +1,7 @@
 static
-std::vector<MatchPiece> code_signature_sqlite3_key
+std::vector<SignaturePiece> code_signature_sqlite3_key
 #if 1
- = buildBinSignatureFromIdaMatchString
+ = buildSignatureFromIdaSignatureString
  (
  /* .text:00007FFCCE1EC2A0 */                          // sqlite3_key     proc near               ; CODE XREF: OpenDb+24E^p
  /* .text:00007FFCCE1EC2A0 */                          //                                         ; sqlite3Pragma+4851^p ...
