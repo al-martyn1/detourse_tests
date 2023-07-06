@@ -81,6 +81,9 @@ void log_print( char const * const format, ... )
 sqlite3_key_fn_ptr_t   sqlite3_key_fn_ptr  = 0;
 sqlite3_open_fn_ptr_t  sqlite3_open_fn_ptr = 0;
 
+sqlite3_key_fn_ptr_t   copy_of_sqlite3_key_fn_ptr  = 0;
+sqlite3_open_fn_ptr_t  copy_of_sqlite3_open_fn_ptr = 0;
+
 using namespace simple_bin_signature_match;
 
 #include "code_signature_sqlite3_key.h"
@@ -92,13 +95,32 @@ using namespace simple_bin_signature_match;
 int hook_sqlite3_key(sqlite3* db, const void* pKey, int nKey)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_key"));
+
+    SQLITE3_PROXY_HELO_TRACE(("Key len: %d\n", nKey ));
+    SQLITE3_PROXY_HELO_TRACE(("Key ptr: %s\n", formatPtr(pKey).c_str() ));
+    if (!pKey)
+    {
+        SQLITE3_PROXY_HELO_TRACE(("Key    : %s\n", "<NULL>" ));
+    }
+    else
+    {
+        SQLITE3_PROXY_HELO_TRACE(("Key    : %s\n", dumpData((const std::uint8_t*)pKey, nKey).c_str() ));
+    }
+
     return sqlite3_key_fn_ptr(db, pKey, nKey);
 }
 
 int hook_sqlite3_open(const char* pcStr, sqlite3** ppDb)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_open"));
-    return sqlite3_open_fn_ptr(pcStr, ppDb);
+    //return sqlite3_open_fn_ptr(pcStr, ppDb);
+
+    if (ppDb)
+    {
+        *ppDb = 0;
+    }
+    
+    return SQLITE_NOMEM;
 }
 
 
@@ -153,7 +175,7 @@ void init_hook(HINSTANCE hinstDLL)
 
         
         sqlite3_key_fn_ptr  = (sqlite3_key_fn_ptr_t )findUniqueSignatureMatch(code_signature_sqlite3_key , mi.pbAddress, mi.blockSize );
-        sqlite3_open_fn_ptr = (sqlite3_open_fn_ptr_t)findUniqueSignatureMatch(code_signature_sqlite3_open, mi.pbAddress, mi.blockSize );
+        //sqlite3_open_fn_ptr = (sqlite3_open_fn_ptr_t)findUniqueSignatureMatch(code_signature_sqlite3_open, mi.pbAddress, mi.blockSize );
 
         if (sqlite3_key_fn_ptr)
         {
@@ -173,10 +195,14 @@ void init_hook(HINSTANCE hinstDLL)
 
     LONG detRes = 0;
 
+    copy_of_sqlite3_key_fn_ptr  = sqlite3_key_fn_ptr ;
+    copy_of_sqlite3_open_fn_ptr = sqlite3_open_fn_ptr;
+
     if (sqlite3_key_fn_ptr )
     {
         WHATSAPP_TRACE2(("Detouring sqlite3_key\n"));
         WHATSAPP_TRACE2(("Original proc: %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
+        WHATSAPP_TRACE2(("Prolog (sqlite3_key)  : %s\n", dumpData((const std::uint8_t*)sqlite3_key_fn_ptr , 20).c_str() ));
         detRes = DetourAttach(&(PVOID&)sqlite3_key_fn_ptr , (PVOID)hook_sqlite3_key);
         WHATSAPP_TRACE2(("Detoured proc: %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
         if (detRes)
@@ -189,6 +215,7 @@ void init_hook(HINSTANCE hinstDLL)
     {
         WHATSAPP_TRACE2(("Detouring sqlite3_open\n"));
         WHATSAPP_TRACE2(("Original proc: %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
+        WHATSAPP_TRACE2(("Prolog (sqlite3_open) : %s\n", dumpData((const std::uint8_t*)sqlite3_open_fn_ptr, 20).c_str() ));
         detRes = DetourAttach(&(PVOID&)sqlite3_open_fn_ptr, (PVOID)hook_sqlite3_open);
         WHATSAPP_TRACE2(("Detoured proc: %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
         if (detRes)
@@ -202,8 +229,20 @@ void init_hook(HINSTANCE hinstDLL)
     DetourTransactionCommit();
 
     WHATSAPP_TRACE2(("After commit\n", detRes));
-    WHATSAPP_TRACE2(("Detoured proc (1): %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
-    WHATSAPP_TRACE2(("Detoured proc (2): %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
+
+    if (sqlite3_key_fn_ptr)
+    {
+        WHATSAPP_TRACE2(("Detoured proc (sqlite3_key) : %s\n", formatPtr((void*)sqlite3_key_fn_ptr).c_str()));
+        WHATSAPP_TRACE2(("Prolog org location (sqlite3_key)  : %s\n", dumpData((const std::uint8_t*)copy_of_sqlite3_key_fn_ptr , 20).c_str() ));
+        WHATSAPP_TRACE2(("Prolog trampoline   (sqlite3_key)  : %s\n", dumpData((const std::uint8_t*)sqlite3_key_fn_ptr , 20).c_str() ));
+    }
+
+    if (sqlite3_open_fn_ptr)
+    {
+        WHATSAPP_TRACE2(("Detoured proc (sqlite3_open): %s\n", formatPtr((void*)sqlite3_open_fn_ptr).c_str()));
+        WHATSAPP_TRACE2(("Prolog org location (sqlite3_open) : %s\n", dumpData((const std::uint8_t*)copy_of_sqlite3_open_fn_ptr, 20).c_str() ));
+        WHATSAPP_TRACE2(("Prolog trampoline   (sqlite3_open) : %s\n", dumpData((const std::uint8_t*)sqlite3_open_fn_ptr, 20).c_str() ));
+    }
 
 }
 

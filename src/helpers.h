@@ -33,6 +33,27 @@ BYTE* getModuleNextFreeAddr(const MODULEENTRY32 &me)
 
 //----------------------------------------------------------------------------
 inline
+std::string dumpData(const std::uint8_t* ptr, std::size_t len)
+{
+    static const char digits[17] = "0123456789ABCDEF";
+
+    std::string strRes; strRes.reserve(len*3);
+
+    for(std::size_t i=0; i!=len; ++i)
+    {
+        if (!strRes.empty())
+        {
+            strRes.append(1, ' ');
+        }
+        strRes.append(1, digits[(ptr[i]>>4)&0x0F]  );
+        strRes.append(1, digits[ptr[i]&0x0F]);
+    }
+
+    return strRes;
+}
+
+//----------------------------------------------------------------------------
+inline
 std::string formatPtr(const void* ptr)
 {
     static const char digits[17] = "0123456789ABCDEF";

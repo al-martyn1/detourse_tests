@@ -100,6 +100,8 @@ int main(int argc, char* argv[])
 
     using namespace simple_bin_signature_match;
 
+    #if 0
+
     testSignatureMatch();
     // return 0;
 
@@ -144,14 +146,6 @@ int main(int argc, char* argv[])
     #include "code_signature_sqlite3_key.h"
     #include "code_signature_sqlite3_open.h"
 
-    // std::size_t exactMatchLen = 0;
-    // std::size_t matchFullLen  = calcMatchLen(code_signature_sqlite3_key, &exactMatchLen);
-    //  
-    // std::cout << "matchFullLen : " << matchFullLen << "\n";
-    // std::cout << "exactMatchLen: " << exactMatchLen << "\n";
-    //  
-    // std::cout << "Looking for signature: '" << formatToIdaMatchString(code_signature_sqlite3_key) << "'\n";
-
     const std::uint8_t *pRawDataBase = &whatsappnativedllData[0];
     const std::uint8_t *pRawData     = pRawDataBase;
     std::size_t rawDataLen = whatsappnativedllData.size();
@@ -175,35 +169,16 @@ int main(int argc, char* argv[])
     }
 
 
-    // std::vector<std::uint8_t*> addrList;
-    // std::size_t 
-    // matchCount = findMemMatches(code_signature_sqlite3_key, pRawData, rawDataLen, &addrList);
-    //  
-    // if (matchCount)
-    // {
-    //     std::cout << "Match count (key): " << (unsigned)matchCount << "\n";
-    // }
-    // else
-    // {
-    //     std::cout << "No signature (key) matches found\n";
-    // }
-    //  
-    // matchCount = findMemMatches(code_signature_sqlite3_open, pRawData, rawDataLen, &addrList);
-    //  
-    // if (matchCount)
-    // {
-    //     std::cout << "Match count (open): " << (unsigned)matchCount << "\n";
-    // }
-    // else
-    // {
-    //     std::cout << "No signature (open) matches found\n";
-    // }
-
-
-    // return 0;
+    return 0;
+    #endif
 
 
     CoInit coInit;
+
+    // auto coInitDump = dumpData((const std::uint8_t*)&coInit, 20);
+    // std::cout << "Dump data test: " << coInitDump.c_str() << "\n";
+    //  
+    // return 0;
 
 
     // https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-iapplicationactivationmanager
