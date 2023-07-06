@@ -91,10 +91,23 @@ using namespace simple_bin_signature_match;
 
 
 // https://github.com/microsoft/detours/wiki/Using-Detours
+// https://github.com/microsoft/detours/wiki/OverviewInterception
+
+// int sqlite3_key_v2(
+//   sqlite3 *db,                   /* Database to be rekeyed */
+//   const char *zDbName,           /* Name of the database */
+//   const void *pKey, int nKey     /* The key */
+// );
+
 
 int hook_sqlite3_key(sqlite3* db, const void* pKey, int nKey)
 {
     SQLITE3_PROXY_HELO_TRACE(("!!! Proxy called: %s\n", "sqlite3_key"));
+
+    if (db)
+    {
+        SQLITE3_PROXY_HELO_TRACE(("DB ptr: %s\n", formatPtr(db).c_str() ));
+    }
 
     SQLITE3_PROXY_HELO_TRACE(("Key len: %d\n", nKey ));
     SQLITE3_PROXY_HELO_TRACE(("Key ptr: %s\n", formatPtr(pKey).c_str() ));
