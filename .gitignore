@@ -4,7 +4,6 @@
 /_3dp/ReflectiveDLLInjection
 /_3dp/RunInSandbox
 /_3dp/Windows-universal-samples
-/_3dp/uwp-injector
 *.pdb
 *.exe
 *.obj
