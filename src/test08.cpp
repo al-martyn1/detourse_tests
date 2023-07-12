@@ -71,8 +71,10 @@ C:\Windows\WinSxS\amd64_microsoft-windows-userexperience-desktop_31bf3856ad364e3
 
 #define SQLITE_OMIT_LOAD_EXTENSION
 
-#include "../_3dp/sqlite/sqlite3.h"
-#include "../_3dp/sqlite/sqlite3ext.h"
+// #include "../_3dp/sqlite/sqlite3.h"
+// #include "../_3dp/sqlite/sqlite3ext.h"
+#include "sqlite3.h"
+#include "sqlite3ext.h"
 
 #pragma comment( lib, "detours.lib" )
 // #pragma comment( lib, "e_sqlite3.lib" )

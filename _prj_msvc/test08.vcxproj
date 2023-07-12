@@ -20,20 +20,32 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
+  <Import Project=".\props\umba_runtime_dll.props" />
+  <PropertyGroup Label="UserMacros">
+    <OPENSSL_ROOT>$(ProjectDir)\..\_3dp\openssl</OPENSSL_ROOT>
+    <OPENSSL_INCLUDE>$(OPENSSL_ROOT)\include</OPENSSL_INCLUDE>
+    <OPENSSL_INCLUDES>$(OPENSSL_INCUDE);$(OPENSSL_INCUDE)\crypto;$(OPENSSL_INCUDE)\openssl</OPENSSL_INCLUDES>
+    <SQLCIPHER_ROOT>$(ProjectDir)\..\_3dp\sqlcipher</SQLCIPHER_ROOT>
+    <SQLCIPHER_INCLUDE>$(SQLCIPHER_ROOT)\src</SQLCIPHER_INCLUDE>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SQLITE_HAS_CODEC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(SQLCIPHER_INCLUDE)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libcryptod.lib;libcurl.lib;sqlcipher.lib;sqlite.lib;zlibstaticd.lib;Ws2_32.lib;Crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libcrypto.lib;libcurl.lib;sqlcipher.lib;sqlite.lib;zlibstatic.lib;Ws2_32.lib;Crypt32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalLibraryDirectories);$(ProjectDir)\..\_libs\sqlite3_cipher\x64\debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalLibraryDirectories);$(ProjectDir)\..\_libs\sqlite3_cipher\x64\release</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\test08.cpp" />
-    <ClCompile Include="..\src\WinDebugMonitor.cpp" />
-    <ClCompile Include="..\_3dp\sqlite\sqlite3.c" />
+    <!--ClCompile Include="..\src\WinDebugMonitor.cpp" /-->
+    <!--ClCompile Include="..\_3dp\sqlite\sqlite3.c" /-->
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
