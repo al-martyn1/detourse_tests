@@ -34,3 +34,9 @@ You can't even trust the identity of the calling executable - https://devblogs.m
 Forward an invocation of a variadic function in C
   https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c/61545433#61545433
   https://stackoverflow.com/questions/150543/forward-an-invocation-of-a-variadic-function-in-c/16777608#16777608
+
+Compiling sqlcipher - https://www.domstamand.com/compiling-sqlcipher-sqlite-encrypted-for-windows-using-visual-studio-2022/
+OpenSSL - https://github.com/openssl/openssl
+NASM - https://www.nasm.us/
+
+sqlite3cipher - https://disk.yandex.ru/d/C7SY2M7VDDYG3g

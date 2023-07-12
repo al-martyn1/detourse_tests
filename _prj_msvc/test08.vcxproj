@@ -33,6 +33,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\test08.cpp" />
     <ClCompile Include="..\src\WinDebugMonitor.cpp" />
+    <ClCompile Include="..\_3dp\sqlite\sqlite3.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

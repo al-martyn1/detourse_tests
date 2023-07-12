@@ -75,7 +75,7 @@ C:\Windows\WinSxS\amd64_microsoft-windows-userexperience-desktop_31bf3856ad364e3
 #include "../_3dp/sqlite/sqlite3ext.h"
 
 #pragma comment( lib, "detours.lib" )
-#pragma comment( lib, "e_sqlite3.lib" )
+// #pragma comment( lib, "e_sqlite3.lib" )
 
 
 
@@ -171,6 +171,66 @@ int main(int argc, char* argv[])
 
     return 0;
     #endif
+
+    // sqlite3* pDb = 0;
+    // sqlite3_open("testdb", &pDb);
+    // sqlite3_filename name1 = sqlite3_db_filename(pDb, 0);
+    // sqlite3_filename name2 = sqlite3_db_filename(pDb, "main");
+    //  
+    // return 0;
+
+    // DB name : C:\Users\martinov\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\concur.db-journal
+    // DB name : C:\Users\martinov\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\syncd.db-journal
+    // DB name : C:\Users\martinov\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\emojidict.db-journal
+    // Key len: 32
+    // Key    : DF 89 38 A3 F0 16 60 8C 29 CD 3B D2 48 76 EC 8D 00 CC 99 7A B0 D6 40 8C 64 01 25 C0 7B A5 76 84
+
+    // abprops.db          
+    // abprops.db-shm      
+    // abprops.db-wal      
+    // axolotl.db          
+    // axolotl.db-shm      
+    // axolotl.db-wal      
+    // concur.db           
+    // concur.db-shm       
+    // concur.db-wal       
+    // contacts.db         
+    // contacts.db-shm     
+    // contacts.db-wal     
+    // emojidict.db        
+    // emojidict.db-shm    
+    // emojidict.db-wal    
+    // messages.db         
+    // messages.db-shm     
+    // messages.db-wal     
+    // settings.db         
+    // settings.db-shm     
+    // settings.db-wal     
+    // syncd.db            
+    // syncd.db-shm        
+    // syncd.db-wal        
+
+    std::string dbRootPath = "C:\\Users\\martinov\\AppData\\Local\\Packages\\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\\LocalState\\";
+
+    static const std::uint8_t key[32] = { 0xDF, 0x89, 0x38, 0xA3, 0xF0, 0x16, 0x60, 0x8C, 0x29, 0xCD, 0x3B, 0xD2, 0x48, 0x76, 0xEC, 0x8D, 0x00, 0xCC, 0x99, 0x7A, 0xB0, 0xD6, 0x40, 0x8C, 0x64, 0x01, 0x25, 0xC0, 0x7B, 0xA5, 0x76, 0x84 };
+    sqlite3* pDb = 0;
+    int sqRes = sqlite3_open((dbRootPath+"messages.db").c_str(), &pDb);
+    if (sqRes!=SQLITE_OK)
+    {
+        std::cout << "Open DB failed\n";
+    }
+    else
+    {
+        sqRes = sqlite3_key_v2(pDb, (dbRootPath+"messages.db").c_str(), (const void*)&key[0], 32);
+        if (sqRes!=SQLITE_OK)
+        {
+            std::cout << "sqlite3_key_v2 failed\n";
+        }
+    }
+
+
+    return 0;
+
 
 
     CoInit coInit;
