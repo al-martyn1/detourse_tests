@@ -1,5 +1,5 @@
 /*! \file
-    \brief Запускатель WhatsApp и инжектора хука test08_dll. Заодно проверяем поиск сигнатуры на ватсапповской DLL
+    \brief Запускатель WhatsApp и инжектора хука test08_dll. Заодно проверяем поиск сигнатуры на ватсапповской DLL. Тут же пробую открыть базу с найденым ключем.
  */
 
 /*
@@ -91,6 +91,16 @@ DWORD WINAPI hooked_GetCurrentProcessId(VOID)
 }
 
 
+int sqlite_exec_callback(void *a_param, int argc, char **argv, char **column)
+{
+    std::cout << "Exec called:";
+    for (int i=0; i< argc; i++)
+    {
+        std::cout << " " << argv[i];
+    }
+    std::cout << "\n";
+    return 0;
+}
 
 
 
@@ -230,6 +240,24 @@ int main(int argc, char* argv[])
         }
     }
 
+    //int sqlite_exec_callback(void*,int,char**,char**)
+
+    // https://stackoverflow.com/questions/1805982/use-of-sqlite3-exec
+
+    // https://cpp.hotexamples.com/examples/-/-/sqlite3_exec/cpp-sqlite3_exec-function-examples.html
+
+    char *errMsg = 0;
+    //sqRes = sqlite3_exec(pDb, ".schema;", sqlite_exec_callback, (void*)0, &errMsg);
+    //sqRes = sqlite3_exec(pDb, ".tables;", sqlite_exec_callback, (void*)0, &errMsg);
+    sqRes = sqlite3_exec(pDb, "SELECT * FROM sqlite_schema", sqlite_exec_callback, (void*)0, &errMsg);
+    if (sqRes!=SQLITE_OK)
+    {
+        std::cout << "Exec failed\n";
+        if (errMsg)
+        {
+             std::cout << "Error: " << errMsg << "\n";
+        }
+    }
 
     return 0;
 
