@@ -222,44 +222,44 @@ int main(int argc, char* argv[])
     // syncd.db-shm        
     // syncd.db-wal        
 
-    std::string dbRootPath = "C:\\Users\\martinov\\AppData\\Local\\Packages\\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\\LocalState\\";
-
-    static const std::uint8_t key[32] = { 0xDF, 0x89, 0x38, 0xA3, 0xF0, 0x16, 0x60, 0x8C, 0x29, 0xCD, 0x3B, 0xD2, 0x48, 0x76, 0xEC, 0x8D, 0x00, 0xCC, 0x99, 0x7A, 0xB0, 0xD6, 0x40, 0x8C, 0x64, 0x01, 0x25, 0xC0, 0x7B, 0xA5, 0x76, 0x84 };
-    sqlite3* pDb = 0;
-    int sqRes = sqlite3_open((dbRootPath+"messages.db").c_str(), &pDb);
-    if (sqRes!=SQLITE_OK)
-    {
-        std::cout << "Open DB failed\n";
-    }
-    else
-    {
-        sqRes = sqlite3_key_v2(pDb, (dbRootPath+"messages.db").c_str(), (const void*)&key[0], 32);
-        if (sqRes!=SQLITE_OK)
-        {
-            std::cout << "sqlite3_key_v2 failed\n";
-        }
-    }
-
-    //int sqlite_exec_callback(void*,int,char**,char**)
-
-    // https://stackoverflow.com/questions/1805982/use-of-sqlite3-exec
-
-    // https://cpp.hotexamples.com/examples/-/-/sqlite3_exec/cpp-sqlite3_exec-function-examples.html
-
-    char *errMsg = 0;
-    //sqRes = sqlite3_exec(pDb, ".schema;", sqlite_exec_callback, (void*)0, &errMsg);
-    //sqRes = sqlite3_exec(pDb, ".tables;", sqlite_exec_callback, (void*)0, &errMsg);
-    sqRes = sqlite3_exec(pDb, "SELECT * FROM sqlite_schema", sqlite_exec_callback, (void*)0, &errMsg);
-    if (sqRes!=SQLITE_OK)
-    {
-        std::cout << "Exec failed\n";
-        if (errMsg)
-        {
-             std::cout << "Error: " << errMsg << "\n";
-        }
-    }
-
-    return 0;
+    // std::string dbRootPath = "C:\\Users\\martinov\\AppData\\Local\\Packages\\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\\LocalState\\";
+    //  
+    // static const std::uint8_t key[32] = { 0xDF, 0x89, 0x38, 0xA3, 0xF0, 0x16, 0x60, 0x8C, 0x29, 0xCD, 0x3B, 0xD2, 0x48, 0x76, 0xEC, 0x8D, 0x00, 0xCC, 0x99, 0x7A, 0xB0, 0xD6, 0x40, 0x8C, 0x64, 0x01, 0x25, 0xC0, 0x7B, 0xA5, 0x76, 0x84 };
+    // sqlite3* pDb = 0;
+    // int sqRes = sqlite3_open((dbRootPath+"messages.db").c_str(), &pDb);
+    // if (sqRes!=SQLITE_OK)
+    // {
+    //     std::cout << "Open DB failed\n";
+    // }
+    // else
+    // {
+    //     sqRes = sqlite3_key_v2(pDb, (dbRootPath+"messages.db").c_str(), (const void*)&key[0], 32);
+    //     if (sqRes!=SQLITE_OK)
+    //     {
+    //         std::cout << "sqlite3_key_v2 failed\n";
+    //     }
+    // }
+    //  
+    // //int sqlite_exec_callback(void*,int,char**,char**)
+    //  
+    // // https://stackoverflow.com/questions/1805982/use-of-sqlite3-exec
+    //  
+    // // https://cpp.hotexamples.com/examples/-/-/sqlite3_exec/cpp-sqlite3_exec-function-examples.html
+    //  
+    // char *errMsg = 0;
+    // //sqRes = sqlite3_exec(pDb, ".schema;", sqlite_exec_callback, (void*)0, &errMsg);
+    // //sqRes = sqlite3_exec(pDb, ".tables;", sqlite_exec_callback, (void*)0, &errMsg);
+    // sqRes = sqlite3_exec(pDb, "SELECT * FROM sqlite_schema", sqlite_exec_callback, (void*)0, &errMsg);
+    // if (sqRes!=SQLITE_OK)
+    // {
+    //     std::cout << "Exec failed\n";
+    //     if (errMsg)
+    //     {
+    //          std::cout << "Error: " << errMsg << "\n";
+    //     }
+    // }
+    //  
+    // return 0;
 
 
 
