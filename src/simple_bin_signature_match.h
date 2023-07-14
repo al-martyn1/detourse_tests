@@ -106,7 +106,7 @@ bool signatureMatch(const std::vector<SignaturePiece> &m, const std::uint8_t *pR
     return signatureMatch(m.begin(), m.end(), pRawData, rawDataLen);
 }
 
-//! Возвращает смещение найденного фрагмента от начала данных или (std::size_t)-1
+//! Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРјРµС‰РµРЅРёРµ РЅР°Р№РґРµРЅРЅРѕРіРѕ С„СЂР°РіРјРµРЅС‚Р° РѕС‚ РЅР°С‡Р°Р»Р° РґР°РЅРЅС‹С… РёР»Рё (std::size_t)-1
 inline
 std::size_t findSignatureMatch(std::vector<SignaturePiece>::const_iterator b, std::vector<SignaturePiece>::const_iterator e, const std::uint8_t *pRawData, std::size_t rawDataLen)
 {
@@ -124,13 +124,13 @@ std::size_t findSignatureMatch(std::vector<SignaturePiece>::const_iterator b, st
         return (std::size_t)-1;
     }
 
-    // Вообще нечего искать
+    // Р’РѕРѕР±С‰Рµ РЅРµС‡РµРіРѕ РёСЃРєР°С‚СЊ
     if (it==e)
     {
         return (std::size_t)-1;
     }
     
-    // Что-то пошло не так, но assert или исключение низя, поэтому говорим, что не нашли
+    // Р§С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє, РЅРѕ assert РёР»Рё РёСЃРєР»СЋС‡РµРЅРёРµ РЅРёР·СЏ, РїРѕСЌС‚РѕРјСѓ РіРѕРІРѕСЂРёРј, С‡С‚Рѕ РЅРµ РЅР°С€Р»Рё
     if (it->matchBytes.empty())
     {
         return (std::size_t)-1;
@@ -138,12 +138,12 @@ std::size_t findSignatureMatch(std::vector<SignaturePiece>::const_iterator b, st
 
     auto rawView  = std::basic_string_view<std::uint8_t>(pRawData, rawDataLen);
 
-    // Библиотечный алгоритм всяко шустрее, чем если сам буду колбасить
+    // Р‘РёР±Р»РёРѕС‚РµС‡РЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј РІСЃСЏРєРѕ С€СѓСЃС‚СЂРµРµ, С‡РµРј РµСЃР»Рё СЃР°Рј Р±СѓРґСѓ РєРѕР»Р±Р°СЃРёС‚СЊ
     auto foundPos = rawView.find(&it->matchBytes[0], offset, it->matchBytes.size());
 
     while(foundPos!=rawView.npos)
     {
-        // Найдено начало, надо проверить всю последовательность
+        // РќР°Р№РґРµРЅРѕ РЅР°С‡Р°Р»Рѕ, РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ РІСЃСЋ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ
         if (signatureMatch(b, e, pRawData+foundPos, rawDataLen-foundPos))
             return foundPos;
 
@@ -237,7 +237,7 @@ std::vector<SignaturePiece> buildSignatureFromIdaSignatureString(const char* str
 
             curPiece.ignoreNumber++;
 
-            str = trim(str+1); // Допустимо отсутствие пробелов
+            str = trim(str+1); // Р”РѕРїСѓСЃС‚РёРјРѕ РѕС‚СЃСѓС‚СЃС‚РІРёРµ РїСЂРѕР±РµР»РѕРІ
             continue;
         }
 
@@ -252,7 +252,7 @@ std::vector<SignaturePiece> buildSignatureFromIdaSignatureString(const char* str
         ++str;
         if (*str==0 || *str==' ')
         {
-            appendByte(curByte); // Допустим байт из одной цифры
+            appendByte(curByte); // Р”РѕРїСѓСЃС‚РёРј Р±Р°Р№С‚ РёР· РѕРґРЅРѕР№ С†РёС„СЂС‹
             if (*str)
             {
                 str = trim(str+1);
@@ -260,16 +260,16 @@ std::vector<SignaturePiece> buildSignatureFromIdaSignatureString(const char* str
             continue;
         }
 
-        if (*str=='?') // Допустима строка матча без пробелов
+        if (*str=='?') // Р”РѕРїСѓСЃС‚РёРјР° СЃС‚СЂРѕРєР° РјР°С‚С‡Р° Р±РµР· РїСЂРѕР±РµР»РѕРІ
         {
-            appendByte(curByte); // Допустим байт из одной цифры
+            appendByte(curByte); // Р”РѕРїСѓСЃС‚РёРј Р±Р°Р№С‚ РёР· РѕРґРЅРѕР№ С†РёС„СЂС‹
             continue;
         }
 
         d = fromHexDigit(*str);
         if (d<0)
         {
-            appendByte(curByte); // Допустим байт из одной цифры
+            appendByte(curByte); // Р”РѕРїСѓСЃС‚РёРј Р±Р°Р№С‚ РёР· РѕРґРЅРѕР№ С†РёС„СЂС‹
             return finalize();
         }
 
@@ -278,7 +278,7 @@ std::vector<SignaturePiece> buildSignatureFromIdaSignatureString(const char* str
         
         appendByte(curByte);
 
-        str = trim(str+1); // Допустимо отсутствие пробелов
+        str = trim(str+1); // Р”РѕРїСѓСЃС‚РёРјРѕ РѕС‚СЃСѓС‚СЃС‚РІРёРµ РїСЂРѕР±РµР»РѕРІ
 
     }
 
@@ -338,7 +338,7 @@ std::string formatToIdaSignatureString(const std::vector<SignaturePiece> &mpVec)
     return res;
 }
 
-//! Возвращает все найденные смещения найденного фрагмента от начала данных или (std::size_t)-1
+//! Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РЅР°Р№РґРµРЅРЅС‹Рµ СЃРјРµС‰РµРЅРёСЏ РЅР°Р№РґРµРЅРЅРѕРіРѕ С„СЂР°РіРјРµРЅС‚Р° РѕС‚ РЅР°С‡Р°Р»Р° РґР°РЅРЅС‹С… РёР»Рё (std::size_t)-1
 inline
 std::size_t findSignatureMatches( std::vector<SignaturePiece>::const_iterator b, std::vector<SignaturePiece>::const_iterator e, const std::uint8_t *pRawData, std::size_t rawDataLen
                           , std::vector<std::uint8_t*> *pFoundAddresses=0
@@ -375,7 +375,7 @@ std::size_t findSignatureMatches( std::vector<SignaturePiece>::const_iterator b,
     return matchCount;
 }
 
-//! Возвращает все найденные смещения найденного фрагмента от начала данных или (std::size_t)-1
+//! Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РЅР°Р№РґРµРЅРЅС‹Рµ СЃРјРµС‰РµРЅРёСЏ РЅР°Р№РґРµРЅРЅРѕРіРѕ С„СЂР°РіРјРµРЅС‚Р° РѕС‚ РЅР°С‡Р°Р»Р° РґР°РЅРЅС‹С… РёР»Рё (std::size_t)-1
 inline
 std::size_t findSignatureMatches( const std::vector<SignaturePiece> &m, const std::uint8_t *pRawData, std::size_t rawDataLen
                           , std::vector<std::uint8_t*> *pFoundAddresses=0
@@ -384,7 +384,7 @@ std::size_t findSignatureMatches( const std::vector<SignaturePiece> &m, const st
     return findSignatureMatches(m.begin(), m.end(), pRawData, rawDataLen, pFoundAddresses);
 }
 
-//! Возвращает адрес единственного найденного положения, или 0, есил не найдено или больше одного вхождения
+//! Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РґСЂРµСЃ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРіРѕ РЅР°Р№РґРµРЅРЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ, РёР»Рё 0, РµСЃРёР» РЅРµ РЅР°Р№РґРµРЅРѕ РёР»Рё Р±РѕР»СЊС€Рµ РѕРґРЅРѕРіРѕ РІС…РѕР¶РґРµРЅРёСЏ
 inline
 const std::uint8_t* findUniqueSignatureMatch( std::vector<SignaturePiece>::const_iterator b, std::vector<SignaturePiece>::const_iterator e, const std::uint8_t *pRawData, std::size_t rawDataLen )
 {
@@ -419,7 +419,7 @@ const std::uint8_t* findUniqueSignatureMatch( std::vector<SignaturePiece>::const
     return pRes;
 }
 
-//! Возвращает адрес единственного найденного положения, или 0, есил не найдено или больше одного вхождения
+//! Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РґСЂРµСЃ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРіРѕ РЅР°Р№РґРµРЅРЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ, РёР»Рё 0, РµСЃРёР» РЅРµ РЅР°Р№РґРµРЅРѕ РёР»Рё Р±РѕР»СЊС€Рµ РѕРґРЅРѕРіРѕ РІС…РѕР¶РґРµРЅРёСЏ
 inline
 const std::uint8_t* findUniqueSignatureMatch(const std::vector<SignaturePiece> &m , const std::uint8_t *pRawData, std::size_t rawDataLen )
 {
