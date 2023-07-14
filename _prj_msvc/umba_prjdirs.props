@@ -14,4 +14,11 @@
     <UMBA_LIB_DIRS>$(UMBA_LOCAL_LIB_DIRS);$(UMBA_INC_DIRS_EXTRA)</UMBA_LIB_DIRS>
 
   </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+
 </Project>
