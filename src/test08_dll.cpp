@@ -1,5 +1,5 @@
 /*! \file
-    \brief DLL для инжекта, делаем перехват CreateFile2, и всякого из kernel32
+    \brief DLL для инжекта, ищем функции sqlite3 по их сигнатуре из IDA, ставим хук, выводим ключи для баз в hook_sqlite3_key_v2
  */
 
 #define DETOUR_DEBUG
