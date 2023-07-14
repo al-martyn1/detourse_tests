@@ -20,7 +20,10 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <Import Project=".\props\umba_runtime_dll.props" />
+
+  <!--Import Project=".\props\umba_runtime_dll.props" /-->
+  <Import Project=".\props\umba_runtime_static.props" />
+
   <PropertyGroup Label="UserMacros">
     <OPENSSL_ROOT>$(ProjectDir)\..\_3dp\openssl</OPENSSL_ROOT>
     <OPENSSL_INCLUDE>$(OPENSSL_ROOT)\include</OPENSSL_INCLUDE>
