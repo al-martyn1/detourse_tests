@@ -1,5 +1,5 @@
 /*! \file
-    \brief DLL для инжекта, делаем перехват CreateFile2, и всякого из kernel32
+    \brief DLL для инжекта, делаем перехват CreateFile2, и всякого из kernel32, для проверки
  */
 
 #define DETOUR_DEBUG

@@ -1,5 +1,5 @@
 /*! \file
-    \brief Используем ReflectiveDLLInjection/inject.x64.exe для инжекта нашей DLL. Перетаскивать код оттуда лень, делаем тут просто лаунчер для нашей DLL с поиском нужного PID.
+    \brief Попробовал CWinDebugMonitor вместо DebugView - хотелось поудобнее самому мониторить, но в итоге DebugView надёжнее
  */
 
 #include <winsock2.h>
