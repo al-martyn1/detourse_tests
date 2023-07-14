@@ -1,3 +1,10 @@
+Запустить _3dp\clone.bat
+Запустить _libs\sqlite\mk-lib.bat
+Разархивировать _libs\sqlite3_cipher.7z
+После этого можно открыть detourse_tests_msvc2019.sln и собрать (собирается только x64)
+
+
+
 WhatsApp Path    - C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2320.2.0_x64__cv1g1gvanyjgm
                    C:\Program Files\WindowsApps\5319275A.WhatsAppDesktop_2.2321.4.0_x64__cv1g1gvanyjgm
 
